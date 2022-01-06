@@ -8,14 +8,16 @@
         </div>
         <center>
             <div class="buttons">
-                <a href="placeholder.txt">NEWS</a>
-                <a href="placeholder.txt">MOD LISTING</a>
-                <a href="placeholder.txt">MODDING GUIDE</a>
-                <a href="placeholder.txt">ABOUT</a>
+                <%= link_to 'NEWS', news_path%>
+                <%= link_to 'MOD LISTING', listing_path %>
+                <%= link_to 'MODDING GUIDE', guide_path %>
+                <%= link_to 'ABOUT', about_path %>
             </div>
         </center>
         <div class="socials">
-            <a href="https://discord.gg/YRd8xMmde3"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/discord.svg" width="28px" id="soc"></a>
+            <%= link_to "https://discord.gg/YRd8xMmde3" do %>
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/discord.svg" width="28px" id="soc"></a>
+            <% end %>
         </div>
     </div>
 </center>
