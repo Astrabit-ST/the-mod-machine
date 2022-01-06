@@ -27,7 +27,7 @@
     font-stretch: normal;
     font-style: normal;
     font-weight: 50;
-    src: url('./res/xirod.ttf') format('truetype');
+    src: url('xirod.ttf') format('truetype');
 }
 
 
@@ -36,7 +36,7 @@
 body {
     top: 0;
     margin: 0px;
-    background-image: url('res/bg_2.png'), url('res/bg.png');
+    background-image: url('bg_2.png'), url('bg.png');
     background-repeat: repeat, repeat;
     background-attachment: scroll, fixed;
 
@@ -58,7 +58,7 @@ body {
     height: 100%;
     z-index: 50;
     background-color: rgba(0,0,0,0);
-    background-image: url('res/header/overlay.gif');
+    background-image: url('header/overlay.gif');
     mix-blend-mode: screen;
     background-repeat: repeat;
     background-size: 0.2%;
@@ -77,7 +77,7 @@ body {
 
 .header .bg {
     position: absolute;
-    background-image: url('res/header/static.gif');
+    background-image: url('header/static.gif');
     width: 100%;
     height: 100%;
     z-index: -20; 
@@ -122,7 +122,7 @@ body {
 .footerFade {
     width:  100%;
     height: 400px;
-    background-image: url("res/footer.png");
+    background-image: url("footer.png");
     background-repeat: repeat-x;
     background-position: bottom;
     position:absolute;
