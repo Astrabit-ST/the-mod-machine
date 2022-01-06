@@ -1,4 +1,4 @@
-/* Tweaks */
+/* Disable Image Smoothing */
 img { 
     image-rendering: optimizeSpeed;             /* | STOP SMOOTHING, GIVE ME SPEED  | */
     image-rendering: -moz-crisp-edges;          /* | Firefox                        | */
@@ -9,35 +9,43 @@ img {
     -ms-interpolation-mode: nearest-neighbor;   /* | IE8+                           | */
 }
 
-body {
-    background-color: black;
-    overflow: hidden;
-}
-
-.logo_front {
-    width: 920px;
-    z-index: 10;
-}
-
+.logo_parent { position: relative;}
+.logo_front {width: 920px; z-index: 10;}
 .logo_back {
     width: 920px;
     z-index: -10;
     transform-origin: 49.8% 45%;
     animation: spin 2s infinite linear;
 }
-.logo_parent {
-    position: relative;
-}
-
 #logo {
-    position: fixed;
+    position: absolute;
     margin-left: auto; 
     margin-right: auto; 
     left: 0; 
     right: 0; 
+    
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+    pointer-events: none;
 }
 
+/* Animations */
 @keyframes spin {
     from { transform: rotate(0deg);}
     to { transform: rotate(360deg); }
+}
+
+/* Animations */
+@keyframes hov {
+    from { transform: translate(0, 0px);   }
+    to   { transform: translate(0, -5px);  }
+}
+
+@keyframes rel {
+    from { transform: translate(0, -5px); }
+    to   { transform: translate(0, 0px);  }
 }

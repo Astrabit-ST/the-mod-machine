@@ -1,0 +1,138 @@
+/* ? Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width:0.4vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ffffff10;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #444;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ? Fonts */
+
+/* Font */ 
+@font-face {
+    font-family: 'xirod';
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 50;
+    src: url('./res/xirod.ttf') format('truetype');
+}
+
+
+/* ? Main CSS */
+
+body {
+    top: 0;
+    margin: 0px;
+    background-image: url('res/bg_2.png'), url('res/bg.png');
+    background-repeat: repeat, repeat;
+    background-attachment: scroll, fixed;
+
+    color: white;
+    font-family: xirod;
+}
+
+.header {
+    position: relative;
+    margin: 15px;
+    height: 250px;
+    width: 90%;
+    border: 15px double #34135A;
+}
+
+.header .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background-color: rgba(0,0,0,0);
+    background-image: url('res/header/overlay.gif');
+    mix-blend-mode: screen;
+    background-repeat: repeat;
+    background-size: 0.2%;
+    pointer-events: none;
+}
+
+.headerFade {
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 43%, rgba(0,0,0,0) 100%);
+    z-index: -50;
+    position: absolute;
+    height: 800px;
+    width: 100%;
+    transform: translate(-1px, -400px);
+}
+
+.header .bg {
+    position: absolute;
+    background-image: url('res/header/static.gif');
+    width: 100%;
+    height: 100%;
+    z-index: -20; 
+    filter: brightness(0.5);
+}
+
+.header .buttons {
+    font-family: xirod;
+    font-size: 20px;
+    margin-top: 200px;
+}
+
+.header .buttons a {
+    color: white;
+    text-shadow: -4px 3px #34223a;
+    text-decoration: none;
+    margin-left:  50px;
+    margin-right: 50px;
+}
+
+.header .buttons a:hover {
+    color: #ee82ee;
+    text-shadow: 0 0 15px #dd87b9;
+}
+
+.header .socials {
+    position: absolute;
+    right: 30px;
+    bottom: 15px;
+}
+
+#soc {
+    filter: invert(1);
+}
+
+#soc:hover {
+    filter: invert(80%) sepia(27%) saturate(2180%) hue-rotate(240deg) brightness(93%) contrast(102%);
+}
+
+.logo_parent { padding-top: 5pt; }
+
+.footerFade {
+    width:  100%;
+    height: 400px;
+    background-image: url("res/footer.png");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    position:absolute;
+    color: white;
+    font-family: xirod;
+    text-shadow: -4px 3px #34223a;
+    text-decoration: none;
+
+}
+
+.footerFade spacer {
+    line-height: 2000%;
+}
