@@ -1,0 +1,43 @@
+/* Tweaks */
+img { 
+    image-rendering: optimizeSpeed;             /* | STOP SMOOTHING, GIVE ME SPEED  | */
+    image-rendering: -moz-crisp-edges;          /* | Firefox                        | */
+    image-rendering: -o-crisp-edges;            /* | Opera                          | */
+    image-rendering: -webkit-optimize-contrast; /* | Chrome (and eventually Safari) | */
+    image-rendering: pixelated;                 /* | Chrome                         | */
+    image-rendering: optimize-contrast;         /* | CSS3 Proposed                  | */
+    -ms-interpolation-mode: nearest-neighbor;   /* | IE8+                           | */
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+.logo_front {
+    width: 920px;
+    z-index: 10;
+}
+
+.logo_back {
+    width: 920px;
+    z-index: -10;
+    transform-origin: 49.8% 45%;
+    animation: spin 2s infinite linear;
+}
+.logo_parent {
+    position: relative;
+}
+
+#logo {
+    position: fixed;
+    margin-left: auto; 
+    margin-right: auto; 
+    left: 0; 
+    right: 0; 
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg); }
+}
