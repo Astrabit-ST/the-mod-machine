@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   def list
-    @articles = NewsArticle.all
+    @articles = NewsArticle.order('created_at DESC')
   end
 
   def show
