@@ -8,7 +8,16 @@
       <a href="/news/<%= article.id %>">
         <%= article.title %>
       </a>
-      <p><%= truncate(article.body, length: 40) %></p>
+      <%= sanitize to_markdown(truncate(article.body, length: 40)) %>
+      Authors:
+      <% article.authors.each do |author| %>
+        <%= author.name %>
+      <% end %>
+      <br>
+      Date:
+      <%= article.date %>
     </li>
+    <br>
+    <br>
   <% end %>
 </ul>
