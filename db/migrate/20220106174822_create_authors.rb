@@ -4,7 +4,7 @@ class CreateAuthors < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :email
       t.string :discord
-      t.belongs_to :mod
+      t.belongs_to :has_authors, polymorphic: true
 
       t.timestamps
     end

@@ -1,2 +1,14 @@
-<h1>News#list</h1>
-<p>Find me in app/views/news/list.html.erb</p>
+<center>
+<h1>News</h1>
+</center>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <a href="/news/<%= article.id %>">
+        <%= article.title %>
+      </a>
+      <p><%= truncate(article.body, length: 40) %></p>
+    </li>
+  <% end %>
+</ul>
