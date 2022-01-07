@@ -26,7 +26,7 @@ jobs:
         run: |
           bundle install
           gem install bundler-audit
-         gem install brakeman
+          gem install brakeman
       - name: Run security checks
         run: |
           bundler-audit --update
