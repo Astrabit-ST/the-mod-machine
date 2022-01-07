@@ -23,10 +23,10 @@ jobs:
           bundler-cache: true
       # Add or Replace any other security checks here
       - name: Install gems
-      - run: |
-        bundle install
-        gem install bundler-audit
-        gem install brakeman
+        run: |
+          bundle install
+          gem install bundler-audit
+         gem install brakeman
       - name: Run security checks
         run: |
           bundler-audit --update
