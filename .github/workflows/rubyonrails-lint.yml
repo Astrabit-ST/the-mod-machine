@@ -27,6 +27,7 @@ jobs:
           bundle install
           gem install bundler-audit
           gem install brakeman
+          gem install rubocop
       - name: Run security checks
         run: |
           bundler-audit --update
