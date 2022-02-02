@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Integer</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Integer</h1>
+<p>The abstract class for integers. Its subclasses are <a href="sc_fixnum.html">Fixnum</a> 
+  and <a href="sc_bignum.html">Bignum</a>. These two types of integers are automatically 
+  converted into one another according to their values. Integers can be treated 
+  as infinite bit strings for bit operations.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_numeric.html">Numeric</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+  <dt>self[nth]</dt>
+  <dd> 
+    <p>Returns 1 if the <var>nth</var> bit of the integer is set (with the LSB, 
+      or least significant bit, at position 0), otherwise returns 0.</p>
+    <p>self[nth]=bit is not an Integer method because the associated Numeric class 
+      is immutable.</p>
+  </dd>
+  <dt><var>self</var> + <var>other</var></dt>
+  <dt><var>self</var> - <var>other</var></dt>
+  <dt><var>self</var> * <var>other</var></dt>
+  <dt><var>self</var> / <var>other</var></dt>
+  <dt><var>self</var> % <var>other</var></dt>
+  <dt><var>self</var> ** <var>other</var></dt>
+  <dd> 
+    <p>Arithmetic operators. Compute the sum, difference, product, quotient, remainder, 
+      and exponent respectively.</p>
+  </dd>
+  <dt><var>self</var> &lt;=&gt; <var>other</var></dt>
+  <dd> 
+    <p>Compares <var>self</var> with <var>other</var>; returns a positive integer 
+      if <var>self</var> is larger, 0 if the two are equal, and a negative integer 
+      if <var>self</var> is smaller.</p>
+  </dd>
+  <dt><var>self</var> == <var>other</var></dt>
+  <dt><var>self</var> &lt; <var>other</var></dt>
+  <dt><var>self</var> &lt;= <var>other</var></dt>
+  <dt><var>self</var> &gt; <var>other</var></dt>
+  <dt><var>self</var> &gt;= <var>other</var></dt>
+  <dd> 
+    <p>Relational operators.</p>
+  </dd>
+  <dt>~ <var>self</var></dt>
+  <dt><var>self</var> | <var>other</var></dt>
+  <dt><var>self</var> &amp; <var>other</var></dt>
+  <dt><var>self</var> ^ <var>other</var></dt>
+  <dd> 
+    <p>Bit operators. Compute bitwise negation, logical OR, logical AND, and logical 
+      XOR respectively.</p>
+  </dd>
+  <dt><var>self</var> &lt;&lt; <var>bits</var></dt>
+  <dt><var>self</var> &gt;&gt; <var>bits</var></dt>
+  <dd> 
+    <p>Shift operators. Shift only bits to the right or left.</p>
+    <p>The signed bit (MSB or most significant bit) is retained in a right shift.</p>
+  </dd>
+  <dt>chr</dt>
+  <dd> 
+    <p>Returns a 1-byte string corresponding to the numeric position in the character 
+      set. For example, 65.chr returns &quot;A&quot;.</p>
+    <p>The integer must be within the range of 0 to 255. Calling this method with 
+      an out-of-range integer will throw a <a href="s_exceptions.html#RangeError">RangeError</a> 
+      exception. </p>
+  </dd>
+  <dt><a name="L001200">downto(<var>min</var>) {|<var>n</var>| ... }</a></dt>
+  <dd> 
+    <p>Iterates from self to <var>min</var>, decrementing by 1. If self &lt; <var>min</var>, 
+      does nothing.</p>
+    <p>See also <a href="#L001211">upto</a>, <a href="#L001203">step</a>, and 
+      <a href="#L001204">times</a>.</p>
+  </dd>
+  <dt>next</dt>
+  <dt>succ</dt>
+  <dd> 
+    <p>Returns the &quot;next&quot; value of an integer.</p>
+  </dd>
+  <dt><a name="L001203">step(<var>limit</var>, <var>step</var>) {|<var>n</var>| 
+    ... }</a></dt>
+  <dd> 
+    <p>Iteratively evaluates a block from self, incrementing by <var>step</var>, 
+      until <var>limit</var> is about to be surpassed. <var>step</var> can also 
+      be a negative number.</p>
+    <p>When <var>step</var> is set to 0, throws an <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 
+      exception.</p>
+    <p>Returns self.</p>
+    <p>See also <a href="#L001211">upto</a>, <a href="#L001203"></a><a href="#L001200">downto</a>, 
+      and <a href="#L001204">times</a>.</p>
+  </dd>
+  <dt><a name="L001204">times {|<var>n</var>| ... }</a></dt>
+  <dd> 
+    <p>Iterates self number of times, from 0 to self-1. If self is negative, does 
+      nothing.</p>
+    <p>Returns self.</p>
+    <p>See also <a href="#L001211">upto</a>, <a href="#L001203"></a><a href="#L001200">downto</a>, 
+      and <a href="#L001204"></a><a href="#L001203">step</a>.</p>
+  </dd>
+  <dt>to_f</dt>
+  <dd> 
+    <p>Converts a value to a floating point integer (<a href="sc_float.html">Float</a>).</p>
+  </dd>
+  <dt>to_s([<var>base</var>])</dt>
+  <dd> 
+    <p>Converts an integer to a base-10 string expression.</p>
+    <p>If an argument is specified, it will be used as the base number for conversion. 
+      If a base outside the range of 2-36 is specified, an <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 
+      exception will be thrown.</p>
+    <pre>
+p 10.to_s(2)    # =&gt; &quot;1010&quot;
+p 10.to_s(8)    # =&gt; &quot;12&quot;
+p 10.to_s(16)   # =&gt; &quot;a&quot;
+p 35.to_s(36)   # =&gt; &quot;z&quot;
+</pre>
+  </dd>
+  <p></p>
+  <dt><a name="L001211">upto(<var>max</var>) {|<var>n</var>| ... }</a></dt>
+  <dd> 
+    <p>Iterates from self to <var>max</var>, incrementing by 1. If self &gt; <var>max</var>, 
+      does nothing.</p>
+    <p>Returns self.</p>
+    <p>See also <a href="#L001200">downto</a>, <a href="#L001203">step</a>, and 
+      <a href="#L001204">times</a>.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

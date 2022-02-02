@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Syntax and Expressions</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Syntax and Expressions</h1>
+<ul>
+<li><a href="#L000213">Identifiers</a></li>
+<li><a href="#L000214">Comments</a></li>
+<li><a href="#L000216">Reserved Words</a></li>
+  <li><a href="#L000219">Expressions</a></li>
+</ul>
+<p>Ruby is a case-sensitive language. Apart from within identifiers and some literals, 
+  blank space and comments may be placed anywhere as needed. Line breaks are treated 
+  as blank space only when used to clearly show a line is continuing; otherwise, 
+  they are treated as phrase delimiters.</p>
+
+<h2><a name="L000213">Identifiers</a></h2>
+<p>Example:</p>
+<pre>
+foobar
+ruby_is_simple
+</pre>
+<p>An identifier in Ruby begins with an alphabetic character or underscore (_) and consists of alphanumeric characters or underscores (_). There is no 
+  limit on length.</p>
+
+<h2><a name="L000214">Comments</a></h2>
+<p>Example:</p>
+<pre>
+# this is a comment line
+</pre>
+<p>Strings beginning with # are considered comments.</p>
+
+<h2><a name="L000216">Reserved Words</a></h2>
+<p>The following are reserved words:</p>
+<pre>
+BEGIN    class    ensure   nil      self     when
+END      def      false    not      super    while
+alias    defined? for      or       then     yield
+and      do       if       redo     true
+begin    else     in       rescue   undef
+break    elsif    module   retry    unless
+case     end      next     return   until
+</pre>
+<p>Reserved words cannot be used for names of classes, variables, or the like. 
+  However, words prefixed by $ or @ are not considered reserved. Furthermore, 
+  these words can be used as method names after def, after a method-call period, 
+  and in other cases where it is clear that the word is acting as a method name.</p>
+
+<h2><a name="L000219">Expressions</a></h2>
+Example 
+<pre>
+true
+(1+2)*3
+foo()
+if test then ok else ng end
+</pre>
+<p>The term &quot;expressions&quot; encompasses everything from variables and 
+  literals to operational forms and control structures.</p>
+<p>A collection of these expressions makes up a Ruby program. Expressions are 
+  separated from one another with semicolons (;) or line breaks. However, a line 
+  break following a backslash is not considered a new expression boundary; instead, 
+  the expression continues on the next line.</p>
+<p>Expressions can be grouped with parentheses.</p>
+
+<h6></h6>
+</body>
+</html>

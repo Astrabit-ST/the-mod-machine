@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::System</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::System</h1>
+<p>Data class for the system.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>magic_number</dt>
+  <dd> 
+    <p>Magic number used for update checks. Updates changed values every time 
+      data is saved in RPGXP.</p>
+  </dd>
+  <dt>party_members</dt>
+  <dd> 
+    <p>The initial party. An array of actor IDs.</p>
+  </dd>
+  <dt>elements</dt>
+  <dd> 
+    <p>Element list. Text array using element IDs as subscripts, with the element 
+      in the 0 position being nil.</p>
+  </dd>
+  <dt>switches</dt>
+  <dd> 
+    <p>Switch list. Text array using switch IDs as subscripts, with the element 
+      in the 0 position being nil.</p>
+  </dd>
+  <dt>variables</dt>
+  <dd> 
+    <p>Variable list. Text array using variable IDs as subscripts, with the element 
+      in the 0 position being nil.</p>
+  </dd>
+  <dt>windowskin_name</dt>
+  <dd> 
+    <p>The window skin (or &quot;windowskin&quot;) graphic file name.</p>
+  </dd>
+  <dt>title_name</dt>
+  <dd> 
+    <p>The title graphic file name.</p>
+  </dd>
+  <dt>gameover_name</dt>
+  <dd> 
+    <p>The &quot;Game Over&quot; graphic file name.</p>
+  </dd>
+  <dt>battle_transition</dt>
+  <dd> 
+    <p>The file name of the transition graphic, displayed when entering battle.</p>
+  </dd>
+  <dt>title_bgm</dt>
+  <dd> 
+    <p>The title BGM (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>battle_bgm</dt>
+  <dd> 
+    <p>The battle BGM (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>battle_end_me</dt>
+  <dd> 
+    <p>The battle end ME (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>gameover_me</dt>
+  <dd> 
+    <p>The gameover ME (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>cursor_se</dt>
+  <dd> 
+    <p>The cursor SE <a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>decision_se</dt>
+  <dd> 
+    <p>The decision SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>cancel_se</dt>
+  <dd> 
+    <p>The cancel SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>buzzer_se</dt>
+  <dd> 
+    <p>The buzzer SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>equip_se</dt>
+  <dd> 
+    <p>The equip SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>shop_se</dt>
+  <dd> 
+    <p>The shop SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>save_se</dt>
+  <dd> 
+    <p>The save SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>load_se</dt>
+  <dd> 
+    <p>The load SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>battle_start_se</dt>
+  <dd> 
+    <p>The battle start SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>escape_se</dt>
+  <dd> 
+    <p>The escape SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>actor_collapse_se</dt>
+  <dd> 
+    <p>The actor collapse SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>enemy_collapse_se</dt>
+  <dd> 
+    <p>The enemy collapse SE (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>words</dt>
+  <dd> 
+    <p>Terms (<a href="gc_rpg_system_words.html"
+>RPG::System::Words</a>).</p>
+  </dd>
+  <dt>start_map_id</dt>
+  <dd> 
+    <p>The map ID of the player's initial position.</p>
+  </dd>
+  <dt>start_x</dt>
+  <dd> 
+    <p>The map X-coordinate of the player's initial position.</p>
+  </dd>
+  <dt>start_y</dt>
+  <dd> 
+    <p>The map Y-coordinate of the player's initial position.</p>
+  </dd>
+  <dt>test_battlers</dt>
+  <dd> 
+    <p>Party settings for battle tests. An <a href="gc_rpg_system_testbattler.html"
+>RPG::System::TestBattler</a> array.</p>
+  </dd>
+  <dt>test_troop_id</dt>
+  <dd> 
+    <p>The troop ID for battle tests.</p>
+  </dd>
+  <dt>battleback_name</dt>
+  <dd> 
+    <p>The battle background graphic file name, for battle tests and internal 
+      use.</p>
+  </dd>
+  <dt>battler_name</dt>
+  <dd> 
+    <p>The battler graphic file name, for internal use.</p>
+  </dd>
+  <dt>battler_hue</dt>
+  <dd> 
+    <p>The adjustment value for the battler graphic's hue (0..360), for internal 
+      use.</p>
+  </dd>
+  <dt>edit_map_id</dt>
+  <dd> 
+    <p>The ID of the map currently being edited, for internal use.</p>
+  </dd>
+</dl>
+
+<h2>Inner Classes</h2>
+<ul>
+<li><a href="gc_rpg_system_words.html">RPG::System::Words</a></li>
+<li><a href="gc_rpg_system_testbattler.html">RPG::System::TestBattler</a></li>
+</ul>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class System
+    def initialize
+      @magic_number = 0
+      @party_members = [1]
+      @elements = [nil, ""]
+      @switches = [nil, ""]
+      @variables = [nil, ""]
+      @windowskin_name = ""
+      @title_name = ""
+      @gameover_name = ""
+      @battle_transition = ""
+      @title_bgm = RPG::AudioFile.new
+      @battle_bgm = RPG::AudioFile.new
+      @battle_end_me = RPG::AudioFile.new
+      @gameover_me = RPG::AudioFile.new
+      @cursor_se = RPG::AudioFile.new("", 80)
+      @decision_se = RPG::AudioFile.new("", 80)
+      @cancel_se = RPG::AudioFile.new("", 80)
+      @buzzer_se = RPG::AudioFile.new("", 80)
+      @equip_se = RPG::AudioFile.new("", 80)
+      @shop_se = RPG::AudioFile.new("", 80)
+      @save_se = RPG::AudioFile.new("", 80)
+      @load_se = RPG::AudioFile.new("", 80)
+      @battle_start_se = RPG::AudioFile.new("", 80)
+      @escape_se = RPG::AudioFile.new("", 80)
+      @actor_collapse_se = RPG::AudioFile.new("", 80)
+      @enemy_collapse_se = RPG::AudioFile.new("", 80)
+      @words = RPG::System::Words.new
+      @test_battlers = []
+      @test_troop_id = 1
+      @start_map_id = 1
+      @start_x = 0
+      @start_y = 0
+      @battleback_name = ""
+      @battler_name = ""
+      @battler_hue = 0
+      @edit_map_id = 1
+    end
+    attr_accessor :magic_number
+    attr_accessor :party_members
+    attr_accessor :elements
+    attr_accessor :switches
+    attr_accessor :variables
+    attr_accessor :windowskin_name
+    attr_accessor :title_name
+    attr_accessor :gameover_name
+    attr_accessor :battle_transition
+    attr_accessor :title_bgm
+    attr_accessor :battle_bgm
+    attr_accessor :battle_end_me
+    attr_accessor :gameover_me
+    attr_accessor :cursor_se
+    attr_accessor :decision_se
+    attr_accessor :cancel_se
+    attr_accessor :buzzer_se
+    attr_accessor :equip_se
+    attr_accessor :shop_se
+    attr_accessor :save_se
+    attr_accessor :load_se
+    attr_accessor :battle_start_se
+    attr_accessor :escape_se
+    attr_accessor :actor_collapse_se
+    attr_accessor :enemy_collapse_se
+    attr_accessor :words
+    attr_accessor :test_battlers
+    attr_accessor :test_troop_id
+    attr_accessor :start_map_id
+    attr_accessor :start_x
+    attr_accessor :start_y
+    attr_accessor :battleback_name
+    attr_accessor :battler_name
+    attr_accessor :battler_hue
+    attr_accessor :edit_map_id
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

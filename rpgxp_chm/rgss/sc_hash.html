@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Hash</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Hash</h1>
+<p>The hash class. See <a href="syntax03.html#L000280">Hash Expressions</a> for 
+  more information.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Included Modules</h2>
+<ul>
+<li><a href="sm_enumerable.html">Enumerable</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+  <dt>self[key]</dt>
+  <dd> 
+    <p>Returns the value mapped to <var>key</var>. If the corresponding key is 
+      not registered, returns the default value (or nil if not specified).</p>
+  </dd>
+  <dt>self[key]=value</dt>
+  <dd> 
+    <p>Maps <var>value</var> to <var>key</var>. Returns <var>value</var>.</p>
+  </dd>
+  <dt>clear</dt>
+  <dd> 
+    <p>Clears the hash contents. Returns self.</p>
+  </dd>
+  <dt>clone</dt>
+  <dt>dup</dt>
+  <dd> 
+    <p>Returns a new hash with the same contents as the receiver. Using clone 
+      on a frozen hash will return a similarly frozen hash, but dup returns an 
+      unfrozen hash with identical contents.</p>
+    <p>Returns <var>value</var>.</p>
+  </dd>
+  <dt>delete(<var>key</var>)</dt>
+  <dt>delete(<var>key</var>) {|<var>key</var>| ... }</dt>
+  <dd> 
+    <p>Deletes the mapping from <var>key</var>. Returns the removed value, or 
+      nil if there is no value corresponding to <var>key</var>. </p>
+  </dd>
+  <dd> 
+    <p>When the method has been supplied with a block, it will be evaluated and 
+      the results returned if there is no match for <var>key</var>.</p>
+  </dd>
+  <dt>each {|<var>key</var>, <var>value</var>| ... }</dt>
+  <dt>each_pair {|<var>key</var>, <var>value</var>| ... }</dt>
+  <dd> 
+    <p>Evaluates a block with <var>key</var> and <var>value</var> as arguments. 
+      Returns self.</p>
+  </dd>
+  <dt>each_key {|<var>key</var>| ... }</dt>
+  <dd> 
+    <p>Evaluates a block with <var>key</var> as the argument. Returns self.</p>
+  </dd>
+  <dt>each_value {|<var>value</var>| ... }</dt>
+  <dd> 
+    <p>Evaluates a block with <var>value</var> as the argument. Returns self.</p>
+  </dd>
+  <dt>empty?</dt>
+  <dd> 
+    <p>Returns true when the hash is empty.</p>
+    </dd>
+  <dt>has_key?(<var>key</var>)</dt>
+  <dt>include?(<var>key</var>)</dt>
+  <dd> 
+    <p>Returns true when the hash includes <var>key</var> as a key.</p>
+  </dd>
+  <dt>has_value?(<var>value</var>)</dt>
+  <dd> 
+    <p>Returns true when the hash includes <var>value</var> as a value as determined 
+      by ==.</p>
+    </dd>
+  <dt>index(<var>val</var>)</dt>
+  <dd> 
+    <p>Returns the key corresponding to <var>val</var>. If there is no corresponding 
+      element, returns nil.</p>
+    <p>If there are multiple corresponding keys, arbitrarily returns one of them.</p>
+  </dd>
+  <dt>keys</dt>
+  <dd> 
+    <p>Returns an array of all keys.</p>
+  </dd>
+  <dt>length</dt>
+  <dt>size</dt>
+  <dd> 
+    <p>Returns the number of elements in the hash.</p>
+    </dd>
+  <dt>values</dt>
+  <dd> 
+    <p>Returns an array of all values in the hash.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

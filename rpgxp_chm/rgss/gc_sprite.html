@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Sprite</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Sprite</h1>
+<p>The sprite class. Sprites are the basic concept used to display characters, 
+  etc. on the game screen.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Method</h2>
+<dl>
+  <dt>Sprite.new([<var>viewport</var>])</dt>
+  <dd> 
+    <p>Creates a new Sprite object. Specifies a Viewport (<a href="gc_viewport.html">Viewport</a>) 
+      when necessary.</p>
+  </dd>
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt>dispose</dt>
+  <dd> 
+    <p>Frees the sprite. If the sprite has already been freed, does nothing.</p>
+  </dd>
+  <dt>disposed?</dt>
+  <dd> 
+    <p>Returns TRUE if the sprite has been freed.</p>
+  </dd>
+  <dt>viewport</dt>
+  <dd> 
+    <p>Gets the Viewport (<a href="gc_viewport.html">Viewport</a>) specified 
+      when the tilemap was created.</p>
+  </dd>
+  <dt><a name="flash">flash(<var>color</var>, <var>duration</var>)</a></dt>
+  <dd> 
+    <p>Begins flashing the sprite. <var>duration</var> specifies the number of 
+      frames the flash will last.</p>
+    <p>If <var>color</var> is set to nil, the sprite will disappear while flashing.</p>
+  </dd>
+  <dt>update</dt>
+  <dd> 
+    <p>Refreshes the sprite flash. As a rule, this method is called once per frame.</p>
+    <p>It is not necessary to call this method if no flash effect is needed.</p>
+  </dd>
+</dl>
+
+<h2>Properties</h2>
+<dl>
+  <dt>bitmap</dt>
+  <dd> 
+    <p>Refers to the bitmap (<a href="gc_bitmap.html">Bitmap</a>) used for the 
+      sprite's starting point.</p>
+  </dd>
+  <dt>src_rect</dt>
+  <dd> 
+    <p>The box (<a href="gc_rect.html">Rect</a>) taken from a bitmap.</p>
+  </dd>
+  <dt>visible</dt>
+  <dd> 
+    <p>The sprite's visibility. If TRUE, the sprite is visible.</p>
+  </dd>
+  <dt><a name="x">x</a></dt>
+  <dd> 
+    <p>The sprite's X-coordinate.</p>
+  </dd>
+  <dt>y</dt>
+  <dd> 
+    <p>The sprite's Y-coordinate.</p>
+  </dd>
+  <dt>z</dt>
+  <dd> 
+    <p>The viewport's Z-coordinate. The larger this value, the closer to the player 
+      the viewport will be displayed. If multiple objects share the same Z-coordinate, 
+      the more recently created object will be displayed closest to the player.</p>
+  </dd>
+  <dt>ox</dt>
+  <dd> 
+    <p>The X-coordinate of the sprite's starting point.</p>
+  </dd>
+  <dt>oy</dt>
+  <dd> 
+    <p>The Y-coordinate of the sprite's starting point.</p>
+  </dd>
+  <dt>zoom_x</dt>
+  <dd> 
+    <p>The sprite's X-axis zoom level. 1.0 denotes actual pixel size.</p>
+  </dd>
+  <dt>zoom_y</dt>
+  <dd> 
+    <p>The sprite's Y-axis zoom level. 1.0 denotes actual pixel size.</p>
+  </dd>
+  <dt>angle</dt>
+  <dd> 
+    <p>The sprite's angle of rotation. Specifies up to 360 degrees of counterclockwise 
+      rotation. However, drawing a rotated sprite is time-consuming, so avoid 
+      overuse.</p>
+  </dd>
+  <dt>mirror</dt>
+  <dd> 
+    <p>Flag denoting the sprite has been flipped horizontally. If TRUE, the sprite 
+      will be drawn flipped.</p>
+  </dd>
+  <dt>bush_depth</dt>
+  <dd> 
+    <p>The Bush depth for that sprite. This is a pixel value denoting how much 
+      of the sprite's lower portion will be displayed as semitransparent. A simple 
+      way to convey a sense of a character's feet being obscured by foliage and 
+      the like.</p>
+  </dd>
+  <dt>opacity</dt>
+  <dd> 
+    <p>The sprite's opacity (0-255). Values out of range are automatically corrected.</p>
+  </dd>
+  <dt>blend_type</dt>
+  <dd> 
+    <p>The sprite's blending mode (0: normal, 1: addition, 2: subtraction).</p>
+  </dd>
+  <dt>color</dt>
+  <dd> 
+    <p>The color (<a href="gc_color.html">Color</a>) to be blended with the sprite. 
+      Alpha values are used in the blending ratio.</p>
+    <p>Handled separately from the color blended into a <a href="#flash">flash</a> 
+      effect. However, the color with the higher alpha value when displayed will 
+      have the higher priority when blended.</p>
+  </dd>
+  <dt>tone</dt>
+  <dd> 
+    <p>The sprite's color tone (<a href="gc_tone.html">Tone</a>).</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

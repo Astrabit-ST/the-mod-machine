@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Float</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Float</h1>
+<p>The floating point value class. The implementation of Float is the same as 
+  in C.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_numeric.html">Numeric</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+<dt><var>self</var> + <var>other</var></dt>
+<dt><var>self</var> - <var>other</var></dt>
+<dt><var>self</var> * <var>other</var></dt>
+<dt><var>self</var> / <var>other</var></dt>
+<dt><var>self</var> % <var>other</var></dt>
+<dt><var>self</var> ** <var>other</var></dt>
+<dd>
+    <p>Arithmetic operator. Computes the sum, difference, product, quotient, remainder, 
+      and exponent.</p>
+  </dd>
+<dt><var>self</var> &lt;=&gt; <var>other</var></dt>
+<dd>
+    <p>Compares other with self; returns a positive integer if self is larger, 
+      0 if the two are equal, and a negative integer if self is smaller.</p>
+  </dd>
+<dt><var>self</var> == <var>other</var></dt>
+<dt><var>self</var> &lt; <var>other</var></dt>
+<dt><var>self</var> &lt;= <var>other</var></dt>
+<dt><var>self</var> &gt; <var>other</var></dt>
+<dt><var>self</var> &gt;= <var>other</var></dt>
+<dd>
+    <p>Relational operator.</p>
+  </dd>
+<dt>finite?</dt>
+<dd>
+    <p>Returns TRUE even if the value is infinite, unless it is also NaN.</p>
+  </dd>
+<dt>infinite?</dt>
+<dd>
+    <p>Returns 1 when a value is positive and infinite; returns -1 when a value 
+      is negative and infinite. Otherwise, returns nil. The floating point zero 
+      ensures infinite division.</p>
+<pre>
+inf = 1.0/0
+p inf
+p inf.infinite?
+
+=&gt; Infinity
+   1
+
+inf = -1.0/0
+p inf
+p inf.infinite?
+
+=&gt; -Infinity
+   -1
+</pre></dd>
+<dt>nan?</dt>
+<dd>
+    <p>Returns TRUE when a value is NaN (not a number). The floating point zero 
+      ensures the result of division by 0 is NaN.</p>
+<pre>
+nan = 0.0/0.0
+p nan
+p nan.nan?
+
+=&gt; NaN
+   true
+</pre></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Control Structures</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Control Structures</h1>
+<ul>
+<li><a href="#L000296">Conditional Branching</a>
+<ul>
+<li><a href="#L000297">if</a></li>
+<li><a href="#L000298">if Modifier</a></li>
+<li><a href="#L000299">unless</a></li>
+<li><a href="#L000300">unless Modifier</a></li>
+<li><a href="#L000301">case</a></li>
+</ul></li>
+  <li><a href="#L000302">Looping</a>
+<ul>
+<li><a href="#L000303">while</a></li>
+<li><a href="#L000304">while Modifier</a></li>
+<li><a href="#L000305">until</a></li>
+<li><a href="#L000306">until Modifier</a></li>
+<li><a href="#L000307">for</a></li>
+<li><a href="#L000308">break</a></li>
+<li><a href="#L000309">next</a></li>
+</ul></li>
+  <li><a href="#L000312">Exception Handling</a> 
+    <ul>
+<li><a href="#L000313">raise</a></li>
+<li><a href="#L000314">begin</a></li>
+<li><a href="#L000315">rescue Modifier</a></li>
+</ul></li>
+  <li><a href="#L000316">Method Exit</a> 
+    <ul>
+<li><a href="#L000317">return</a></li>
+</ul></li>
+</ul>
+<p>Unlike in C, control structures in Ruby are expressions that return some value.</p>
+<p>Ruby carries over some control structures from C and Perl, but also features 
+  a loop abstraction feature called <a href="syntax06.html#L000323">iterators</a>. 
+  Iterators are user-definable looping control structures.</p>
+
+<h2><a name="L000296">Conditional Branching</a></h2>
+<h3><a name="L000297">if</a></h3>
+<p>Examples:</p>
+<pre>
+if age &gt;= 12 then
+  print &quot;adult fee\n&quot;
+else
+  print &quot;child fee\n&quot;
+end
+gender = if foo.gender == &quot;male&quot; then &quot;male&quot; else &quot;female&quot; end
+</pre>
+<p>Syntax:</p>
+<pre>
+if expr [then]
+  expr ...
+[elsif expr [then]
+  expr ... ]
+...
+[else
+  expr ... ]
+end
+</pre>
+<p>If a conditional expression is evaluated as true, evaluates the expression 
+  beginning with <var>then</var>. If the <var>if</var> expression is false, evaluates 
+  the <var>elsif</var> condition. Multiple <var>elsif</var> clauses can be specified; 
+  when all <var>if</var> or <var>elsif</var> conditional expressions are false, 
+  the <var>else</var> clause expression, if any, is evaluated.</p>
+<p> <var>if</var> returns the value of the last evaluated expression in the conditional 
+  expression clause (or <var>else</var> clause). If there is no <var>else</var> 
+  clause and no conditional expressions in effect, returns nil.</p>
+<p>The values false and nil are false; everything else, including zero and empty 
+  text strings, is true.</p>
+<p>Note that Ruby uses <var>elsif</var> after <var>if</var>, not <var>else if</var> 
+  and not <var>elif</var>.</p>
+<h3><a name="L000298">if Modifier</a></h3>
+<p>Example:</p>
+<pre>
+print &quot;debug\n&quot; if $DEBUG
+</pre>
+<p>Syntax:</p>
+<pre>
+expr if expr
+</pre>
+<p>Evaluates and returns the result of the expression on the left if the condition 
+  on the right is true. If the condition is not in effect, returns nil.</p>
+<h3><a name="L000299">unless</a></h3>
+<p>Example:</p>
+<pre>
+unless baby?
+  feed_meat
+else
+  feed_milk
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+unless expr [then]
+  expr ...
+[else
+  expr ... ]
+end
+</pre>
+<p><var>unless</var> is the reverse of <var>if</var>; if the conditional expression 
+  is false, evaluates the expression beginning with <var>then</var>. <var>elsif</var> 
+  cannot be specified with <var>unless</var>.</p>
+<h3><a name="L000300">unless Modifier</a></h3>
+<p>Example:</p>
+<pre>
+print &quot;stop\n&quot; unless valid(passwd)
+</pre>
+<p>Syntax:</p>
+<pre>
+expr unless expr
+</pre>
+<p>Evaluates and returns the result of the expression on the left if the condition 
+  on the right is false. If the condition is not in effect, returns nil.</p>
+<h3><a name="L000301">case</a></h3>
+<p>Example:</p>
+<pre>
+case $age
+when 0 .. 2
+  &quot;baby&quot;
+when 3 .. 6
+  &quot;little child&quot;
+when 7 .. 12
+  &quot;child&quot;
+when 13 .. 18
+  &quot;youth&quot;
+else
+  &quot;adult&quot;
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+case expr
+[when expr [, expr] ... [then]
+  expr ..]..
+[else
+  expr ..]
+end
+</pre>
+<p> <var>case</var> expressions execute branching for a single expression via 
+  matching. Comparisons of values specified in a <var>when</var> clause to the 
+  evaluated result of the first expression are performed by the === operator. 
+  When the values match, evaluates the contents of the <var>when</var> clause.</p>
+<p><var>case</var> returns the result of the last evaluated expression in a conditional 
+  <var>when</var> (or <var>else</var>) clause. If neither condition is in effect, 
+  returns nil.</p>
+
+<h2><a name="L000302">Looping</a></h2>
+<h3><a name="L000303">while</a></h3>
+<p>Example:</p>
+<pre>
+ary = [0,2,4,8,16,32,64,128,256,512,1024]
+i = 0
+while i &lt; ary.length
+  print ary[i]
+  i += 1
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+while expr [do]
+   ...
+end
+</pre>
+<p>Executes the contents of an expression as long as the expression remains true.</p>
+<p><var>while</var> returns nil. Alternatively, the <var>while</var> return value 
+  can also be the value of an argument to a <var>break</var>.</p>
+<h3><a name="L000304">while Modifier</a></h3>
+<p>Example:</p>
+<pre>
+sleep(60) while io_not_ready?
+</pre>
+<p>Syntax:</p>
+<pre>
+expr while expr
+</pre>
+<p>Repeatedly executes the expression on the left as long as the expression on 
+  the right is evaluated as true. If the expression on the left is <var>begin</var>, 
+  <var>while</var> evaluates it first before looping.</p>
+<p>The <var>while</var> modifier returns nil. Alternatively, the <var>while</var> 
+  modifier return value can also be the value of an argument to a <var>break</var>.</p>
+<h3><a name="L000305">until</a></h3>
+<p>Example:</p>
+<pre>
+until f.eof?
+  print f.gets
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+until expr [do]
+   ...
+end
+</pre>
+<p>Repeatedly executes the expression until it is evaluated as true.</p>
+<p><var>until</var> returns nil. Alternatively, the <var>until</var> return value 
+  can also be the value of an argument to a <var>break</var>.</p>
+<h3><a name="L000306">until Modifier</a></h3>
+<p>Example:</p>
+<pre>
+print(f.gets) until f.eof?
+</pre>
+<p>Syntax:</p>
+<pre>
+expr until expr
+</pre>
+<p>Repeatedly executes the expression on the left until the expression on the 
+  right is evaluated as true. If the expression on the left is <var>begin</var>, 
+  the <var>until</var> modifier evaluates it first before looping.</p>
+<p>The <var>until</var> modifier returns nil. Alternatively, the <var>until</var> 
+  modifier return value can also be the value of an argument to a <var>break</var>.</p>
+<h3><a name="L000307">for</a></h3>
+<p>Example:</p>
+<pre>
+for i in [1, 2, 3]
+  print i*2, &quot;\n&quot;
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+for lhs ...  in expr [do]
+  expr ..
+end
+</pre>
+<p>Repeatedly executes the contents for each evaluated object element. Approximately 
+  identical to the following:</p>
+<pre>
+(expr).each '{' '|' lhs..'|' expr .. '}'
+</pre>
+<p>It is only approximately identical because while blocks defined by <var>do 
+  ... end</var> or by { } introduce a new block scope for local variables, <var>for</var> 
+  has no effect on the scope of local variables.</p>
+<p><var>for</var> returns the return value of the <var>each</var> method for the 
+  objects specified in <var>in</var>.</p>
+<h3><a name="L000308">break</a></h3>
+<p>Example:</p>
+<pre>
+i = 0
+while i &lt; 3
+  print i, &quot;\n&quot;
+  break
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+break [expr]
+</pre>
+<p><var>break</var> escapes from the innermost loop. A &quot;loop&quot; is one 
+  of the following:</p>
+<ul>
+<li>while</li>
+<li>until</li>
+<li>for</li>
+  <li>an iterator</li>
+</ul>
+<p>Unlike in C, <var>break</var> can only escape from loops. It does not exit 
+  from <var>case</var>.</p>
+<p> <var>for</var> or an iterator that has escaped from a loop via <var>break</var> 
+  returns nil. However, if an argument is specified, the loop's return value will 
+  become that argument.</p>
+<h3><a name="L000309">next</a></h3>
+<p>Example:</p>
+<pre>
+str.each_line do |line|
+  next if line.empty?
+  print line
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+next [expr]
+</pre>
+<p><var>next</var> jumps to the next iteration of the innermost loop. In an <a href="syntax06.html#L000323">iterator</a>, 
+  <var>next</var> is an escape for a <a href="syntax06.html#L000324"><var>yield</var></a> 
+  call.</p>
+<p>A <var>yield</var> that has escaped via <var>next</var> returns nil. However, 
+  if an argument is specified, <var>yield</var>'s return value will become that 
+  argument.</p>
+
+<h2><a name="L000312">Exception Handling</a></h2>
+<h3><a name="L000313">raise</a></h3>
+<p>Examples:</p>
+<pre>
+raise
+raise &quot;you lose&quot;
+raise SyntaxError.new(&quot;invalid syntax&quot;)
+raise SyntaxError, &quot;invalid syntax&quot;
+</pre>
+<p>Syntax:</p>
+<pre>
+raise
+raise message
+raise exception
+raise error_type, message
+</pre>
+<p>Throws an exception. In the first format, throws the last exception again. In 
+  the second format, given a string argument, throws a <a href="s_exceptions.html#RuntimeError">RuntimeError</a> 
+  exception with the given string as a message. In the third format, throws the 
+  exception if the argument is an exception object. In the last format, throws 
+  the exception specified in the first argument with the message given in the 
+  second argument.</p>
+<p>Thrown exceptions can be trapped with a <dfn>rescue</dfn> clause in <dfn>begin</dfn>.</p>
+<p><a href="s_functions.html#L000388"><dfn>raise</dfn></a> is not a reserved word 
+  in Ruby, but rather an built-in function.</p>
+<h3><a name="L000314">begin</a></h3>
+<p>Example:</p>
+<pre>
+begin
+  do_something
+rescue
+  recover
+ensure
+  must_do
+end
+</pre>
+<p>Syntax::</p>
+<pre>
+begin
+  expr ..
+[rescue [error_type,..] [then]
+  expr ..]..
+[ensure
+  expr ..]
+end
+</pre>
+<p>If an exception is thrown while <var>begin</var> is being executed, a <var>rescue</var> 
+  clause can trap the exception; multiple clauses can be specified. If a <var>rescue</var> 
+  clause with a matching exception type exists, it is executed. The thrown exception 
+  can be referenced with the built-in variable <a href="s_variables.html#L000437">$!</a>.</p>
+<p>When <var>error_type</var> is omitted, it traps all exceptions in the <a href="s_exceptions.html#StandardError">StandardError</a> 
+  subclasses, of which most built-in exceptions in Ruby are members. See <a href="s_exceptions.html">Built-in 
+  Exception Classes</a>.</p>
+<p>In<var> rescue</var> clauses, <var>error_type</var> is evaluated in the same 
+  way as an argument. If any value matches, the clause will be executed. If the 
+  value of <var>error_type</var> is not a class or a module, <var>rescue</var> 
+  throws a <a href="s_exceptions.html#TypeError">TypeError</a> exception. </p>
+<p>If there is an <var>ensure</var> clause, its contents are always evaluated 
+  immediately before a <var>begin</var> expression exits.</p>
+<p><var>begin</var> returns the result of the final argument evaluated in either 
+  its contents or in the <var>rescue</var> clause.</p>
+<h3><a name="L000315">rescue Modifier</a></h3>
+<p>Example:</p>
+<pre>
+File.open(&quot;file&quot;) rescue print &quot;can't open\n&quot;
+</pre>
+<p>Syntax:</p>
+<pre>
+expr1 rescue expr2
+</pre>
+<p>When an exception is thrown in the first expression, evaluates the second expression. 
+  You cannot specify the exception class(es) to be trapped; in other words, you 
+  can only trap the subclasses of the <a href="s_exceptions.html#StandardError">StandardError</a> 
+  exception class.</p>
+<p>Expressions associated with the <var>rescue</var> modifier return <var>expr1</var> 
+  if no exception is thrown and <var>expr2</var> if an exception is thrown.</p>
+
+<h2><a name="L000316">Method Exit</a></h2>
+<h3><a name="L000317">return</a></h3>
+<p>Example:</p>
+<pre>
+return
+return 12
+return 1,2,3
+</pre>
+<p>Syntax:</p>
+<pre>
+return [expr[',' expr ... ]]
+</pre>
+<p>Exits from a method with the return value. If two or more expressions are provided, 
+  the method's return value will consist of an array containing these values. 
+  If the expression is omitted, the return value will be nil.</p>
+
+<h6></h6>
+</body>
+</html>

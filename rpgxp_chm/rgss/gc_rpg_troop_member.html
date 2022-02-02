@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Troop::Member</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Troop::Member</h1>
+<p>Data class for troop members.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Referrer</h2>
+<ul>
+<li><a href="gc_rpg_troop.html">RPG::Troop</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>enemy_id</dt>
+  <dd> 
+    <p>The enemy ID.</p>
+  </dd>
+  <dt>x</dt>
+  <dd> 
+    <p>The troop member's X-coordinate.</p>
+  </dd>
+  <dt>y</dt>
+  <dd>
+    <p>The troop member's Y-coordinate.</p>
+  </dd>
+  <dt>hidden</dt>
+  <dd>
+    <p>Truth value of the [Appear Midway] option.</p>
+  </dd>
+  <dt>immortal</dt>
+  <dd>
+    <p>Truth value of the [Immortal] option.</p>
+  </dd>
+</dl>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class Troop
+    class Member
+      def initialize
+        @enemy_id = 1
+        @x = 0
+        @y = 0
+        @hidden = false
+        @immortal = false
+      end
+      attr_accessor :enemy_id
+      attr_accessor :x
+      attr_accessor :y
+      attr_accessor :hidden
+      attr_accessor :immortal
+    end
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

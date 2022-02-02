@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>MatchData</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>MatchData</h1>
+<p>The class handling regular expression match data. Instances of this class can 
+  be obtained via</p>
+<ul>
+  <li><a href="sc_regexp.html#L001314">Regexp.last_match</a>,</li>
+  <li><a href="sc_regexp.html#L001322">Regexp#match</a>, and</li>
+  <li><a href="s_variables.html#L000428">$~</a>.</li>
+</ul>
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+  <dt>self[n]</dt>
+  <dd> 
+    <p>Returns the <var>n</var>th substring.<var> </var>0 signifies the entire 
+      matching string. When the value of <var>n</var> is negative, it is treated 
+      as a backwards index (the final element being in the position -1). When 
+      the <var>n</var>th element does not exist, returns nil.</p>
+    <pre>
+/(foo)(bar)(BAZ)?/ =~ &quot;foobarbaz&quot;
+p $~.to_a       # =&gt; [&quot;foobar&quot;, &quot;foo&quot;, &quot;bar&quot;, nil]
+p $~[0]         # =&gt; &quot;foobar&quot;
+p $~[1]         # =&gt; &quot;foo&quot;
+p $~[2]         # =&gt; &quot;bar&quot;
+p $~[3]         # =&gt; nil        (doesn't match)
+p $~[4]         # =&gt; nil        (out of range)
+p $~[-2]        # =&gt; &quot;bar&quot;
+</pre>
+  </dd>
+  <p></p>
+  <dt>post_match</dt>
+  <dd> 
+    <p>Returns the string after the matching portion.</p>
+  </dd>
+  <dt>pre_match</dt>
+  <dd> 
+    <p>Returns the string before the matching portion.</p>
+  </dd>
+  <dt>to_a</dt>
+  <dd> 
+    <p>Returns an array containing <a href="s_variables.html#L000427">$&amp;</a>, 
+      <a href="s_variables.html#L000432">$1</a>, <a href="s_variables.html#L000433">$2</a>, 
+      ...</p>
+  </dd>
+  <dt>to_s</dt>
+  <dd> 
+    <p>Returns the entire matching string.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

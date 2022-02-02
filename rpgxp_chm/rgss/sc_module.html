@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Module</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Module</h1>
+<p>The module class.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Method</h2>
+<dl>
+  <dt><var>self</var> === <var>obj</var></dt>
+  <dd> 
+    <p>This method is mostly used for comparison within <a href="syntax05.html#L000301">case</a> 
+      statements. Returns true if <var>obj</var> has an <a href="sc_object.html#L000580">Object#kind_of?</a> 
+      relationship with <var>self</var>. In other words, <a href="syntax05.html#L000301">case</a> 
+      can be used to check the owner relationship of classes and modules.</p>
+    <pre>
+str = String.new
+case str
+when String     # evaluates String === str
+  p true        # =&gt; true
+end
+</pre>
+  </dd>
+</dl>
+
+<h2>Private Methods</h2>
+<dl>
+  <dt><a name="L001113">attr_accessor(<var>name</var> ... )</a></dt>
+  <dd> 
+    <p>Defines both the read and write methods for the attribute <var>name</var>, 
+      where <var>name</var> is specified by <a href="sc_symbol.html">Symbol</a> 
+      or a string.</p>
+    <p>The definition of the method defined by attr_accessor is as follows:</p>
+    <pre>
+def name
+  @name
+end
+def name=(val)
+  @name = val
+end
+</pre>
+  </dd>
+  <p></p>
+  <dt>attr_reader(<var>name</var> ... )</dt>
+  <dd> 
+    <p>Defines the read method for the attribute <var>name</var>, where <var>name</var> 
+      is specified by <a href="sc_symbol.html">Symbol</a> or a string.</p>
+    <p>The definition of the method defined by attr_reader is as follows:</p>
+    <pre>
+def name
+  @name
+end
+</pre>
+  </dd>
+  <p></p>
+  <dt>attr_writer(<var>name</var> ... )</dt>
+  <dd> 
+    <p>Defines the writer method for the specified attribute(s). </p>
+  </dd>
+  <dd> 
+    <p>Defines the write method for the attribute <var>name</var> (name=), where 
+      <var>name</var> is specified by <a href="sc_symbol.html">Symbol</a> or a 
+      string.</p>
+    <p>The definition of the method defined by attr_writer is as follows:</p>
+    <pre>
+def name=(val)
+  @name = val
+end
+</pre>
+  </dd>
+  <p></p>
+  <dt><a name="L001119">include(<var>module</var> ... )</a></dt>
+  <dd> 
+    <p>Includes the specified modules' properties (methods and constants). Returns 
+      self. include is used to implement a mix-in in place of a multiple inheritance.</p>
+    <pre>
+class C
+  include FileTest
+  include Math
+end
+</pre>
+    <p>Module capabilities are included by inserting modules into a class inheritance. 
+      Therefore, when searching for methods, included modules will be given priority 
+      over superclasses.</p>
+    <p>If the same module is included two or more times, the second and later 
+      instances will be ignored. Furthermore, executing an include that results 
+      in a recursive module inheritance will throw an <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 
+      exception.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

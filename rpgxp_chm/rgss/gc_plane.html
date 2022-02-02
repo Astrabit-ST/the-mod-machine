@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Plane</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Plane</h1>
+<p>The Plane class. Planes are special sprites that tile bitmap patterns across 
+  the entire screen, and are used to display panoramas and fog.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Method</h2>
+<dl>
+  <dt>Plane.new([<var>viewport</var>])</dt>
+  <dd> 
+    <p>Creates a Plane object. Specifies a Viewport (<a href="gc_viewport.html">Viewport</a>) 
+      when necessary.</p>
+  </dd>
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt>dispose</dt>
+  <dd> 
+    <p>Frees the plane. If the plane has already been freed, does nothing.</p>
+  </dd>
+  <dt>disposed?</dt>
+  <dd> 
+    <p>Returns TRUE if the plane has been freed.</p>
+  </dd>
+  <dt>viewport</dt>
+  <dd> 
+    <p>Retrieves the Viewport (<a href="gc_viewport.html">Viewport</a>) specified 
+      when the plane was created.</p>
+  </dd>
+</dl>
+
+<h2>Properties</h2>
+<dl>
+  <dt>bitmap</dt>
+  <dd> 
+    <p>Refers to the bitmap (<a href="gc_bitmap.html">Bitmap</a>) used in the 
+      plane.</p>
+  </dd>
+  <dt>visible</dt>
+  <dd> 
+    <p>Whether the plane can be seen. If TRUE, the plane is visible.</p>
+  </dd>
+  <dt>z</dt>
+  <dd> 
+    <p>The plane's Z-coordinate. The larger this value, the closer to the player 
+      the plane will be displayed. If multiple objects share the same Z-coordinate, 
+      the more recently created object will be displayed closest to the player.</p>
+  </dd>
+  <dt>ox</dt>
+  <dd> 
+    <p>The X-coordinate of the plane's starting point. Change this value to scroll 
+      the plane.</p>
+  </dd>
+  <dt>oy</dt>
+  <dd> 
+    <p>The Y-coordinate of the plane's starting point. Change this value to scroll 
+      the plane.</p>
+  </dd>
+  <dt>zoom_x</dt>
+  <dd> 
+    <p>The plane's X-axis zoom level. 1.0 denotes actual pixel size.</p>
+  </dd>
+  <dt>zoom_y</dt>
+  <dd> 
+    <p>The plane's Y-axis zoom level. 1.0 denotes actual pixel size.</p>
+  </dd>
+  <dt>opacity</dt>
+  <dd> 
+    <p>The plane's opacity (0-255). Values out of range are automatically corrected.</p>
+  </dd>
+  <dt>blend_type</dt>
+  <dd> 
+    <p>The plane's blending mode (0: normal, 1: addition, 2: subtraction).</p>
+  </dd>
+  <dt>color</dt>
+  <dd> 
+    <p>The color (<a href="gc_color.html">Color</a>) to be blended with the plane. 
+      Alpha values are used in the blending ratio.</p>
+  </dd>
+  <dt>tone</dt>
+  <dd> 
+    <p>The plane's color tone (<a href="gc_tone.html">Tone</a>).</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

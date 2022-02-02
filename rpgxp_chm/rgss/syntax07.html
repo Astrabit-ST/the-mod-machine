@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Class and Method Definitions</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Class and Method Definitions</h1>
+<ul>
+  <li><a href="#L000327">Class Definitions</a></li>
+  <li><a href="#L000329">Module Definitions</a></li>
+  <li><a href="#L000330">Method Definitions</a> 
+    <ul>
+      <li><a href="#L000332">Method Evaluation</a></li>
+    </ul>
+  </li>
+  <li><a href="#L000333">Singleton-Method Definitions</a></li>
+  <li><a href="#L000334">Class Method Definitions</a></li>
+  <li><a href="#L000336">Definition Operations</a> 
+    <ul>
+      <li><a href="#L000337">alias</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2><a name="L000327">Class Definitions</a></h2>
+<p>Example:</p>
+<pre>
+class Foo &lt; Super
+  def test
+     :
+  end
+     :
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+class identifier ['&lt;' superclass ]
+  expr ..
+end
+</pre>
+<p>Defines a class. Class names are identifiers beginning with an uppercase letter.</p>
+<p>Class definitions assign a class to a constant specified by an identifier 
+(in Ruby, classes and objects together are one instance of the <a href="sc_class.html">Class</a> 
+  class.)</p>
+<p>When a class is already defined, writing a class definition with the same class 
+  name will add to the existing class definition.</p>
+<pre>
+class Foo &lt; Array
+  def foo
+  end
+end
+
+class Foo
+  def bar
+  end
+end
+</pre>
+<p>In a class definition, self is that class itself; otherwise, it is no different 
+  than a top-level definition. Class definitions can contain arbitrary expressions 
+  that will be executed when the class is defined.</p>
+<p>Class definitions can operate as nests. In the following example, there is 
+  absolutely no functional relationship (such as inheritance) between the outer 
+  class Foo and the inner class Bar, other than the fact that the constant Bar 
+  is Foo's inner constant Foo::Bar. Class nests group together semantically related 
+  classes into the outer class or module, and can be used to express an inclusion 
+  relationship.</p>
+<pre>
+class Foo
+  class Bar
+  end
+end
+</pre>
+<p>Class definitions return the result of the last evaluated expression. If that 
+  expression does not return a value, the class definition returns nil.</p>
+
+<h2><a name="L000329">Module Definitions</a></h2>
+<p>Example:</p>
+<pre>
+module Foo
+  def test
+     :
+  end
+     :
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+module identifier
+  expr ..
+end
+</pre>
+<p>Defines a module. Module names are identifiers beginning with an uppercase 
+  letter.</p>
+<p>Module definitions assign a module to a constant specified by an identifier. 
+  In Ruby, classes and objects together are one instance of the <a href="sc_class.html">Class</a> 
+  class.)</p>
+<p>When a module is already defined, writing a module definition with the same 
+  module name will add to the existing module definition.</p>
+<p>Module definitions return the result of the last evaluated expression. If that 
+  expression does not return a value, the module definition returns nil.</p>
+
+<h2><a name="L000330">Method Definitions</a></h2>
+<p>Example:</p>
+<pre>
+def fact(n)
+  if n == 1 then
+     1
+  else
+    n * fact(n-1)
+  end
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+def methodname ['(' [arg ['=' default]] ... [',' '*' arg] ')']
+  expr ..
+[rescue [error_type,..] [then]
+  expr ..]..
+[ensure
+  expr ..]
+end
+</pre>
+<p>Defines a method. In other words, defines the method of a class or module if 
+  within the definition of that class or module. If top-level, defines methods 
+  that can be called from anywhere. This kind of method can be used like functions 
+  are in other scripting languages.</p>
+<p>Method names can be normal identifiers or redefinable operators (==, +, -, 
+  and so on; see <a href="syntax04.html">Operator Expressions</a>.</p>
+<p>When a default expression has been provided to a dummy argument, it becomes 
+  the default value when the actual argument is omitted through a method call. 
+  The default expression is evaluated at the time of the call and in the context 
+  of the method definition.</p>
+<p>When the last dummy argument has a * immediately before it, the remaining actual 
+  arguments are all stored in this argument as an array.</p>
+<p>Example:</p>
+<pre>
+# method with no argument. end omitted below
+def foo
+end
+
+# method with arguments
+def foo(arg, arg2)
+
+# method with default argument
+def foo(arg = nil)
+
+# with everything
+def foo(arg, arg2, arg3 = nil, *rest)
+
+# operator format
+def ==(other)
+def +(other)
+def *(other)
+</pre>
+<p>For method definition, each type of dummy argument can only be specified according 
+  to the following sequence. Any of these types of arguments can be omitted.</p>
+<ul>
+  <li>arguments without default expressions (can specify multiple arguments)</li>
+  <li>arguments with default expressions (can specify multiple arguments)</li>
+  <li>arguments with * (can specify only one)</li>
+</ul>
+<p>These method definitions have special formats:</p>
+<pre>
+# unary plus/minus
+def +@
+def -@
+
+# element substitution
+def foo=(value)             # obj.foo = value
+
+# [] and []=
+def [](key)                 # obj[key]
+def []=(key, value)         # obj[key] = value
+def []=(key, key2, value)   # obj[key, key2] = value
+</pre>
+<p>Furthermore, a <a href="syntax05.html#L000314">begin</a> expression as well 
+  as rescue and/or ensure clauses can be specified to trap exceptions when executing 
+  a method.</p>
+<p>Method definition returns nil.</p>
+<h3><a name="L000332">Method Evaluation</a></h3>
+<p>When a method is called, its expressions are evaluated in the following order:</p>
+<ul>
+  <li>Default expressions in arguments (when specified)</li>
+  <li>The method itself</li>
+  <li>The method's rescue or else clauses (when specified), depending on whether 
+    an exception has been thrown</li>
+  <li>The ensure clause (when specified)</li>
+</ul>
+<p>Everything is evaluated in the method's context, including the argument's default 
+  expression.</p>
+<p>The method's return value is the value passed to <a href="syntax05.html#L000317">return</a>. 
+  When return is not called, returns the value of the last evaluated expression 
+  in the method, before any ensure clause is executed.</p>
+<p>Methods cannot be called before they are defined. For example:</p>
+<pre>
+foo
+def foo
+  print &quot;foo\n&quot;
+end
+</pre>
+<p>Calling an undefined method throws a <a href="s_exceptions.html#NameError">NameError</a> 
+  exception.</p>
+
+<h2><a name="L000333">Singleton-Method Definitions</a></h2>
+<p>Example:</p>
+<pre>
+def foo.test
+  print &quot;this is foo\n&quot;
+end
+</pre>
+<p>Syntax:</p>
+<pre>
+def expr '.' identifier ['(' [ argument ['=' default]] ... [',' '*' argument ]')']
+  expr ..
+[rescue [error_type,..] [then]
+  expr ..]..
+[else
+  expr ..]
+[ensure
+  expr ..]
+end
+</pre>
+<p>A singleton method belongs to a certain object and not to a class. Singleton-method 
+  definitions can be nested. </p>
+<p>The singleton methods of a class carry over to its subclasses. In other words, 
+  they act like the class methods in other object-oriented languages.</p>
+<p>Singleton-method definitions return nil.</p>
+
+<h2><a name="L000334">Class Method Definitions</a></h2>
+<p>In Ruby, class methods are the methods specific to a class. Classes are also 
+  objects, so these specific methods can be defined like regular objects.</p>
+<p>Therefore, when a method in a class object is defined in some way, that object 
+  becomes a class method. Specifically, these methods can be defined in the following 
+  way (as can modules):</p>
+<pre>
+# singleton method
+class Hoge
+  def Hoge.foo
+  end
+end
+
+# can use outside class definition, too
+def Hoge.bar
+end
+
+# even if the class name changes, you don't have to change the method
+class Hoge
+  def self.baz
+  end
+end
+</pre>
+
+
+<h2><a name="L000336">Definition Operations</a></h2>
+<h3><a name="L000337">alias</a></h3>
+<p>Example:</p>
+<pre>
+alias foo bar
+alias :foo :bar
+</pre>
+<p>Syntax:</p>
+<pre>
+alias newmethod oldmethod
+</pre>
+<p>Assigns an alias to a method or global variable. Specifies an identifier or 
+  a <a href="sc_symbol.html">Symbol</a> as the method name (expressions like obj.method 
+  are not permitted). alias's argument performs no evaluation of method calls 
+  or the like.</p>
+<p>An aliased method carries over that method definition, retaining it even if 
+  the original method is redefined. This can be used when you want to change the 
+  actions of a given method, then use the result of the original method in the 
+  redefined method.</p>
+<pre>
+# defining method "foo"
+def foo
+  &quot;foo&quot;
+end
+
+# setting alias (retracting method definition)
+alias :_orig_foo :foo
+
+# "foo" redefined (using the old definition)
+def foo
+  _orig_foo * 2
+end
+
+p foo  # =&gt; &quot;foofoo&quot;
+</pre>
+<p><var>alias</var> returns nil.</p>
+
+
+<h6></h6>
+</body>
+</html>

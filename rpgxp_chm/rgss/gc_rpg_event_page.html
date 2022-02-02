@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Event::Page</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Event::Page</h1>
+<p>Data class for the event page.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Referrer</h2>
+<ul>
+<li><a href="gc_rpg_event.html">RPG::Event</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>condition</dt>
+  <dd> 
+    <p>The event condition (<a href="gc_rpg_event_page_condition.html"
+>RPG::Event::Page::Condition</a>).</p>
+  </dd>
+  <dt>graphic</dt>
+  <dd> 
+    <p>The event graphic (<a href="gc_rpg_event_page_graphic.html"
+>RPG::Event::Page::Graphic</a>).</p>
+  </dd>
+  <dt>move_type</dt>
+  <dd> 
+    <p>Type of movement (0: fixed, 1: random, 2: approach, 3: custom).</p>
+  </dd>
+  <dt>move_speed</dt>
+  <dd> 
+    <p>Movement speed (1: slowest, 2: slower, 3: slow, 4: fast, 5: faster, 6: 
+      fastest).</p>
+  </dd>
+  <dt>move_frequency</dt>
+  <dd> 
+    <p>Movement frequency (1: lowest, 2: lower, 3: low ,4: high, 5: higher, 6: 
+      highest).</p>
+  </dd>
+  <dt>move_route</dt>
+  <dd> 
+    <p>Movement route (<a href="gc_rpg_moveroute.html">RPG::MoveRoute</a>). Referenced 
+      only when the movement type is set to Custom.</p>
+  </dd>
+  <dt>walk_anime</dt>
+  <dd> 
+    <p>Truth value of the [Moving Animation] option.</p>
+  </dd>
+  <dt>step_anime</dt>
+  <dd> 
+    <p>Truth value of the [Stopped Animation] option.</p>
+  </dd>
+  <dt>direction_fix</dt>
+  <dd> 
+    <p>Truth value of the [Fixed Direction] option.</p>
+  </dd>
+  <dt>through</dt>
+  <dd> 
+    <p>Truth value of the [Move Through] option.</p>
+  </dd>
+  <dt>always_on_top</dt>
+  <dd> 
+    <p>Truth value of the [Always On Top] option.</p>
+  </dd>
+  <dt>trigger</dt>
+  <dd> 
+    <p>Event trigger (0: action button, 1: contact with player, 2: contact with 
+      event, 3: autorun, 4: parallel processing).</p>
+  </dd>
+  <dt>list</dt>
+  <dd>
+    <p>Program contents. An <a
+href="gc_rpg_movecommand.html"></a><a
+href="gc_rpg_eventcommand.html">RPG::EventCommand</a> array.</p>
+  </dd>
+</dl>
+
+<h2>Inner Classes</h2>
+<ul>
+<li><a href="gc_rpg_event_page_condition.html">RPG::Event::Page::Condition</a></li>
+<li><a href="gc_rpg_event_page_graphic.html">RPG::Event::Page::Graphic</a></li>
+</ul>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class Event
+    class Page
+      def initialize
+        @condition = RPG::Event::Page::Condition.new
+        @graphic = RPG::Event::Page::Graphic.new
+        @move_type = 0
+        @move_speed = 3
+        @move_frequency = 3
+        @move_route = RPG::MoveRoute.new
+        @walk_anime = true
+        @step_anime = false
+        @direction_fix = false
+        @through = false
+        @always_on_top = false
+        @trigger = 0
+        @list = [RPG::EventCommand.new]
+      end
+      attr_accessor :condition
+      attr_accessor :graphic
+      attr_accessor :move_type
+      attr_accessor :move_speed
+      attr_accessor :move_frequency
+      attr_accessor :move_route
+      attr_accessor :walk_anime
+      attr_accessor :step_anime
+      attr_accessor :direction_fix
+      attr_accessor :through
+      attr_accessor :always_on_top
+      attr_accessor :trigger
+      attr_accessor :list
+    end
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

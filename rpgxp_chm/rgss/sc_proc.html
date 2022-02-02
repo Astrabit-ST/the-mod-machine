@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Proc</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Proc</h1>
+<p>Proc is a procedure object in which both a block and 
+  its context (local variable scope and stack frame) have been encapsulated as 
+  an object. Proc can be used like an unnamed function, except that it does not 
+  have its own local variable scope.</p>
+<p>We can see that Proc retains a local variable scope, 
+  however, by observing that the variable <var>var</var> can be referenced, as 
+  in the example below:</p>
+<pre>
+var = 1
+$foo = Proc.new { var }
+var = 2
+
+def foo
+  $foo.call
+end
+
+p foo       # =&gt; 2
+</pre>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Method</h2>
+<dl>
+<dt>Proc.new</a></dt>
+<dt>Proc.new { ... }</dt>
+<dd>
+    <p>Encapsulates a block, along with its context, into an object and returns 
+      it.</p>
+    <p>If no block is specified, but the method that called Proc.new contains 
+      a block, that block will be created as a Proc object and returned.</p>
+</dl>
+
+<h2>Method</h2>
+<dl>
+<dt>call(<var>arg</var> ... )</a></dt>
+<dd>
+    <p>Executes a procedure object and returns the result. Arguments are assigned 
+      to block parameters as is (according to the rules of multiple assignation).</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

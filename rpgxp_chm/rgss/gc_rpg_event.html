@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Event</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Event</h1>
+<p>Data class for map events.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Referrer</h2>
+<ul>
+<li><a href="gc_rpg_map.html">RPG::Map</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>id</dt>
+  <dd> 
+    <p>The event ID.</p>
+  </dd>
+  <dt>name</dt>
+  <dd> 
+    <p>The event name.</p>
+  </dd>
+  <dt>x</dt>
+  <dd> 
+    <p>The event's X-coordinate on the map.</p>
+  </dd>
+  <dt>y</dt>
+  <dd>
+    <p>The event's Y-coordinate on the map.</p>
+  </dd>
+  <dt>pages</dt>
+  <dd>
+    <p>The Events pages. An <a
+href="gc_rpg_event_page.html">RPG::Event::Page</a> array.</p>
+  </dd>
+</dl>
+
+<h2>Inner Class</h2>
+<ul>
+<li><a href="gc_rpg_event_page.html">RPG::Event::Page</a></li>
+</ul>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class Event
+    def initialize(x, y)
+      @id = 0
+      @name = ""
+      @x = x
+      @y = y
+      @pages = [RPG::Event::Page.new]
+    end
+    attr_accessor :id
+    attr_accessor :name
+    attr_accessor :x
+    attr_accessor :y
+    attr_accessor :pages
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

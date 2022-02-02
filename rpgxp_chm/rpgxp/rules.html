@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Battle Formulas</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Battle Formulas</h1>
+
+<ul>
+<li><a href="#hit1">First Hit</a></li>
+<li><a href="#critical">Critical Hit</a></li>
+<li><a href="#damage">Calculating Damage</a></li>
+<li><a href="#hit2">Second Hit</a></li>
+<li><a href="#escape">Successful Escape</a></li>
+</ul>
+
+<p>RPGXP's default battle system uses the following formulas.</p>
+<p>The active battler is represented by A, where the battler who is the target 
+  for A's actions is represented by B.</p>
+
+<h2><a name="hit1">First Hit</a></h2>
+<dl>
+  <dt>Normal attacks:</dt>
+  <dd>First hit rate = Hit rate of A's state</dd>
+  <dt>Skills:</dt>
+  <dd> 
+    <dl>
+      <dt>Attack power F is 1 or greater (physical attack)</dt>
+      <dd>First hit rate = Skill's hit rate &times; hit rate of A's state 
+        &divide; 100</dd>
+      <dt>Attack power F is 0 (non-physical attack)</dt>
+      <dd>First hit rate = Skill's hit rate</dd>
+    </dl>
+  </dd>
+  <dt>Items:</dt>
+  <dd>First hit rate = Item's hit rate</dd>
+</dl>
+<ul class="square">
+  <li>If A's condition is normal, the state hit rate is 100.</li>
+</ul>
+
+<h2><a name="critical">Critical Hit</a></h2>
+<dl>
+  <dt>Normal attacks:</dt>
+  <dd>Critical hit rate = 4 &times; A's dexterity &divide; B's agility</dd>
+  <dt>Skills:</dt>
+  <dd>Critical hit rate = 0</dd>
+  <dt>Items:</dt>
+  <dd>Critical hit rate = 0</dd>
+</dl>
+
+<h2><a name="damage">Calculating Damage</a></h2>
+<dl>
+  <dt>Normal attacks:</dt>
+  <dd>Power = A's attack power - (B's physical defense &divide; 2)<br>
+    Rate = 20 + A's strength<br>
+    Variance = 15 
+    <ul class="square">
+      <li>Minimum force: 0</li>
+    </ul>
+  </dd>
+  <dt>Skills:</dt>
+  <dd> 
+    <dl>
+      <dt>Skill's force is positive:</dt>
+      <dd> 
+        <table cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>Force</td>
+            <td width="20" align="center">=</td>
+            <td>Skill's force</td>
+          </tr>
+          <tr> 
+            <td></td>
+            <td align="center">+</td>
+            <td>(A's attack power &times; skill's attack power F &divide; 
+              100)</td>
+          </tr>
+          <tr> 
+            <td></td>
+            <td align="center">-</td>
+            <td>(B's physical defense &times; skill's physical defense F &divide; 
+              200)</td>
+          </tr>
+          <tr> 
+            <td></td>
+            <td align="center">-</td>
+            <td>(B's magic defense &times; skill's magic defense F &divide; 200)</td>
+          </tr>
+        </table>
+        <ul class="square">
+          <li>Minimum force: 0</li>
+        </ul>
+      </dd>
+      <dt>Skill's force is negative:</dt>
+      <dd>Force = Skill's force</dd>
+    </dl>
+    <table cellspacing="0" cellpadding="0">
+      <tr> 
+        <td>Rate</td>
+        <td width="20" align="center">=</td>
+        <td>20</td>
+      </tr>
+      <tr> 
+        <td></td>
+        <td align="center">+</td>
+        <td>(A's strength &times; skill's strength F &divide; 100)</td>
+      </tr>
+      <tr> 
+        <td></td>
+        <td align="center">+</td>
+        <td>(A's dexterity &times; skill's dexterity F &divide; 100)</td>
+      </tr>
+      <tr> 
+        <td></td>
+        <td align="center">+</td>
+        <td>(A's agility &times; skill's agility F &divide; 100)</td>
+      </tr>
+      <tr> 
+        <td></td>
+        <td align="center">+</td>
+        <td>(A's intelligence &times; skill's intelligence F &divide; 100)</td>
+      </tr>
+    </table>
+    Variance = Skill's variance</dd>
+  <dt>Items:</dt>
+  <dd> 
+    <dl>
+      <dt>HP recovery amount is negative:</dt>
+      <dd> 
+        <table cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>Force</td>
+            <td width="20" align="center">=</td>
+            <td>- Amount of HP recovered</td>
+          </tr>
+          <tr> 
+            <td></td>
+            <td align="center">-</td>
+            <td>(B's physical defense &times; item's physical defense F &divide; 
+              20)</td>
+          </tr>
+          <tr> 
+            <td></td>
+            <td align="center">-</td>
+            <td>(B's magic defense &times; item's magic defense F &divide; 20)</td>
+          </tr>
+        </table>
+        <ul class="square">
+          <li>Minimum force: 0</li>
+        </ul>
+      </dd>
+      <dt>HP recovery amount is positive:</dt>
+      <dd>Force = - Amount of HP recovered</dd>
+    </dl>
+    Rate = 20<br>
+    Variance = Item's variance</dd>
+</dl>
+Damage = force &times; multiplier &divide; 20 &times; elemental modifier &times; 
+critical modifier &times; defense modifier (&plusmn; variance %)<br>
+<br>
+<ul class="square">
+  <li>Elemental modifier: The weakest of B's effective elements corresponding 
+    to the action's element(s).<br>
+    A: 200%, B: 150%, C: 100%, D: 50%, E: 0%, F: -100%<br>
+    Reduced by half if B's armor or state has a defending (opposing) element.<br>
+    When there are more than one of the same defending elements, the damage may 
+    be halved multiple times.</li>
+  <li>Critical modifier: Equals 2 when the damage is positive and a critical hit 
+    is made.</li>
+  <li>Defense modifier: Equals 1/2 when the damage is positive and B is defending.</li>
+</ul>
+
+<h2><a name="hit2">Second Hit</a></h2>
+<dl>
+  <dt>Damage is positive:</dt>
+  <dd> 
+    <dl>
+      <dt>B's condition is normal:</dt>
+      <dd>Evasion = 8 &times; B's agility &divide; A's dexterity + B's evasion 
+        modifier</dd>
+      <dd> 
+        <dl>
+          <dt>Normal attacks:</dt>
+          <dd>Second hit rate = 100 - evasion</dd>
+          <dt>Skills:</dt>
+          <dd>Second hit rate = 100 - (evasion &times; skill's evasion F &divide; 
+            100)</dd>
+          <dt>Items:</dt>
+          <dd>Second hit rate = 100</dd>
+        </dl>
+      </dd>
+      <dt>B has &quot;Can't Evade&quot; state:</dt>
+      <dd>Second hit rate = 100</dd>
+    </dl>
+  </dd>
+  <dt>Damage is negative (recovery):</dt>
+  <dd>Second hit rate = 100</dd>
+</dl>
+
+<h2><a name="escape">Successful Escape</a></h2>
+
+Successful escape rate = 50 &times; actors' average agility &divide; enemies' average 
+agility
+<h6></h6>
+</body>
+</html>

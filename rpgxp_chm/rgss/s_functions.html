@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Built-in Functions</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Built-in Functions</h1>
+<p>Strictly speaking, they aren't functions in Ruby, but since methods defined 
+  in the <a href="sm_kernel.html">Kernel</a> module can be called from anywhere, 
+  they can be used like functions are in other languages. Carefully consider the 
+  repercussions of redefining the methods here.</p>
+<dl>
+  <dt>block_given?</dt>
+  <dd> 
+    <p>Returns true when the method has been supplied with a block; otherwise, 
+      returns false. See <a href="syntax06.html#L000323">Iterator</a> for details.</p>
+  </dd>
+  <dt><a name="L000355">catch(<var>tag</var>) {|<var>tag</var>| .... }</a></dt>
+  <dd> 
+    <p>Executes the block and returns its value. If a <a href="#L000413">throw</a> 
+      with the same name as <var>tag</var> takes place while the block is running, 
+      the return value will be that throw's second argument.</p>
+    <p><a href="syntax05.html#L000308">break</a> cannot break out all nested loops 
+      at once. Use catch in these circumstances.</p>
+    <pre>
+catch(:loop1) {
+  for i in 1..2
+    for j in 1..2
+      throw :loop1, j
+    end
+  end
+}
+</pre>
+  </dd>
+  <p></p>
+  <dt>eval(<var>expr</var>)</dt>
+  <dd> 
+    <p>Evaluate the string <var>expr</var> as a Ruby program and returns the result.</p>
+  </dd>
+  <dt><a name="L000363">exit</a></dt>
+  <dd> 
+    <p>Exits a running Ruby program.</p>
+    <p>exit throws a <a href="s_exceptions.html#SystemExit">SystemExit</a> exception 
+      to terminate the program, so it can be trapped by a <a href="syntax05.html#L000314">rescue</a> 
+      clause where necessary.</p>
+  </dd>
+  <dt>loop { ... }</dt>
+  <dd> 
+    <p>Evaluates a block in an infinite loop (until explicitly terminated).</p>
+  </dd>
+  <dt><a name="L000379">open(<var>file</var>[, <var>mode</var>])</a> 
+  <dt>open(<var>file</var>[, <var>mode</var>]) {|<var>io</var>| ... }</dt>
+  <dd> 
+    <p>Opens <var>file</var> and returns a <a href="sc_file.html">File</a> object. 
+      <var>mode</var> specifies one of the following strings. When <var>mode</var> 
+      is omitted, the default is &quot;r&quot;.</p>
+    <ul>
+      <li>&quot;r&quot;: Opens file in read mode.</li>
+      <li>&quot;w&quot;: Opens file in write mode. If a file already exists when 
+        <var>file</var> is opened, the previous file's contents will be deleted.</li>
+      <li>&quot;a&quot;: Opens file in write mode. Output will <strong>always</strong> 
+        be appended to the end of the file.</li>
+    </ul>
+    <p>Using &quot;+&quot; opens the file in read-write mode (RDWR):</p>
+    <ul>
+      <li>&quot;r+&quot;: Sets the read-write position to the beginning of the 
+        file.</li>
+      <li>&quot;w+&quot;: The same as &quot;r+&quot;, but if a file already exists 
+        when <var>file</var> is opened, the previous file's contents will be deleted.</li>
+      <li>&quot;a+&quot;: The same as &quot;r+&quot;, but if a file already exists 
+        when <var>file</var> is opened, the read-write position will be set to 
+        the end of the file.</li>
+    </ul>
+    <p>The &quot;b&quot; flag can also be added to any of these (in the format 
+      &quot;r+b&quot;) to open the file in binary mode.</p>
+    <p>When open is called along with a block, it opens the file, executes the 
+      block, then closes the file when execution is complete. In this case, returns 
+      the result of the block evaluation. That is:</p>
+    <pre>
+open(path, mode) do |f|
+   ...
+end
+
+# almost identical to the above
+f = open(path, mode)
+begin
+   ...
+ensure
+  f.close
+end
+</pre>
+  </dd>
+  <p></p>
+  <dt><a name="L000381">p(<var>obj</var>, [<var>obj2</var>, ...])</a></dt>
+  <dd> 
+    <p>Outputs obj in a human-readable format. Identical to the following code 
+      (see <a href="sc_object.html#L000572">Object#inspect</a>):</p>
+    <pre>
+print obj.inspect, &quot;\n&quot;, obj2.inspect, &quot;\n&quot;, ...
+</pre>
+    <p>In Ruby, the usual output destination would be standard output. This method 
+      is redefined in RGSS to output to a Windows message box.</p>
+    <p>Returns nil.</p>
+  </dd>
+  <dt><a name="L000382">print(<var>arg</var>[, ...])</a></dt>
+  <dd> 
+    <p>Prints the arguments in order. If a non-string object has been supplied 
+      as an argument, it will be converted into a string with to_s and printed. 
+      However, if the argument is nil, it will print the string &quot;nil&quot;.</p>
+    <p>In Ruby, the usual output destination would be standard output. This method 
+      is redefined in RGSS to output to a Windows message box.</p>
+    <p>Returns nil.</p>
+  </dd>
+  <dt><a name="L000388">raise</a> 
+  <dt>raise(<var>message</var>)</dt>
+  <dt>raise(<var>exception</var>)</dt>
+  <dt>raise(<var>error_type</var>, <var>message</var>)</dt>
+  <dd> 
+    <p>Throws an exception. See <a href="syntax05.html#L000313">raise</a> for 
+      details. </p>
+  <dt><a name="L000393">rand(<var>max</var>)</a></dt>
+  <dd> 
+    <p>Creates a random integer in the range 0 &le; integer &lt; <var>max</var>. 
+      Automatically calls <a href="#L000404">srand</a> if it hasn't already been 
+      called.</p>
+    <p>If <var>max</var> is nil or 0, uses <a href="sc_float.html">Float</a> to 
+      return a random number in the range 0 &le; real number &lt; 1.</p>
+  </dd>
+  <dt><a name="L000402">sprintf(<var>format</var>[, <var>arg</var>[, ...]])</a> 
+  <dd> 
+    <p>Interprets the string <var>format</var> as does C's sprintf, returning 
+      a string of formatted arguments.</p>
+    <p>See <a href="appendix02.html">sprintf Format</a> for details.</p>
+  </dd>
+  <dt><a name="L000404">srand([<var>seed</var>])</a></dt>
+  <dd> 
+    <p>Sets the <a href="#L000393">rand</a> random number seed and returns the 
+      old initial value. If <var>seed</var> is omitted, uses the current time 
+      (or a similar value) as the seed.</p>
+  </dd>
+  <dt><a name="L000413">throw(<var>tag</var>[, <var>value</var>])</a></dt>
+  <dd> 
+    <p>Escapes (across methods) to the end of a <a href="#L000355">catch</a> block 
+      with the same <var>tag</var>. If there is no catch with the same tag, the 
+      thread terminates with <a href="s_exceptions.html#NameError">NameError</a>. 
+      <var>value</var> will be the return value of the catch.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

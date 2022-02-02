@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Cache</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Cache</h1>
+<p>A module that loads each of RPGXP's graphic formats, creates a <a href="gc_bitmap.html">Bitmap</a> 
+  object, and retains it.</p>
+<p>To speed up load times and conserve memory, this module holds the created Bitmap 
+  object in an internal hash, allowing the program to return preexisting objects 
+  when the same bitmap is requested again.</p>
+<p>This feature means you must take care not to use <a href="gc_bitmap.html#dispose">Bitmap#dispose</a> 
+  to free the bitmaps specified in the origins of other sprites. If those objects 
+  have already been freed when a bitmap is requested, the objects will automatically 
+  be recreated, so it is safe to free the object if you are certain it is not 
+  referenced elsewhere. Bitmaps consume a large amount of memory, so make it a 
+  practice to free bitmaps you use only rarely.</p>
+<p>If the specified file name is an empty string, the module will create and return 
+  a 32 x 32 pixel bitmap. This ensures compatibility with RPGXP's &quot;(None)&quot; 
+  designation.</p>
+
+<h2>Module Methods</h2>
+<dl>
+  <dt>RPG::Cache.animation(<var>filename</var>, <var>hue</var>)</dt>
+  <dd> 
+    <p>Gets an animation graphic. Use <var>hue</var> to adjust its hue values.</p>
+  </dd>
+  <dt>RPG::Cache.autotile(<var>filename</var>)</dt>
+  <dd> 
+    <p>Gets an autotile graphic.</p>
+  </dd>
+  <dt>RPG::Cache.battleback(<var>filename</var>)</dt>
+  <dd> 
+    <p>Gets a battle background graphic.</p>
+  </dd>
+  <dt>RPG::Cache.battler(<var>filename</var>, <var>hue</var>)</dt>
+  <dd> 
+    <p>Gets a battler graphic. Use <var>hue</var> to adjust its hue values.</p>
+  </dd>
+  <dt>RPG::Cache.character(<var>filename</var>, <var>hue</var>)</dt>
+  <dd> 
+    <p>Gets a character graphic. Use <var>hue</var> to adjust its hue values.</p>
+  </dd>
+  <dt>RPG::Cache.fog(<var>filename</var>, <var>hue</var>)</dt>
+  <dd> 
+    <p>Gets a fog graphic. Use <var>hue</var> to adjust its hue values.</p>
+  </dd>
+  <dt>RPG::Cache.gameover(<var>filename</var>)</dt>
+  <dd> 
+    <p>Gets a "Game Over" graphic.</p>
+  </dd>
+  <dt>RPG::Cache.icon(<var>filename</var>)</dt>
+  <dd> 
+    <p>Gets an icon graphic.</p>
+  </dd>
+  <dt>RPG::Cache.panorama(<var>filename</var>, <var>hue</var>)</dt>
+  <dd> 
+    <p>Gets a panorama graphic. Use <var>hue</var> to adjust its hue values.</p>
+  </dd>
+  <dt>RPG::Cache.picture(<var>filename</var>)</dt>
+  <dd> 
+    <p>Gets a picture graphic.</p>
+  </dd>
+  <dt>RPG::Cache.tileset(<var>filename</var>)</dt>
+  <dd> 
+    <p>Gets a tileset graphic.</p>
+  </dd>
+  <dt>RPG::Cache.title(<var>filename</var>)</dt>
+  <dd> 
+    <p>Gets a title graphic.</p>
+  </dd>
+  <dt>RPG::Cache.windowskin(<var>filename</var>)</dt>
+  <dd> 
+    <p>Gets a window skin graphic.</p>
+  </dd>
+  <dt>RPG::Cache.tile(<var>filename</var>, <var>tile_id</var>, <var>hue</var>)</dt>
+  <dd> 
+    <p>Gets only a specified tile from a tileset. Use <var>tile_id</var> 
+      to specify the ID of the tile to retrieve and <var>hue</var> to adjust its 
+      hue values.</p>
+    <p>Used when a tile is specified in an event graphic (<a href="gc_rpg_event_page_graphic.html"
+>RPG::Event::Page::Graphic</a>).</p>
+  </dd>
+  <dt>RPG::Cache.clear</dt>
+  <dd> 
+    <p>Empties the cache.</p>
+  </dd>
+</dl>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  module Cache
+    @cache = {}
+    def self.load_bitmap(folder_name, filename, hue = 0)
+      path = folder_name + filename
+      if not @cache.include?(path) or @cache[path].disposed?
+        if filename != ""
+          @cache[path] = Bitmap.new(path)
+        else
+          @cache[path] = Bitmap.new(32, 32)
+        end
+      end
+      if hue == 0
+        @cache[path]
+      else
+        key = [path, hue]
+        if not @cache.include?(key) or @cache[key].disposed?
+          @cache[key] = @cache[path].clone
+          @cache[key].hue_change(hue)
+        end
+        @cache[key]
+      end
+    end
+    def self.animation(filename, hue)
+      self.load_bitmap("Graphics/Animations/", filename, hue)
+    end
+    def self.autotile(filename)
+      self.load_bitmap("Graphics/Autotiles/", filename)
+    end
+    def self.battleback(filename)
+      self.load_bitmap("Graphics/Battlebacks/", filename)
+    end
+    def self.battler(filename, hue)
+      self.load_bitmap("Graphics/Battlers/", filename, hue)
+    end
+    def self.character(filename, hue)
+      self.load_bitmap("Graphics/Characters/", filename, hue)
+    end
+    def self.fog(filename, hue)
+      self.load_bitmap("Graphics/Fogs/", filename, hue)
+    end
+    def self.gameover(filename)
+      self.load_bitmap("Graphics/Gameovers/", filename)
+    end
+    def self.icon(filename)
+      self.load_bitmap("Graphics/Icons/", filename)
+    end
+    def self.panorama(filename, hue)
+      self.load_bitmap("Graphics/Panoramas/", filename, hue)
+    end
+    def self.picture(filename)
+      self.load_bitmap("Graphics/Pictures/", filename)
+    end
+    def self.tileset(filename)
+      self.load_bitmap("Graphics/Tilesets/", filename)
+    end
+    def self.title(filename)
+      self.load_bitmap("Graphics/Titles/", filename)
+    end
+    def self.windowskin(filename)
+      self.load_bitmap("Graphics/Windowskins/", filename)
+    end
+    def self.tile(filename, tile_id, hue)
+      key = [filename, tile_id, hue]
+      if not @cache.include?(key) or @cache[key].disposed?
+        @cache[key] = Bitmap.new(32, 32)
+        x = (tile_id - 384) % 8 * 32
+        y = (tile_id - 384) / 8 * 32
+        rect = Rect.new(x, y, 32, 32)
+        @cache[key].blt(0, 0, self.tileset(filename), rect)
+        @cache[key].hue_change(hue)
+      end
+      @cache[key]
+    end
+    def self.clear
+      @cache = {}
+      GC.start
+    end
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

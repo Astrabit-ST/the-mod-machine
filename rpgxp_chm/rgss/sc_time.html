@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Time</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Time</h1>
+<p>The time class.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Included Module</h2>
+<ul>
+<li><a href="sm_comparable.html">Comparable</a></li>
+</ul>
+
+<h2>Class Method</h2>
+<dl>
+  <dt>Time.now</dt>
+  <dd> 
+    <p>Returns the current Time object.</p>
+  </dd>
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt><var>self</var> + <var>other</var></dt>
+  <dd> 
+    <p>Returns a time that is later than <var>self</var> by <var>other</var> seconds.</p>
+  </dd>
+  <dt><var>self</var> - <var>other</var></dt>
+  <dd> 
+    <p>When <var>other</var> is a Time object, returns the difference between 
+      the two times with <a href="sc_float.html">Float</a>. If <var>other</var> 
+      is a numeric value, returns a time that is earlier than <var>self</var> 
+      by <var>other</var>.</p>
+  </dd>
+  <dt><var>self</var> &lt;=&gt; <var>other</var></dt>
+  <dd> 
+    <p>Compares times. <var>other</var> must be a Time object or a numeric value; 
+      if a numeric value, the times are compared in terms of seconds since the 
+      epoch began.</p>
+  </dd>
+  <dt>strftime(<var>format</var>)</dt>
+  <dd> 
+    <p>Returns the time, having been converted into a string via a <var>format</var> 
+      string. The<var> format</var> string may be specified with the following:</p>
+    <ul>
+      <li> 
+        <p>%A</p>
+        <p>Day of the week (Sunday, Monday ... )</p>
+      </li>
+      <li> 
+        <p>%a</p>
+        <p>Day of the week, abbreviated (Sun, Mon ... )</p>
+      </li>
+      <li> 
+        <p>%B</p>
+        <p>Month (January, February ... )</p>
+      </li>
+      <li> 
+        <p>%b</p>
+        <p>Month, abbreviated (Jan, Feb ... )</p>
+      </li>
+      <li> 
+        <p>%c</p>
+        <p>Date and time</p>
+      </li>
+      <li> 
+        <p>%d</p>
+        <p>Day of the month (01-31)</p>
+      </li>
+      <li> 
+        <p>%H</p>
+        <p>Time of day, 24-hour format (00-23)</p>
+      </li>
+      <li> 
+        <p>%I</p>
+        <p>Time of day, 12-hour format (01-12)</p>
+      </li>
+      <li> 
+        <p>%j</p>
+        <p>Day of the year (001-366)</p>
+      </li>
+      <li> 
+        <p>%M</p>
+        <p>Minutes (00-59)</p>
+      </li>
+      <li> 
+        <p>%m</p>
+        <p>Month of the year (01-12)</p>
+      </li>
+      <li> 
+        <p>%p</p>
+        <p>AM or PM</p>
+      </li>
+      <li> 
+        <p>%S</p>
+        <p>Seconds (00-60, 60 being a leap second)</p>
+      </li>
+      <li> 
+        <p>%U</p>
+        <p>Week of the year, the first week starting with the first Sunday (00-53)</p>
+      </li>
+      <li> 
+        <p>%W</p>
+        <p>Week of the year, the first week starting with the first Monday (00-53)</p>
+      </li>
+      <li> 
+        <p>%w</p>
+        <p>Day of the week (0-6, 0 denoting Sunday)</p>
+      </li>
+      <li> 
+        <p>%X</p>
+        <p>Time</p>
+      </li>
+      <li> 
+        <p>%x</p>
+        <p>Date</p>
+      </li>
+      <li> 
+        <p>%Y</p>
+        <p>Year, 4-digit</p>
+      </li>
+      <li> 
+        <p>%y</p>
+        <p>Year, 2-digit (00-99)</p>
+      </li>
+      <li> 
+        <p>%Z</p>
+        <p>Time zone</p>
+      <li> 
+        <p>%%</p>
+        <p>The character %</p>
+      </li>
+    </ul>
+  </dd>
+  <p></p>
+  <dt>sec</dt>
+  <dd> 
+    <p>Returns the seconds.</p>
+  </dd>
+  <dt>min</dt>
+  <dd> 
+    <p>Returns the minutes.</p>
+  </dd>
+  <dt>hour</dt>
+  <dd> 
+    <p>Returns the hour.</p>
+  </dd>
+  <dt>mday</dt>
+  <dd> 
+    <p>Returns the day.</p>
+  </dd>
+  <dt>mon</dt>
+  <dd> 
+    <p>Returns the month.</p>
+  </dd>
+  <dt>year</dt>
+  <dd> 
+    <p>Returns the year.</p>
+  </dd>
+  <dt>wday</dt>
+  <dd> 
+    <p>Returns the number representing the day of the week.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

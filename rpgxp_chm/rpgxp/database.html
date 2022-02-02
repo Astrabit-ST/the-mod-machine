@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Database</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Database</h1>
+
+<ul>
+<li><a href="#contents">Database Contents</a></li>
+<li><a href="#edit">Editing Data Entries</a></li>
+<li><a href="#max">Changing Maximums</a></li>
+</ul>
+
+<p>The <i>database</i> is a collection of various data used in games.</p>
+
+
+<h2><a name="contents">Database Contents</a></h2>
+<p>To edit database contents, select [Tools], then [Database] from the main menu. 
+  Move through the tabs in the dialog box to edit the following data types:</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+    <th>Actors</th>
+    <td>Data for the player-controlled party members.</td>
+</tr><tr>
+    <th>Classes</th>
+    <td>Data defining an actor's characteristics--what weapons and armor he or 
+      she can equip, what skills he or she can learn, and so on.</td>
+</tr><tr>
+    <th>Skills</th>
+    <td>Data for techniques and magic that produce special effects and consume 
+      SP.</td>
+</tr><tr>
+    <th>Items</th>
+    <td>Data for non-equipment items, such as recovery potions and event items.</td>
+</tr><tr>
+    <th>Weapons</th>
+    <td>Data for weapons that raise traits such as offensive power. Handled as 
+      a kind of item.</td>
+</tr><tr>
+    <th>Armors</th>
+    <td>Data for armor that raises traits such as physical or magic defense. Handled 
+      as a kind of item.</td>
+</tr><tr>
+    <th>Enemies</th>
+    <td>Data for enemies that fight the party in encounters and event battles.</td>
+</tr><tr>
+    <th>Troops</th>
+    <td>Groups of enemies. This is generally how enemies appear in-game.</td>
+</tr><tr>
+    <th>States</th>
+    <td>Data for physical and mental states that have various effects on a battler's 
+      abilities and movements.</td>
+</tr><tr>
+    <th>Animations</th>
+    <td>Data for the animation used as visual effects for weapons and skills.</td>
+</tr><tr>
+    <th>Tilesets</th>
+    <td>Data defining operation specifications for the tilesets used in making 
+      maps.</td>
+</tr><tr>
+    <th>Common Events</th>
+    <td>Data for generic events called often throughout the game.</td>
+</tr><tr>
+    <th>System</th>
+    <td>Miscellaneous data, including the initial party, elemental attributes, 
+      sound effects, and terminology.</td>
+</tr></table>
+<p>This data will generally not have any effect while a game is running. For example, 
+  although actors have an [Initial Level] setting, an actor that has already gained 
+  levels beyond that setting will be treated as different data.</p>
+
+
+<h2><a name="edit">Editing Data Entries</a></h2>
+<img src="img/database1.png" alt="Editing Data Entries"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>Apart from [System], the screen for each page is divided vertically, with the 
+  data ID and name listed on the left and the contents of that data entry displayed 
+  on the right. To edit an entry, click to select the entry from the list on the 
+  left and edit its contents on the right. Check the Tool Tips for more information 
+  on each entry.</p>
+<p>Press [F4] and [F5] in the database window to quickly select the previous and next 
+  entries in the list. This can increase your efficiency when modifying multiple 
+  data entries.</p>
+<p>Right-click on a data entry to make a pop-up menu appear that will allow you 
+  to copy, paste, and use other editing commands. Select [Multicopy] to bring 
+  up a dialog box that will let you specify the number of entries to copy at the 
+  same time. This is especially effective when copying over a portion of data 
+  from another project.</p>
+
+
+<h2><a name="max">Changing Maximums</a></h2>
+<img src="img/database2.png" alt="Changing Maximums"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>To change the number of data entries, click the [Change Maximum] button at the 
+  bottom of the list. A dialog box will appear, allowing you to set the maximum 
+  at any number between 1 and 999.
+<p>Increasing the maximum will increase the amount of memory necessary for the 
+  game to run, as well as slow down the speed at which it reads the data. Try 
+  not to make it any higher than is necessary.</p>
+<p>Decreasing the maximum will erase any entries that may exist above that number.</p>
+
+
+<h6></h6>
+</body>
+</html>

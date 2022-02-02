@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::System::Words</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::System::Words</h1>
+<p>Data class for terminology.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Referrer</h2>
+<ul>
+<li><a href="gc_rpg_system.html">RPG::System</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>gold</dt>
+  <dd> 
+    <p>The term &quot;G&quot; (the unit of currency).</p>
+  </dd>
+  <dt>hp</dt>
+  <dd> 
+    <p>The term &quot;HP&quot; (hit points).</p>
+  </dd>
+  <dt>sp</dt>
+  <dd> 
+    <p>The term &quot;SP&quot; (skill points).</p>
+  </dd>
+  <dt>str</dt>
+  <dd> 
+    <p>The term &quot;Strength&quot;.</p>
+  </dd>
+  <dt>dex</dt>
+  <dd> 
+    <p>The term &quot;Dexterity&quot;.</p>
+  </dd>
+  <dt>agi</dt>
+  <dd> 
+    <p>The term &quot;Agility&quot;.</p>
+  </dd>
+  <dt>int</dt>
+  <dd> 
+    <p>The term &quot;Intelligence&quot;.</p>
+  </dd>
+  <dt>atk</dt>
+  <dd> 
+    <p>The term &quot;Attack Power&quot;.</p>
+  </dd>
+  <dt>pdef</dt>
+  <dd> 
+    <p>The term &quot;Physical Defense&quot;.</p>
+  </dd>
+  <dt>mdef</dt>
+  <dd> 
+    <p>The term &quot;Magic Defense&quot;.</p>
+  </dd>
+  <dt>weapon</dt>
+  <dd> 
+    <p>The term &quot;Weapon&quot;.</p>
+  </dd>
+  <dt>armor1</dt>
+  <dd> 
+    <p>The term &quot;Shield&quot;.</p>
+  </dd>
+  <dt>armor2</dt>
+  <dd> 
+    <p>The term &quot;Helmet&quot;.</p>
+  </dd>
+  <dt>armor3</dt>
+  <dd> 
+    <p>The term &quot;Body armor&quot;.</p>
+  </dd>
+  <dt>armor4</dt>
+  <dd> 
+    <p>The term &quot;Accessory&quot;.</p>
+  </dd>
+  <dt>attack</dt>
+  <dd> 
+    <p>The term &quot;Attack&quot;.</p>
+  </dd>
+  <dt>skill</dt>
+  <dd> 
+    <p>The term &quot;Skill&quot;.</p>
+  </dd>
+  <dt>guard</dt>
+  <dd> 
+    <p>The term &quot;Defense&quot;.</p>
+  </dd>
+  <dt>item</dt>
+  <dd> 
+    <p>The term &quot;Item&quot;.</p>
+  </dd>
+  <dt>equip</dt>
+  <dd> 
+    <p>The term &quot;Equip&quot;.</p>
+  </dd>
+</dl>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class System
+    class Words
+      def initialize
+        @gold = ""
+        @hp = ""
+        @sp = ""
+        @str = ""
+        @dex = ""
+        @agi = ""
+        @int = ""
+        @atk = ""
+        @pdef = ""
+        @mdef = ""
+        @weapon = ""
+        @armor1 = ""
+        @armor2 = ""
+        @armor3 = ""
+        @armor4 = ""
+        @attack = ""
+        @skill = ""
+        @guard = ""
+        @item = ""
+        @equip = ""
+      end
+      attr_accessor :gold
+      attr_accessor :hp
+      attr_accessor :sp
+      attr_accessor :str
+      attr_accessor :dex
+      attr_accessor :agi
+      attr_accessor :int
+      attr_accessor :atk
+      attr_accessor :pdef
+      attr_accessor :mdef
+      attr_accessor :weapon
+      attr_accessor :armor1
+      attr_accessor :armor2
+      attr_accessor :armor3
+      attr_accessor :armor4
+      attr_accessor :attack
+      attr_accessor :skill
+      attr_accessor :guard
+      attr_accessor :item
+      attr_accessor :equip
+    end
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

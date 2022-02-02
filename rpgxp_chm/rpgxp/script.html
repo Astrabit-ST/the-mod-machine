@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Scripting</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Scripting</h1>
+
+<ul>
+<li><a href="#ruby">About Ruby</a></li>
+<li><a href="#editor">The Script Editor</a></li>
+<li><a href="#section">Sections</a></li>
+<li><a href="#edit">Editing</a></li>
+<li><a href="#use">Using Scripts</a></li>
+</ul>
+
+<p>The basic programs responsible for running the game are called <i>scripts</i>.</p>
+<p>Generally, commands like [Show Text] can also be called &quot;scripts&quot;, 
+  but in RPGXP, scripts are even more than event commands and are closer to the 
+  concept of a computer program. Event commands are not actually handled by the 
+  program, but are in fact parsed at the script level.</p>
+<p>Script editing is a difficult task, aimed at advanced users who wish to customize 
+  the game system itself. However, there is absolutely no need to learn anything 
+  about scripting if you only intend to create a game in the usual way. At first, 
+  just try your hand at game creation without worrying about scripts; when the 
+  default system isn't good enough for your needs, it's time to take a closer 
+  look at scripting.</p>
+
+<h2><a name="ruby">About Ruby</a></h2>
+<p>RPGXP's script engine doesn't use a proprietary simplified language, but the 
+  powerful scripting language Ruby. Ruby's official Website is <a href="http://www.ruby-lang.org/" target="_blank"> 
+  http://www.ruby-lang.org/</a>.</p>
+<p>Ruby is freeware developed chiefly by Yukihiro Matsumoto, and its capabilities 
+  are more than sufficient to script a large-scale game. However, since it was 
+  originally conceived to be specialized in text handling and the like, it's a 
+  challenge to develop a game using Ruby alone. That's why RPGXP uses RGSS (the 
+  Ruby Game Scripting System) to adapt Ruby for use in game development. See the 
+  <a href="../rgss/index.html">RGSS Reference</a> for details.</p>
+<p>The language can be referred to as &quot;Ruby&quot; or &quot;ruby&quot;, but 
+  not as &quot;RUBY&quot;.</p>
+
+
+<h2><a name="editor">The Script Editor</a></h2>
+<img src="img/script1.png" alt="The Script Editor"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>Select [Tools], then [Script Editor] from the main menu to open a large dialog 
+  box for editing scripts.</p>
+<p>Since a very large number of programs are needed to run a large-scale game 
+  such as an RPG, they must be divided up into more manageable pieces. In RPGXP, 
+  these pieces are called <i>sections</i>; sections are listed on the left side of the 
+  script editor.</p>
+<p>The script editor has been configured to be used in much the same way as the 
+  database. Press F4 and F5 quickly select the previous and next sections in the 
+  list. You can also press F6 to copy a section using the word at the cursor position 
+  as the section name.</p>
+
+
+<h2><a name="section">Sections</a></h2>
+<img src="img/script2.png" alt="Sections"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>Right-click on a section name to make a pop-up window appear. Select [Insert] 
+  to add a new, blank section before the selected position. In the same way, select 
+  [Cut], [Paste], and other editing commands to change the section order.</p>
+<p>Unlike the database, sections aren't managed by ID numbers. Sections are run 
+  in the order in which they appear in the list; that is, from top to bottom. 
+  Preset scripts have a section called &quot;Main&quot; at the very bottom, and 
+  actual game functions are set to begin after each definition has ended.</p>
+
+
+<h2><a name="edit">Editing</a></h2>
+<img src="img/script3.png" alt="Editing"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>Right-click in the text editor area on the right side of the window to bring 
+  up a pop-up window like the one here. This window lets you perform basic editing 
+  functions like [Cut] and [Paste], as well as [Find] and [Replace].</p>
+<p>Keyboard shortcuts like Ctrl+F and Ctrl+G will work even when the text editor 
+  is not the active window.</p>
+<p>When you want to search for a string in all sections, not just the one currently 
+  being edited, selected [Find] from the pop-up section menu. The corresponding 
+  keyboard shortcut is Ctrl+Shift+F.</p>
+
+
+<h2><a name="use">Using Scripts</a></h2>
+<p>There are 3 ways to use scripts apart from editing them directly in the script 
+  editor:</p>
+<ol>
+  <li>With the [Script] event command.</li>
+  <li>As conditions in the [Conditional Branch] event command.</li>
+  <li>As commands in [Move Route].</li>
+</ol>
+<p>These methods can be used when, for example, you want to call unique event 
+  commands you've added via the script editor. As you become more proficient at 
+  scripting, you may find even more interesting ways to use them.</p>
+
+
+<h6></h6>
+</body>
+</html>

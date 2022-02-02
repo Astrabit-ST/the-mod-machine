@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Animation::Frame</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Animation::Frame</h1>
+<p>Data class for animation frames.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Referrer</h2>
+<ul>
+<li><a href="gc_rpg_animation.html">RPG::Animation</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>cell_max</dt>
+  <dd> 
+    <p>Number of cells. Equivalent to the largest cell number in the frame set.</p>
+  </dd>
+  <dt>cell_data</dt>
+  <dd>
+    <p>2-dimensional array containing cell contents (<a href="gc_table.html">Table</a>).</p>
+    <p>Generally takes the form cell_data[<var>cell_index</var>, <var>data_index</var>].</p>
+    <p><var>data_index</var> ranges from 0 to 7 and denotes various information 
+      about a cell (0: pattern, 1: X-coordinate, 2: Y-coordinate, 3: zoom level, 
+      4: angle of rotation, 5: horizontal flip, 6: opacity, 7: blending mode). 
+      Patterns are 1 less than the number displayed in RPGXP; -1 indicates that 
+      that cell is not in use.</p>
+  </dd>
+</dl>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class Animation
+    class Frame
+      def initialize
+        @cell_max = 0
+        @cell_data = Table.new(0, 0)
+      end
+      attr_accessor :cell_max
+      attr_accessor :cell_data
+    end
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

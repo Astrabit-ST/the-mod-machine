@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Range</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Range</h1>
+<p>The range object class. See <a href="syntax03.html#L000281">Range Expressions</a> 
+  for more information.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Included Module</h2>
+<ul>
+<li><a href="sm_enumerable.html">Enumerable</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+  <dt><var>self</var> === <var>other</var></dt>
+  <dd> 
+    <p>This method is mostly used for comparison within <a href="syntax05.html#L000301">case</a> 
+      statements. Returns true if <var>other</var> is within range.</p>
+    </dd>
+  <dt>begin</dt>
+  <dt>first</dt>
+  <dd> 
+    <p>Returns the initial element.</p>
+  </dd>
+  <dt>each {|<var>item</var>| ... }</dt>
+  <dd> 
+    <p>Iterates over each element within the range.</p>
+  </dd>
+  <dt>end</dt>
+  <dt>last</dt>
+  <dd> 
+    <p>Returns the end point, regardless of whether the range object is inclusive 
+      of the end point.</p>
+    <pre>
+p (1..5).end   # =&gt; 5
+p (1...5).end  # =&gt; 5
+</pre>
+  </dd>
+  <p></p>
+  <dt>exclude_end?</dt>
+  <dd> 
+    <p>Returns true if the range object is exclusive of the end point.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,251 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>sprintf Format</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>sprintf Format</h1>
+<p>The sprintf format of Ruby is basically the same as that the C language. However, there are some differences such as, (1) there is no short or long modifier like in C, (2) there is a 2 bit variable indicator (%b), and (3) not all of the dialects of sprintf (': 3-digit separators) are supported.</p><p>A complete explanation of Ruby's sprintf format is given below.</p>
+<p>Below is a sprintf format form. The parts enclosed in [] can be omitted. </p>
+<p>%[flag][width][.accuracy]indicator </p>
+<p>To output '%' type '%%'. </p>
+<p>Below is an explanation of each of the elements. </p>
+<h2><a name="L006324">Flag</a></h2>
+<p>There are 5 types of flags: '#', '+', ' ' (space), '-', '0' </p>
+<dl>
+<dt>#</dt>
+<dd>
+<p>With the 2, 8, and 16 bit indicators ('b', 'o', 'x', 'X'), "0b", "0", "0x" and "0X" are added as prefixes. </p>
+<pre>
+p sprintf(&quot;%#b&quot;, 10) # =&gt; &quot;0b1010&quot;
+p sprintf(&quot;%#o&quot;, 10) # =&gt; &quot;012&quot;p sprintf(&quot;%#x&quot;, 10) # =&gt; &quot;0xa&quot;
+p sprintf(&quot;%#X&quot;, 10) # =&gt; &quot;0XA&quot;
+</pre>
+<p>For floating point numbers ('f', 'e', 'E', 'g' and 'G') always put a "." in the output. </p>
+<pre>
+p sprintf(&quot;%.0f&quot;, 10) # =&gt; &quot;10&quot;
+p sprintf(&quot;%#.0f&quot;, 10) # =&gt; &quot;10.&quot;
+p sprintf(&quot;%.0e&quot;, 10) # =&gt; &quot;1e+01&quot;
+p sprintf(&quot;%#.0e&quot;, 10) # =&gt; &quot;1.e+01&quot;
+</pre>
+<p>By adding 'g', 'G' to the above there is a left over 0 on the end. </p>
+<pre>
+p sprintf(&quot;%.05g&quot;, 10) # =&gt; &quot;10&quot;
+p sprintf(&quot;%#.05g&quot;, 10) # =&gt; &quot;10.000&quot;
+</pre>
+</dd>
+<dt>+</dt>
+<dd>
+<p> Symbols will be attached to output character strings. A '+' symbol will especially be added to positive numbers. This only applies to the following numerical value indicators: 'd', 'i', 'b', 'o', 'x', 'X', 'u', 'f', 'e', 'E', 'g' and 'G'.
+Also, for 'b', 'o', 'x', 'X', and 'u', a '-' symbol will be added to negative numbers.</p>
+<pre>
+p sprintf(&quot;%d&quot;, 1)   # =&gt; &quot;1&quot;
+p sprintf(&quot;%+d&quot;, 1)  # =&gt; &quot;+1&quot;
+
+p sprintf(&quot;%x&quot;, -1)  # =&gt; &quot;..f&quot;  # &quot;..&quot; shows that f continues infinitely
+p sprintf(&quot;%+x&quot;, -1) # =&gt; &quot;-1&quot;
+</pre>
+</dd>
+<dt>' ' (space)</dt>
+<dd>
+<p>Same meaning as a '+' symbol but here, a blank space is used in place of the '+' symbol, meaning positive. This only applies to the following numerical value indicators: 'd', 'i', 'b', 'o', 'x', 'X', 'u', 'f', 'e', 'E', 'g', 'G'.</p>
+<pre>
+p sprintf(&quot;%d&quot;, 1)   # =&gt; &quot;1&quot;
+p sprintf(&quot;%+d&quot;, 1)  # =&gt; &quot;+1&quot;
+p sprintf(&quot;% d&quot;, 1)  # =&gt; &quot; 1&quot;
+
+p sprintf(&quot;%x&quot;, -1)  # =&gt; &quot;..f&quot;
+p sprintf(&quot;% x&quot;, 1)  # =&gt; &quot; 1&quot;
+p sprintf(&quot;% x&quot;, -1) # =&gt; &quot;-1&quot;
+</pre>
+</dd>
+<dt>-</dt>
+<dd>
+<p>Output is left justified. It only has meaning if "<a href="#L006330">Width</a>" is specified.</p>
+</dd>
+<dt>0</dt>
+<dd>
+<p>If output is right justified, '0' will fill in the left over sections in place of a blank space.</p>
+<p>This only applies to the following numerical value indicators: 'd', 'i', 'b', 'o', 'x', 'X', 'u', 'f', 'g', 'G' (It does not apply to 'e' or 'E').</p>
+<pre>
+p sprintf(&quot;%010d&quot;, 10)
+# =&gt; &quot;0000000010&quot;
+</pre>
+<p>Outputs specified together with '#' are shown below.</p>
+<pre>
+p sprintf(&quot;%#010x&quot;, 10)  # =&gt; &quot;0x0000000a&quot;
+p sprintf(&quot;%#010o&quot;, 10)  # =&gt; &quot;0000000012&quot;
+p sprintf(&quot;%#010b&quot;, 10)  # =&gt; &quot;0b00001010&quot;
+</pre>
+<p>This is the same as below.</p>
+<pre>
+p sprintf(&quot;%#10.8x&quot;, 10) # =&gt; &quot;0x0000000a&quot;
+p sprintf(&quot;%#10.9o&quot;, 10) # =&gt; &quot;0000000012&quot;
+p sprintf(&quot;%#10.8b&quot;, 10) # =&gt; &quot;0b00001010&quot;
+</pre>
+<p>Normally shown as displayed below.</p>
+<pre>
+p sprintf(&quot;%#10x&quot;, 10)   # =&gt; &quot;       0xa&quot;
+p sprintf(&quot;%#10o&quot;, 10)   # =&gt; &quot;       012&quot;
+p sprintf(&quot;%#10b&quot;, 10)   # =&gt; &quot;    0b1010&quot;
+</pre>
+</dd>
+</dl>
+<h2><a name="L006330">Width</a></h2>
+<p>A number string that begins with any number other than 0 is the specified width. Width displays the length of the character string produced. Contrary to the value of "<a href="#L006331">Precision</a>", which is mentioned later, only the number string of the width part is produced.</p>
+<p>As for width specification, the length of &quot; &quot;, &quot;+&quot;,
+&quot;-&quot;, &quot;0b&quot;, &quot;0&quot;, &quot;0x&quot;, &quot;0X&quot;, which are presented as "<a href="#L006324">Flags</a>", is also considered.</p>
+<pre>
+p sprintf(&quot;%#05x&quot;, 10) # =&gt; &quot;0x00a&quot;
+</pre>
+<p>Width is a specification of the "minimum necessary width." If the resulting number string goes over the specified width, width specification is no longer valid.</p>
+<p>If width is specified as '*', then the width value is received from an argument.</p>
+<pre>
+p sprintf(&quot;%10s&quot;, &quot;foo&quot;)    # =&gt; &quot;       foo&quot;
+p sprintf(&quot;%*s&quot;, 10, &quot;foo&quot;) # =&gt; &quot;       foo&quot;
+</pre>
+<h2><a name="L006331">Precision</a></h2>
+<p>A number string that follows a &quot;.&quot; shows the precision
+(when only a &quot;.&quot; is displayed, it is the same as &quot;.0&quot;). Precision means the length of a portion of numerical value strings for the following integer indicators: 'd', 'i', 'b', 'o', 'x', 'X', 'u'.</p>
+<pre>
+p sprintf(&quot;%10.5d&quot;, 1)  # =&gt; &quot;     00001&quot;
+p sprintf(&quot;%#10.5x&quot;, 1) # =&gt; &quot;   0x00001&quot;
+p sprintf(&quot;%+10.5x&quot;, 1) # =&gt; &quot;    +00001&quot;
+</pre>
+<p>This means the decimal places for the floating point indicator 'f'.</p>
+<pre>
+p sprintf(&quot;%10.5f&quot;, 1)   # =&gt; &quot;   1.00000&quot;
+p sprintf(&quot;%10.5f&quot;, 10)  # =&gt; &quot;  10.00000&quot;
+</pre>
+<p>This means the number of significant figures for floating point indicators 'e', 'E', 'g', and 'G'.</p>
+<pre>
+p sprintf(&quot;%10.5e&quot;, 1)   # =&gt; &quot;1.00000e+00&quot;
+p sprintf(&quot;%10.5e&quot;, 10)  # =&gt; &quot;1.00000e+01&quot;
+p sprintf(&quot;%10.5g&quot;,  10)  # =&gt; &quot;        10&quot;
+p sprintf(&quot;%#10.5G&quot;, 10)  # =&gt; &quot;    10.000&quot;
+</pre>
+<p>For character string indicators 's' and 'p', the portion which goes over the specified number within the argument character string is cut out. 
+If width and precision values are the same, only the output for that length will be performed, no matter what argument is being considered.</p>
+<pre>
+p sprintf(&quot;%10.2s&quot;, &quot;foo&quot;)  # =&gt; &quot;        fo&quot;
+
+p sprintf(&quot;%5.5s&quot;, &quot;foo&quot;)     # =&gt; # =&gt; &quot;  foo&quot;
+p sprintf(&quot;%5.5s&quot;, &quot;foobar&quot;)  # =&gt; # =&gt; &quot;fooba&quot;
+</pre>
+<p>If '*' is specified as precision, the precision value will be received from the argument.</p>
+<pre>
+p sprintf(&quot;%.5s&quot;, &quot;foobar&quot;)    # =&gt; &quot;fooba&quot;
+p sprintf(&quot;%.*s&quot;, 5, &quot;foobar&quot;) # =&gt; &quot;fooba&quot;
+</pre>
+
+<h2>Indicators</h2>
+<p>Indicators show argument pattern interpretations. They cannot be abbreviated, and are divided into the following groups:</p>
+<ul>
+<li>Indicators showing character strings: 'c', 's', 'p'</li>
+<li>Indicators showing integers: 'd', 'i', 'u', 'b', 'o', 'x', 'X',</li>
+<li>Indicators showing floating points: 'f', 'g', 'e', 'E', 'G'</li>
+</ul>
+</p>
+<dl>
+<dt>c</dt>
+<dd>
+<p>Argument values 0-255 are considered together with character codes, then the corresponding characters are outputted.
+Argument conversion is attempted with the to_int method for objects other than numerical values, String, nil, true, and false.</p>
+<p>This only applies to <a href="#L006324">flag</a> '-' and "<a href="#L006330">width</a>" specification.</p>
+</dd>
+<dt>s</dt>
+<dd>
+<p>Character strings are outputted.</p>
+<p>If the argument is not a <a href="sc_string.html">String</a> object, the to_s method causes the object turned into a character string to be treated as an argument.</p>
+</dd>
+<dt>p</dt>
+<dd>
+<p><a href="sc_object.html#L000572">Object#inspect</a> results are outputted.</p>
+<pre>
+p sprintf(&quot;%s&quot;, [1, 2, 3])      # =&gt; &quot;123&quot;
+p sprintf(&quot;%p&quot;, [1, 2, 3])      # =&gt; &quot;[1, 2, 3]&quot;
+</pre>
+</dd>
+<dt>d</dt>
+<dt>i</dt>
+<dd>
+<p>An argument's numerical value is outputted as an integer decimal expression.</p>
+<p>If the argument is not an integer it will be converted to one.</p>
+</dd>
+<dt>u</dt>
+<dd>
+<p>The argument value is considered as an integer without a symbol, then outputted as a decimal integer.</p>
+<pre>
+p sprintf(&quot;%u&quot;, -1) # =&gt; &quot;4294967295&quot;
+</pre>
+<p>outputs p 0xffff_ffff.to_s.</p>
+<p>'%u' regards the argument as an integer's fixed length, and</p>
+<pre>
+printf(&quot;%u&quot;, n)
+</pre>
+<p>has the same meaning as</p>
+<pre>
+printf(&quot;%d&quot;, n &amp; ~(-1 &lt;&lt; n.size*8))
+</pre>
+<p>for negative integer n.</p>
+</dd>
+<dt>b</dt>
+<dt>o</dt>
+<dt>x</dt>
+<dt>X</dt>
+<dd>
+<p>Integers are outputted as character strings with binary, octal, hexadecimal, and hexadecimal (upper case letter) expressions.</p>
+<p>If the '#' flag is specified, &quot;0b&quot;, &quot;0&quot;, &quot;0x&quot;, &quot;0X&quot;
+are added to the front.</p>
+<p>If the '+' or ' ' flags are not used, &quot;..&quot; (if the '#' flag is used, after 
+&quot;0x&quot; etc.) is added to the front of negative numbers. This means that characters of the highest-order digit continue infinetely, and negative numbers are shown in complementary numbers of 2.</p>
+<pre>
+p sprintf(&quot;%#b&quot;, 10)    # =&gt; &quot;0b1010&quot;
+p sprintf(&quot;%#o&quot;, 10)    # =&gt; &quot;012&quot;
+p sprintf(&quot;%#x&quot;, 10)    # =&gt; &quot;0xa&quot;
+
+&quot;..&quot; is added to # negative numbers
+p sprintf(&quot;%#b&quot;, -1)    # =&gt; &quot;0b..1&quot;
+p sprintf(&quot;%#o&quot;, -1)    # =&gt; &quot;0..7&quot;
+p sprintf(&quot;%#x&quot;, -1)    # =&gt; &quot;0x..f&quot;
+
+p sprintf(&quot;%10x&quot;, -1)   # =&gt; &quot;       ..f&quot;
+p sprintf(&quot;%-10x&quot;, -1)  # =&gt; &quot;..f       &quot;
+
+If # "precision" has been specified, &quot;..&quot; is not added.
+p sprintf(&quot;%.10x&quot;, -1)  # =&gt; &quot;ffffffffff&quot;
+</pre>
+</dd>
+<dt>f</dt>
+<dt>e</dt>
+<dt>E</dt>
+<dt>g</dt>
+<dt>G</dt>
+<dd>
+<p>'f' outputs numerical values with a decimal expression (xxx.xxx).</p>
+<p>'e' outputs numerical values with an exponential notation (x.xxxe+xx).</p>
+<p>When the exponent is smaller then -4, or higher than the precision, 'g' outputs the same as 'e'. In all other cases, it outputs the same as 'f'. However, 0 at the end of a decimal fraction is omitted.</p>
+<p>Upper case indicators 'E' and 'G' change the output alphabet into upper case letters.</p>
+<pre>
+p sprintf(&quot;%f&quot;, 1.0) # =&gt; &quot;1.000000&quot;
+p sprintf(&quot;%e&quot;, 1.0) # =&gt; &quot;1.000000e+000&quot;
+p sprintf(&quot;%g&quot;, 1.0) # =&gt; &quot;1&quot;
+
+p sprintf(&quot;%f&quot;, 10.1) # =&gt; &quot;10.100000&quot;
+p sprintf(&quot;%e&quot;, 10.1) # =&gt; &quot;1.010000e+001&quot;
+p sprintf(&quot;%g&quot;, 10.1) # =&gt; &quot;10.1&quot;
+
+p sprintf(&quot;%g&quot;, 10 ** 6)  # =&gt; &quot;1e+006&quot;
+p sprintf(&quot;%g&quot;, 10 ** -5) # =&gt; &quot;1e-005&quot;
+</pre>
+<p>The precision default value is 6.</p>
+</dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

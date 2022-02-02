@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Material Specifications</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Material Specifications</h1>
+
+<ul>
+  <li><a href="#graphics">Graphics</a></li>
+<li><a href="#autotile">Autotiles</a></li>
+<li><a href="#windowskin">Windowskins</a></li>
+<li><a href="#audio">Audio</a></li>
+</ul>
+
+<p>RPGXP comes complete with all kinds of graphic and audio files for your use.</p>
+<p>From the main menu, select [Tools], then [Materialbase] to bring up a dialog 
+  box for importing and exporting each kind of material. While you can copy files 
+  directly to the game folder, the Materialbase has features (such as tranparency 
+  color settings) that make it a better option until you're more familiar with 
+  the program.</p>
+
+<h2><a name="graphics">Graphics</a></h2>
+<p>Both PNG and JPG (JPEG) graphic formats are available for use. The PNG format 
+  fully supports 32-bit color (with alpha channels).</p>
+
+<dl>
+  <dt>Characters (Graphics/Characters)</dt>
+  <dd> 
+    <p>These files contain character graphics for the map screen.</p>
+    <p>Each character is contained in a single file. This file can be any size, 
+      and is laid out with the character facing all four directions (down, left, 
+      right, and up) and going through four frames of movement, for a total of 
+      16 frames. The size of the actual character will be 1/4 the height and 1/4 
+      the width of the entire bitmap.</p>
+  </dd>
+  <dt>Battlers (Graphics/Battlers)</dt>
+  <dd> 
+    <p>These files contain graphics for the characters that appear in battle screens.</p>
+    <p>They can be any size, but remember that they need to fit on a 640 x 320 
+      battle screen. Also, if the graphic's height is 40 pixels or below, it will 
+      be difficult to see damage displays and the like.</p>
+  </dd>
+  <dt>Animations (Graphics/Animations)</dt>
+  <dd> 
+    <p>These files contain animation graphics used mainly as visual effects in 
+      battle screens.</p>
+    <p>Each cell contains at least one block of five 192 x 192 pixel frames lined 
+      up horizontally, but can go on to contain as many blocks as necessary. There's 
+      no limit on the file's size, but to improve loading times, overly large 
+      files are best avoided.</p>
+  </dd>
+  <dt>Tilesets (Graphics/Tilesets)</dt>
+  <dd> 
+    <p>These files contain tiles for mapmaking.</p>
+    <p>Each tile contains at least one block of eight 32 x 32 pixel frames lined 
+      up horizontally, but can go on to contain as many blocks as necessary. There's 
+      no limit on the file's size, but to improve loading times, overly large 
+      files are best avoided.</p>
+  </dd>
+  <dt>Autotiles (Graphics/Autotiles)</dt>
+  <dd> 
+    <p>These files contain special tiles used for seamless tiling.</p>
+    <p>See <a href="#autotile">Autotiles</a> for details.</p>
+  </dd>
+  <dt>Panoramas (Graphics/Panoramas)</dt>
+  <dd> 
+    <p>These files contain graphics (distant landscapes) used in maps.</p>
+    <p>There's no real limit to their size, but they must tile on all four edges--like 
+      a Website background.</p>
+  </dd>
+  <dt>Fog (Graphics/Fogs)</dt>
+  <dd> 
+    <p>These files contain graphics that are overlaid in the map's foreground.</p>
+    <p>There's no real limit to their size, but they must tile on all four edges--like 
+      a Website background.</p>
+  </dd>
+  <dt>Battle Backgrounds (Graphics/Battlebacks)</dt>
+  <dd> 
+    <p>These files contain graphics used as backgrounds in battle screens.</p>
+    <p>They measure 640 &times; 320 pixels.</p>
+  </dd>
+  <dt>Icons (Graphics/Icons)</dt>
+  <dd> 
+    <p>These files contain icon graphics that are displayed next to skill and 
+      item names.</p>
+    <p>They measure 24 &times; 24 pixels.</p>
+  </dd>
+  <dt>Titles (Graphics/Titles)</dt>
+  <dd> 
+    <p>These files contain graphics that are displayed on the title screen.</p>
+    <p>They measure 640 &times; 480 pixels.</p>
+  </dd>
+  <dt>Game Over Graphics (Graphics/Gameovers)</dt>
+  <dd> 
+    <p>These files contain graphics that are displayed on the Game Over screen.</p>
+    <p>They measure 640 &times; 480 pixels.</p>
+  </dd>
+  <dt>Windowskins (Graphics/Windowskins)</dt>
+  <dd> 
+    <p>These files contain graphics used to build windows.</p>
+    <p>See <a href="#windowskin">Windowskins</a> for details.</p>
+  </dd>
+  <dt>Pictures (Graphics/Pictures)</dt>
+  <dd> 
+    <p>These files contain graphics that are displayed during in-game events.</p>
+    <p>They can be any size.</p>
+  </dd>
+  <dt>Transitions (Graphics/Transitions)</dt>
+  <dd> 
+    <p>These files specify the effects displayed during screen transitions, such 
+      as when you encounter an enemy.</p>
+    <p>They measure 640 x 480 pixels and must be in 256-color grayscale PNG format. 
+      The screen is redrawn from the lower palette number on up.</p>
+  </dd>
+</dl>
+
+<h2><a name="autotile">Autotiles</a></h2>
+<img src="img/autotile1.png" alt="Autotiles"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>As a general rule, autotiles form the basis for the 12 tile patterns seen here.</p>
+<dl>
+  <dt>A</dt>
+  <dd> 
+    <p>The representative pattern, displayed in the tile palette and used to show 
+      how the other autotiles interact with each other.</p>
+  </dd>
+  <dt>B</dt>
+  <dd> 
+    <p>The parent pattern. If the pattern shown here and an autotile from the 
+      same group (i.e., with the same representative pattern) are placed next 
+      to one another, they will tile seamlessly.</p>
+  </dd>
+  <dt>C</dt>
+  <dd> 
+    <p>The parent pattern is featured in the four corners of this tile.</p>
+  </dd>
+  <dt>D</dt>
+  <dd> 
+    <p>Tiles with the parent pattern on all four sides, plus a central pattern 
+      with no borders at all.</p>
+  </dd>
+</dl>
+
+<img src="img/autotile2.png" alt="Animated Autotiles"
+ style="float:left;margin-top=1.0em;margin-right=1.5em;margin-bottom=1.0em"> 
+<p style="margin-top=3.0em;">If you need to animate these autotiles, such as for 
+  water graphics, simply place the basic blocks as multiple cells in a horizontal 
+  row. You can use as many patterns as you like.</p>
+<p>If you only need to animate a single tile, you can just line up single 32 x 
+  32 pixel tiles instead of the larger autotile blocks.</p>
+
+
+<h2><a name="windowskin">Windowskins</a></h2>
+<img src="img/windowskin.png" alt="Windowskins"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>These are graphics measuring 192 x 128 pixels, as seen here. They're usually 
+  in 32-bit PNG format.</p>
+<dl>
+  <dt>A</dt>
+  <dd> 
+    <p>The window background. A 128 x 128 pixel pattern is drawn here, filling 
+      the window whatever its size. Technically, the window's edges are each two 
+      pixels smaller than that, a feature that allows for natural-looking rounded 
+      corners. Plus, the translucent backgrounds of some windows means you don't 
+      need to make the images themselves translucent.</p>
+  </dd>
+  <dt>B</dt>
+  <dd> 
+    <p>The window frame and scroll arrows. The four corners are drawn at a set 
+      size of 16 x 16 pixels, and the remaining frame tiles at a width of 16 pixels 
+      to match the window's size. The arrows are used to indicate that scrolling 
+      is possible in a given window.</p>
+  </dd>
+  <dt>C</dt>
+  <dd> 
+    <p>The command cursor indicates which item is selected in a given window. 
+      The outer two pixels resize both horizontally and vertically, and the rest 
+      adjusts horizontally to match the size of the cursor.</p>
+  </dd>
+  <dt>D</dt>
+  <dd> 
+    <p>The pause graphic, used in a message window to show that the player's input 
+      is required, is a four-frame animation measuring 16 x 16 pixels.</p>
+  </dd>
+  <dt>E</dt>
+  <dd> 
+    <p>The arrow cursor, used in battles to select actors and enemies, is a two-frame 
+      animation measuring 32 x 32 pixels. While it's not actually part of the 
+      window, it's included in this file for convenience.</p>
+  </dd>
+</dl>
+
+
+<h2><a name="audio">Audio</a></h2>
+<p>You have five different file formats at your disposal: MID (in BGM and ME 
+  only), OGG, WMA, MP3, and WAV.</p>
+
+<dl>
+  <dt>BGM (Audio/BGM)</dt>
+  <dd> 
+    <p>Background music--usually in MID format.</p>
+  </dd>
+  <dt>BGS (Audio/BGS)</dt>
+  <dd> 
+    <p>Background sounds--usually in OGG format.</p>
+  </dd>
+  <dt>ME (Audio/ME)</dt>
+  <dd> 
+    <p>Music effects--usually in MID format.</p>
+  </dd>
+  <dt>SE (Audio/SE)</dt>
+  <dd> 
+    <p>Sound effects--usually in OGG format.</p>
+  </dd>
+</dl>
+
+<p>Here are the special features of each file format:</p>
+
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+<th>MID</th>
+    <td>MIDI files played via the DirectMusic Synthesizer. If a BGM MIDI file 
+      contains the control change value 111, that value is recognized as where 
+      the song will start repeating after it reaches the end.</td>
+</tr><tr>
+<th>OGG</th>
+    <td>Files containing compressed Ogg Vorbis data, known for its sound quality 
+      and compression rate. However, since RPG Maker XP doesn't support OGG streaming, 
+      the entire file must be loaded before it can be played, making it unsuitable 
+      for longer pieces.</td>
+</tr><tr>
+<th>WMA</th>
+    <td>Compressed Windows Media Player sound files, played via DirectShow. Unlike 
+      the OGG format, streaming (loading data while playing it in real time) is 
+      supported, so it's good for longer-playing songs.</td>
+</tr><tr>
+<th>MP3</th>
+    <td>An extremely popular compressed sound format, played via DirectShow. It 
+      has the same special traits as the WMA format.</td>
+</tr><tr>
+<th>WAV</th>
+    <td>The standard Windows sound format. RPG Maker XP can process both standard 
+      uncompressed WAVs and Microsoft ADPCM files.</td>
+</tr></table>
+
+
+<h6></h6>
+</body>
+</html>

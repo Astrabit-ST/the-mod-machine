@@ -1,0 +1,1142 @@
+.topic 28001
+The event name. Used only in the Editor for convenience.
+.topic 28011
+Creates a new consecutively numbered page after the selected page.
+.topic 28012
+Copies the contents of the selected page to the clipboard.
+.topic 28013
+Pastes the contents of the clipboard into a new page.
+.topic 28014
+Deletes the selected page.
+.topic 28015
+Clears the selected page's contents.
+.topic 28101
+Specifies in which situation an event will spawn on the map in-game. Events will spawn as long as all conditions specified here are being met. If no conditions are specified, events will spawn unconditionally. If there are multiple event pages meeting conditions, the contents will be run in order from lower- to higher-numbered page.
+.topic 28102
+Sets as a condition the specified switch being ON. The switch remains either ON or OFF throughout the game.
+.topic 28103
+Sets as a condition the specified variable being at or above a given value. Variables hold arbitrary integers (up to 8 digits) throughout the game.
+.topic 28104
+Sets as a condition the specified self switch being ON. Self switches are special switches attached to individual events.
+.topic 23002
+The selected switches are displayed on the right.
+.topic 23003
+Changes the number of switches. The more data, the more memory is needed.
+.topic 23004
+Selectable switches.
+.topic 23005
+The switch name. Used only in the Editor for convenience.
+.topic 23101
+Data storing arbitrary integers (up to 8 digits).
+.topic 28111
+Graphic displayed as an event. Whether the player can pass through
+
+this event location is determined by graphic type as follows.
+
+  None: Passable.
+
+  Tile: Uses the tileset's default passage settings.
+
+  Character: Impassable.
+
+As a rule, two events may not overlap in the same position.
+
+When two events overlap, one must be
+
+set to [Through].
+
+.topic 28121
+Settings for an event's autonomous movement. Not controlled by any other event, this setting makes the event change positions freely and without prompting.
+.topic 28122
+Type of autonomous movement.
+
+  Fixed: Do not move from the position in which it was placed.
+
+  Random: Moves passable tiles around freely.
+
+  Approach: Moves toward the player's current position.
+
+  Custom: Moves along a specified route.
+
+.topic 28123
+When autonomous movement type is [Custom], opens the route setting window.
+.topic 28124
+The speed of a moving event. The player's speed is [4: Fast].
+.topic 28125
+Frequency of autonomous movement. The higher the number, the shorter the movement cycle.
+.topic 28131
+Settings for character animation, passage, etc.
+.topic 28132
+Turns on the walking, etc. animation when an event is moving.
+.topic 28133
+Turns on the stepping, etc., animation when an event has stopped.
+.topic 28134
+Makes it impossible to change a character's direction.
+.topic 28135
+Makes it possible to sneak through an impassable tile or character.
+.topic 28136
+Makes the display priority higher than any other tile or character.
+.topic 28141
+Conditions to set off an event
+
+and start running its contents.
+
+.topic 28142
+Runs when the player and event are touching and the confirm the C Button is pressed.
+.topic 28143
+In addition to the [Action Button] condition, can also be run when the player makes contact with the event via the directional buttons.
+.topic 28144
+In addition to the [Player Touch] condition, can also be run when the event makes contact with the player.
+.topic 28145
+Run when an event is appeared.
+.topic 28146
+Run cyclically while an event is appeared.
+
+Parallel handling is a special setting that allows events to run alongside other events. Use caution.
+
+.topic 28151
+Event commands to be run for this event. Right-click to view a pop-up menu. Hold down Shift and click to select multiple entries.
+.topic 28201
+Character to be assigned a movement route.
+.topic 28202
+Movement commands to be run. Press the button on the right to add a new command. Right-click to view a pop-up menu.
+.topic 28203
+Options for movement route behavior.
+.topic 28204
+After running and completing the entered command, returns to the top of the list and repeats the specified action infinitely.
+.topic 28205
+Skips any command that would move a character or event into an impassable location.
+.topic 28211
+Move to the lower tile.
+.topic 28212
+Move to the left tile.
+.topic 28213
+Move to the right tile.
+.topic 28214
+Move to the upper tile.
+.topic 28215
+Move diagonally to the lower left tile.
+.topic 28216
+Move diagonally to the lower right tile.
+.topic 28217
+Move diagonally to the upper left tile.
+.topic 28218
+Move diagonally to the upper right tile.
+.topic 28219
+Move up, down, left, or right.
+.topic 28220
+Move toward the player.
+.topic 28221
+Move away from the player.
+.topic 28222
+Move in the current direction.
+.topic 28223
+Move in the opposite direction without turning around.
+.topic 28224
+Jump from the current position.
+.topic 28225
+Wait for a specified amount of time.
+.topic 28226
+Face down.
+.topic 28227
+Face left.
+.topic 28228
+Face right.
+.topic 28229
+Face up.
+.topic 28230
+Turn and face 90 degrees to the right.
+.topic 28231
+Turn and face 90 degrees to the left.
+.topic 28232
+Face the opposite direction.
+.topic 28233
+Turn and face 90 degrees to the right or left.
+.topic 28234
+Change to a random direction.
+.topic 28235
+Turn toward the player.
+.topic 28236
+Causes the character to face the opposite direction.
+.topic 28237
+Turns the specified switch ON.
+.topic 28238
+Turns the specified switch OFF.
+.topic 28239
+Changes the movement's speed.
+.topic 28240
+Changes the movement's frequency. Only applies to autonomous movement.
+.topic 28241
+Turns on the walking, etc. animation when an event is moving.
+.topic 28242
+Turns off the walking, etc. animation when an event is moving.
+.topic 28243
+Turns on the stepping, etc., animation when an event has stopped.
+.topic 28244
+Turns off the stepping, etc., animation when an event has stopped.
+.topic 28245
+Makes it impossible to change a character's direction.
+.topic 28246
+Makes it possible to change a character's direction.
+.topic 28247
+Makes it possible to sneak through an impassable tile or character.
+.topic 28248
+Makes it impossible to sneak through an impassable tile or character.
+.topic 28249
+Makes the display priority higher than any other tile or character.
+.topic 28250
+Returns the display priority to its default setting.
+.topic 28251
+Changes a character's graphic.
+.topic 28252
+Changes a character's opacity.
+.topic 28253
+Changes a character's blending method.
+.topic 28254
+Plays a SE.
+.topic 28255
+Advanced: Evaluates a Ruby script.
+.topic 28301
+Specifies how far to slide the landing point left or right.
+.topic 28302
+Specifies how far to slide the landing point up or down.
+.topic 28401
+Number of frames to wait.
+.topic 28501
+Specifies a character's opacity. 0 = full transparency.
+.topic 28601
+Specifies a character's blending method.
+.topic 28701
+Enter a Ruby script to be evaluated.
+.topic 29001
+Sets the specified item as merchandise.
+.topic 29002
+Sets the specified weapon as merchandise.
+.topic 29003
+Sets the specified armor as merchandise.
+.topic 30001
+Opens the message window and displays text.
+.topic 30002
+Displays selectable options in a message window.
+.topic 30003
+Inputs an integer into a message window and stores the value as a variable.
+.topic 30004
+Sets the message window display position and whether or not to display the window border.
+.topic 30005
+Waits for a button to be pressed, then stores that button number as a variable.
+.topic 30006
+Temporarily stops event handling for the specified period only. Except when using parallel processing, player input is not accepted during the wait interval.
+.topic 30007
+Sets the comments displayed in the list. Has no effect on when events are run.
+.topic 30008
+Creates a portion to be run only when specific conditions are met.
+.topic 30009
+Creates a portion to be run repeatedly.
+.topic 30010
+Escapes the innermost loop.
+.topic 30011
+Ends running events.
+.topic 30012
+Temporarily erases running events. Used only on the map screen.
+.topic 30013
+Calls up a common event. When the called event is complete, moves on to the next event handling.
+.topic 30014
+Sets the jump label (marker).
+.topic 30015
+Moves to the specified label name. Applies to labels in the run list.
+.topic 30016
+Turns a switch ON/OFF.
+.topic 30017
+Changes the numeric value stored in the variable.
+.topic 30018
+Turns a self switch ON/OFF. Used only on the map screen.
+.topic 30019
+Starts or stops the timer. Countdown stops when the menu screen, etc. is displayed.
+.topic 30020
+Changes the amount of money in the party's inventory.
+.topic 30021
+Changes the items in the party's inventory.
+.topic 30022
+Changes the weapons in the party's inventory.
+.topic 30023
+Changes the armor in the party's inventory.
+.topic 30024
+Changes the actors in a party.
+.topic 30025
+Change the graphics for parts used for windows, etc. in-game.
+.topic 30026
+Changes the BGM played during battles.
+.topic 30027
+Changes the ME played at battle end.
+.topic 30028
+Allows/suppresses the saving of game data.
+.topic 30029
+Allow or suppress menu screen calls.
+.topic 30030
+Allows or suppresses random encounters.
+.topic 30031
+Changes the player's current position. Used only on the map screen.
+.topic 30032
+Changes the event's current position. Cannot move the event to a different map. Used only on the map screen.
+.topic 30033
+Scrolls the map without changing the player's position. When multiple copies of this event command are specified, the commands automatically wait until the previous scroll has completed. Used only on the map screen.
+.topic 30034
+Temporarily changes the panorama, fog, or battle background for the current map.
+.topic 30035
+Temporarily changes fog's color tone.
+.topic 30036
+Temporarily changes fog's opacity. Good for the effect of fog gradually lifting.
+.topic 30037
+Animation shown for a character on the map.
+.topic 30038
+Changes whether or not the player is visibly displayed.
+.topic 30039
+Forces the player or event to move. If a route already exists, it will be overwritten by the new settings.
+.topic 30040
+Pause event handling until all actions specified in [Set Move Route] have completed. Can affect routes set for other events, so not recommended for use with parallel processing. When using parallel processing for character movement, note how long the movement will take and use the standard [Wait] command to be safe.
+.topic 30041
+Sets the current screen in preparation for a transition. All screen drawing is disabled until the [Execute Transition] command is called.
+.topic 30042
+Runs a transition from the screen specified in [Prepare for Transition] to the current screen. If no graphic is specified, the transition will be the default fade.
+.topic 30043
+Changes the color tone of the entire screen. Also affects the battle screen, but does not affect windows or pictures.
+.topic 30044
+Temporarily fill the entire screen with a color, then gradually revert to the original color. Good for effects such as a single flash of light .
+.topic 30045
+Shakes the entire screen left to right. Good for staging earthquakes or showing someone taking damage.
+.topic 30046
+Displays the picture on top of the screen.
+.topic 30047
+Changes the position, zoom ratio, etc. of the displayed picture.
+.topic 30048
+Changes the rotation speed of the displayed picture. Take care not to overuse, as rotations require a great deal of time to draw.
+.topic 30049
+Changes the color tone of the displayed picture.
+.topic 30050
+Deletes the displayed picture.
+.topic 30051
+Force rain or snow effect. Weather settings are also reflected in battle scenes.
+.topic 30052
+Plays a BGM.
+.topic 30053
+Fade out the currently playing BGS.
+.topic 30054
+Plays a BGS.
+.topic 30055
+Fade out the currently playing BGM.
+.topic 30056
+Recall the currently playing BGM or BGS.
+.topic 30057
+Plays the BGM or BGS stored via [Memorize BGM/BGS]
+.topic 30058
+Plays a ME.
+.topic 30059
+Plays a SE.
+.topic 30060
+Stop all currently playing SE.
+.topic 30061
+Starts a battle.
+.topic 30062
+Calls up a shop screen for the buying and selling of items and equipment.
+.topic 30063
+Calls up a name entry screen to change the actor's name.
+.topic 30064
+Changes the actor's HP.
+.topic 30065
+Changes the actor's SP.
+.topic 30066
+Changes the actor's state.
+.topic 30067
+Clears all states and fully recovers the actor's HP and SP.
+.topic 30068
+Changes the actor's EXP.
+.topic 30069
+Changes the actor's level.
+.topic 30070
+Changes the actor's parameters.
+.topic 30071
+Changes the skills an actor can use.
+.topic 30072
+Changes the actor's equipment. If the selected weapon or armor is not in inventory, nothing happens.
+.topic 30073
+Changes the actor's name.
+.topic 30074
+Changes the actor's class.
+.topic 30075
+Changes the actor's graphic.
+.topic 30076
+Changes the enemy's HP.
+.topic 30077
+Changes the enemy's SP.
+.topic 30078
+Changes the enemy's state.
+.topic 30079
+Clears all states and fully recovers the enemy's HP and SP.
+.topic 30080
+Spawns the enemy specified in the [Appear Halfway] option.
+.topic 30081
+Transforms the enemy.
+.topic 30082
+Displays an arbitrary animation during battle.
+.topic 30083
+Pops up the numerical damage amount and decreases HP.
+.topic 30084
+Forcibly runs a specified action.
+.topic 30085
+Forces battle to end.
+.topic 30086
+Call up the menu screen.
+.topic 30087
+Calls up the save screen.
+.topic 30088
+Forces Game Over.
+.topic 30089
+Returns to the title screen.
+.topic 30090
+Advanced: Evaluates a Ruby script.
+.topic 31001
+Enter the characters to be displayed in the window.
+
+The following control characters are available within text.
+
+\V[n]: Replaces the value in variable #n.
+
+ \N[n]: Replaces actor #n's name.
+
+ \C[n]: Displays the following characters in font color #n.
+
+ \G: Opens the money window.
+
+ \\: Replaces character '\'.
+
+Press [F2] to preview the text.
+
+Pressing [Ctrl+Enter] is equivalent to clicking the OK button.
+
+.topic 31002
+Guidelines for the number of characters that can be displayed in the default message window. The font is proportional, so the guidelines are approximate.
+.topic 31003
+Enter text to be displayed in the message window. Entered text is divided into 4-line blocks, and the [Show Text] event command is inserted only where necessary.
+.topic 31004
+Shows where [Show Text] divided the text.
+.topic 31101
+String to display as choice #1.
+.topic 31102
+String to display as choice #2.
+.topic 31103
+String to display as choice #3.
+.topic 31104
+String to display as choice #4.
+.topic 31111
+Sets the handling method for when the cancel button (B) is pressed.
+.topic 31112
+Makes it impossible to cancel a selection.
+.topic 31113
+Acts as though choice #1 was selected.
+.topic 31114
+Acts as though choice #2 was selected.
+.topic 31115
+Acts as though choice #3 was selected.
+.topic 31116
+Acts as though choice #4 was selected.
+.topic 31117
+Creates run-on-cancel handling separately from each option.
+.topic 31201
+Specifies the variable containing the numeric value entered by the player. The original entry is displayed in this variable as entry begins.
+.topic 31202
+Specifies the number of digits to be entered.
+.topic 31301
+Selects the part of the screen in which to display the message window. This setting is only valid on the map screen.
+.topic 31302
+Displays the message window from the top of the screen. This setting is only valid on the map screen.
+.topic 31303
+Displays the message window from the middle of the screen. This setting is only valid on the map screen.
+.topic 31304
+Displays the message window from the bottom of the screen. This setting is only valid on the map screen.
+.topic 31305
+Selects whether to display the message window normally or to delete the message window border and display the text only.
+.topic 31306
+Displays the message window normally.
+.topic 31307
+Deletes the message window border and displays the text only.
+.topic 31401
+Sets the variable containing the number of the button
+
+the player pressed. The button numbers are as follows.
+
+ Down: 2  A : 11  Y : 15
+
+ Left : 4  B : 12  Z : 16
+
+ Right : 6  C : 13  L : 17
+
+ Up : 8  X : 14  R : 18
+
+To acquire in real time without waiting for button input,
+
+use [Conditional Branch] instead.
+
+.topic 31501
+Sets the wait time in 1/20 sec. increments.
+.topic 31601
+Enter comment text. Has no effect on when events are run. Can be made to look like memo-writing when multiple commands are recorded at once.
+.topic 31701
+Simultaneously creates not only a branch for when specified conditions are met, but also a branch for when conditions are not met.
+.topic 31711
+Sets the specified switch's default state.
+.topic 31712
+Sets the specified variable's default value range.
+.topic 31713
+Sets the specified self switch's default state. This setting is only valid on the map screen.
+.topic 31714
+Sets the default time left on timer.
+.topic 31721
+Sets the specified actor's defaults. The following 6 default settings are available.
+.topic 31722
+Sets whether the specified actor is in the party by default.
+.topic 31723
+Sets the specified actor's default name.
+.topic 31724
+Sets whether the specified actor can use a certain skill by default.
+.topic 31725
+Sets whether the specified actor has a certain weapon equipped by default.
+.topic 31726
+Sets whether the specified actor has a certain armor equipped by default.
+.topic 31727
+Sets whether the specified actor is in a certain state by default.
+.topic 31731
+Sets the specified enemy's defaults. The following 2 default settings are available.
+.topic 31732
+Sets whether the specified enemy appears in battle by default.
+.topic 31733
+Sets whether the specified enemy is in a certain state by default.
+.topic 31735
+Sets the default direction for the player or an event. This setting is only valid on the map screen.
+.topic 31741
+Sets the default amount of money in the party's inventory.
+.topic 31742
+Sets whether or not certain items are in the party's inventory by default.
+.topic 31743
+Sets whether or not certain weapons are in the party's inventory by default. Weapons equipped by party members are not considered part of inventory.
+.topic 31744
+Sets whether or not certain armor is in the party's inventory by default. Armor equipped by party members is not considered part of inventory.
+.topic 31745
+Determines whether specific buttons are being pressed and sets the default.
+.topic 31746
+Advanced: Sets as default the evaluated results of a Ruby script.
+.topic 32201
+Specifies a command to call up.
+.topic 32301
+Name of the label to be set.
+.topic 32401
+The jump destination label name.
+.topic 32501
+Specifies a switch to operate.
+.topic 32502
+Operates one switch.
+.topic 32503
+Operates all switches found between two specified numbers.
+.topic 32512
+Selects whether to turn the specified switch ON or OFF.
+.topic 32513
+Turns the specified switch ON.
+.topic 32514
+Turns the specified switch OFF.
+.topic 32601
+Specifies a variable to operate.
+.topic 32602
+Operates one variable.
+.topic 32603
+Operates all variables found between two specified numbers.
+.topic 32612
+Selects the operation to run on the specified variable.
+.topic 32613
+Stores the operand value as a variable as-is.
+.topic 32614
+Adds the operand to the pre-operation variable and stores the result.
+.topic 32615
+Subtracts the operand from the pre-operation variable and stores the result.
+.topic 32616
+Multiplies the operand by the pre-operation variable and stores the result.
+.topic 32617
+Divides the pre-operation variable by the operand and stores the result.
+.topic 32618
+Divides the pre-operation variable by the operand and stores the remainder.
+.topic 32619
+Specifies the numeric value to be used in calculating variables.
+.topic 32620
+Uses the entered constant.
+.topic 32621
+Uses a stored value for the specified variable.
+.topic 32622
+Uses a random value occurring between two specified values.
+.topic 32623
+Uses the number in inventory of the specified item.
+.topic 32624
+Uses the values for each of the actor's parameters.
+.topic 32625
+Changes the enemy's parameters.
+.topic 32626
+Uses the player's or event's coordinates and/or direction.
+
+  Map X: Horizontal position on the map.
+
+  Map Y: Vertical position on the map.
+
+  Direction: Corresponds to the numbers on the keypad.
+
+  Screen X Coordinate: Position of X coordinate on-screen.
+
+  Screen Y Coordinate: Position of Y coordinate on-screen.
+
+  Terrain Tag: The terrain tag of the tile below.
+
+.topic 32627
+Uses another numerical value.
+
+  Map ID: The ID of the map the player is currently on.
+
+  Party Members: The number of actors in a party.
+
+  Gold: The amount of money the party has.
+
+  Steps: Number of tiles the player has walked since game start.
+
+  Play Time: Time elapsed (in seconds) since game start.
+
+  Timer: Time (in seconds) left on timer.
+
+.topic 32701
+Specifies a self switch to operate.
+.topic 32702
+Selects whether to turn the specified self switch ON or OFF.
+.topic 32703
+Turns the specified self switch ON.
+.topic 32704
+Turns the specified self switch OFF.
+.topic 32801
+Selects whether to start or stop the timer.
+.topic 32802
+Starts the timer.
+.topic 32803
+Stops the timer.
+.topic 32804
+Specifies the time to count down on the timer.
+.topic 32901
+Selects whether to increase or decrease gold.
+.topic 32902
+Increases gold.
+.topic 32903
+Decreases gold.
+.topic 32904
+Specifies the numeric value by which to increase/decrease gold.
+.topic 32905
+Uses the entered constant.
+.topic 32906
+Uses a stored value for the specified variable.
+.topic 33001
+Specifies which item to increase or decrease.
+.topic 33002
+Selects whether to increase or decrease items.
+.topic 33003
+Increases items.
+.topic 33004
+Decreases items.
+.topic 33005
+Specifies the numeric value by which to increase/decrease items.
+.topic 33006
+Uses the entered constant.
+.topic 33007
+Uses a stored value for the specified variable.
+.topic 33101
+Specifies which weapon to increase or decrease.
+.topic 33102
+Selects whether to increase or decrease weapons.
+.topic 33103
+Increases weapons.
+.topic 33104
+Decreases weapons.
+.topic 33105
+Specifies the numeric value by which to increase/decrease weapons.
+.topic 33106
+Uses the entered constant.
+.topic 33107
+Uses a stored value for the specified variable.
+.topic 33201
+Specifies which armor to increase or decrease.
+.topic 33202
+Selects whether to increase or decrease armor.
+.topic 33203
+Increases armor.
+.topic 33204
+Decreases armor.
+.topic 33205
+Specifies the numeric value by which to increase/decrease armor.
+.topic 33206
+Uses the entered constant.
+.topic 33207
+Uses a stored value for the specified variable.
+.topic 33301
+Specifies which actor to swap.
+.topic 33302
+Selects whether to add or remove the actor.
+.topic 33303
+Adds the actor to the party.
+.topic 33304
+Removes the actor from the party.
+.topic 33305
+When adding an actor to the party, reverts to the starting state as specified in the database.
+.topic 33701
+Allows/suppresses saving.
+.topic 33702
+Suppresses the saving of game data.
+.topic 33703
+Allows the saving of game data.
+.topic 33801
+Selects whether to allow/suppress menus.
+.topic 33802
+Suppress menu screen calls.
+.topic 33803
+Allow menu screen calls.
+.topic 33901
+Select whether to allow or suppress encounters.
+.topic 33902
+Suppresses random encounters.
+.topic 33903
+Allows random encounters.
+.topic 34001
+Move to a specific position.
+.topic 34002
+Specifies the location to move toward.
+.topic 34003
+Move to a position determined by a variable.
+.topic 34004
+Variable containing the destination's map ID.
+.topic 34005
+Variable containing the destination's X coordinate.
+.topic 34006
+Variable containing the destination's Y coordinate.
+.topic 34007
+Character's direction after moving.
+.topic 34008
+Specifies whether to autorun a screen transition (cross-fade).
+.topic 34101
+Specifies which event to put in motion.
+.topic 34102
+Move to a specific position.
+.topic 34103
+Specifies the location to move toward.
+.topic 34104
+Move to a position determined by a variable.
+.topic 34105
+Variable containing the destination's X coordinate.
+.topic 34106
+Variable containing the destination's Y coordinate.
+.topic 34107
+Swap event positions.
+.topic 34108
+Specifies an event with which to swap positions
+.topic 34109
+Character's direction after moving.
+.topic 34201
+Scroll direction.
+.topic 34202
+Number of tiles to scroll.
+.topic 34203
+Scroll speed.
+.topic 34301
+Temporarily changes the panorama for the current map.
+.topic 34302
+Temporarily changes the fog for the current map.
+.topic 34303
+Temporarily changes the battle background for the current map. Also changes the graphics shown in battle.
+.topic 34401
+R value to be added to the fog's color.
+.topic 34402
+G value to be added to the fog's color.
+.topic 34403
+B value to be added to the fog's color.
+.topic 34404
+Grayscale filter intensity.
+.topic 34405
+Shows how the color tone change will alter the fog color.
+.topic 34406
+Specifies the color tone change time in 1/20 sec. intervals.
+.topic 34501
+New fog opacity.
+.topic 34502
+Specifies the opacity change time in 1/20 sec. intervals.
+.topic 34601
+Selects a character to be an animation target.
+.topic 34602
+Type of animation to be displayed.
+.topic 34701
+Selects the player's transparency.
+.topic 34702
+Deletes the player's display.
+.topic 34703
+Clears the transparency and reverts to default display.
+.topic 35201
+R value to be added to the graphic's color.
+.topic 35202
+G value to be added to the graphic's color.
+.topic 35203
+B value to be added to the graphic's color.
+.topic 35204
+Grayscale filter intensity.
+.topic 35205
+Shows how the color tone change will alter the screen color.
+.topic 35206
+Specifies the color tone change time in 1/20 sec. intervals.
+.topic 35301
+R value for the flash effect color.
+.topic 35302
+G value for the flash effect color.
+.topic 35303
+B value for the flash effect color.
+.topic 35304
+Intensity of the flash effect color. The higher the number, the more opaque the flash.
+.topic 35305
+Previews the flash effect color.
+.topic 35306
+Sets the flash time in 1/20 sec. increments.
+.topic 35401
+Shake intensity.
+.topic 35402
+Shake speed.
+.topic 35403
+Sets the shake time in 1/20 sec. increments.
+.topic 35501
+Control number of the displayed picture. Those with the largest screen display number take precedence.
+.topic 35502
+Picture to be displayed.
+.topic 35503
+Picture's on-screen display position.
+.topic 35504
+Selects the default display position.
+.topic 35505
+Specifies the coordinates based on the picture's upper left.
+.topic 35506
+Specifies the coordinates based on the picture's center.
+.topic 35507
+Display at a specific position.
+.topic 35508
+Graphic display position's X coordinate.
+.topic 35509
+Graphic display position's Y coordinate.
+.topic 35510
+Display in a position determined by a variable.
+.topic 35511
+Variable containing the graphic display position's X coordinate.
+.topic 35512
+Variable containing the graphic display position's Y coordinate.
+.topic 35513
+Picture zoom ratio.
+.topic 35514
+Horizontal zoom ratio (percentage).
+.topic 35515
+Vertical zoom ratio (percentage).
+.topic 35516
+Picture's opacity when drawn. 0 = full transparency.
+.topic 35517
+Blending method used when picture is drawn.
+.topic 35601
+Control number of the picture whose position, zoom ratio, etc. is to be changed.
+.topic 35602
+Sets the time until picture movement is complete in 1/20 sec. increments.
+.topic 35603
+Picture's on-screen display position.
+.topic 35604
+Selects the default display position.
+.topic 35605
+Specifies the coordinates based on the picture's upper left.
+.topic 35606
+Specifies the coordinates based on the picture's center.
+.topic 35607
+Display at a specific position.
+.topic 35608
+Graphic display position's X coordinate.
+.topic 35609
+Graphic display position's Y coordinate.
+.topic 35610
+Display in a position determined by a variable.
+.topic 35611
+Variable containing the graphic display position's X coordinate.
+.topic 35612
+Variable containing the graphic display position's Y coordinate.
+.topic 35613
+Picture zoom ratio.
+.topic 35614
+Horizontal zoom ratio (percentage).
+.topic 35615
+Vertical zoom ratio (percentage).
+.topic 35616
+Picture's opacity when drawn. 1 = full transparency.
+.topic 35617
+Blending method used when picture is drawn.
+.topic 35701
+Control number of the picture to be rotated.
+.topic 35702
+The value by which to increase/decrease the picture's angle of rotation. Even values rotate counterclockwise, odd values clockwise.
+.topic 35801
+Control number of the picture whose color tone is to be changed.
+.topic 35810
+Sets the picture's color tone.
+.topic 35811
+R value to be added to the picture's color.
+.topic 35812
+G value to be added to the picture's color.
+.topic 35813
+B value to be added to the picture's color.
+.topic 35814
+Grayscale filter intensity.
+.topic 35815
+Shows how the color tone change will alter the picture color.
+.topic 35816
+Specifies the color tone change time in 1/20 sec. intervals.
+.topic 35901
+Control number of the picture to delete.
+.topic 36001
+Specifies the type of weather effect to be displayed.
+.topic 36002
+Stops displaying weather effects.
+.topic 36003
+Displays the rain graphic.
+.topic 36004
+Displays storm graphic.
+.topic 36005
+Displays snow graphic.
+.topic 36011
+Amount of weather effect graphic to display at once.
+.topic 36012
+Specifies the weather effect change time in 1/20 sec. intervals. For example, set an interval moving from [Rain] to [None] to create the effect of rain gradually stopping.
+.topic 36201
+Specifies length of fade-out in seconds.
+.topic 36401
+Specifies length of fade-out in seconds.
+.topic 37001
+Specifies the types of troops to fight the party.
+.topic 37002
+Enables the [Escape] command and creates a branch defining "If Escape" handling.
+.topic 37003
+Even if the entire party is defeated, the game does not end, but a branch is created defining "If Lose" handling.
+.topic 37101
+Merchandise that can be bought and sold at stores. To add a new setting, double-click a blank space.
+.topic 37201
+Specifies which actor's name to change.
+.topic 37202
+The maximum number of characters for name input.
+.topic 37301
+Specifies which actor's HP to increase or decrease.
+.topic 37302
+Selects whether to increase or decrease HP.
+.topic 37303
+Increases HP.
+.topic 37304
+Decreases HP.
+.topic 37305
+Specifies the numeric value by which to decrease HP.
+.topic 37306
+Uses the entered constant.
+.topic 37307
+Uses a stored value for the specified variable.
+.topic 37308
+Allows HP to drop to 0. If Invalid, HP can be reduced only to 1.
+.topic 37401
+Specifies which actor's SP to increase or decrease.
+.topic 37402
+Selects whether to increase or decrease SP.
+.topic 37403
+Increases SP.
+.topic 37404
+Decreases SP.
+.topic 37405
+Specifies the numeric value by which to decrease SP.
+.topic 37406
+Uses the entered constant.
+.topic 37407
+Uses a stored value for the specified variable.
+.topic 37501
+Specifies which actor's state to change.
+.topic 37502
+Selects whether to set or clear a state.
+.topic 37503
+Sets a state.
+.topic 37504
+Clears a state.
+.topic 37505
+Specifies the state to set or clear.
+.topic 37601
+Specifies an actor for full recovery.
+.topic 37701
+Specifies which actor's HP to increase or decrease.
+.topic 37702
+Selects whether to increase or decrease EXP.
+.topic 37703
+Increases EXP.
+.topic 37704
+Decreases EXP.
+.topic 37705
+Specifies the numeric value by which to increase/decrease EXP.
+.topic 37706
+Uses the entered constant.
+.topic 37707
+Uses a stored value for the specified variable.
+.topic 37801
+Specifies which actor's level to increase or decrease.
+.topic 37802
+Selects whether to increase or decrease the level.
+.topic 37803
+Increases the level.
+.topic 37804
+Decreases the level.
+.topic 37805
+Specifies the numeric value by which to increase/decrease the level.
+.topic 37806
+Uses the entered constant.
+.topic 37807
+Uses a stored value for the specified variable.
+.topic 37901
+Specifies which actor's parameter to increase or decrease.
+.topic 37902
+Selects which parameter type to increase or decrease.
+.topic 37903
+Selects whether to increase or decrease the parameter.
+.topic 37904
+Increases the parameter.
+.topic 37905
+Decreases the parameter.
+.topic 37906
+Specifies the numeric value by which to increase/decrease the parameter.
+.topic 37907
+Uses the entered constant.
+.topic 37908
+Uses a stored value for the specified variable.
+.topic 38001
+Selects which actor's skills to increase or decrease.
+.topic 38002
+Selects whether to remember or forget a skill.
+.topic 38003
+Skill mastery.
+.topic 38004
+Deletes mastered skills.
+.topic 38005
+Specifies which skill type to increase or decrease.
+.topic 38101
+Specifies which actor's equipment to change.
+.topic 38102
+Specifies what equipment to change. The specified equipment must already be in the party's inventory.
+.topic 38103
+Changes weapons.
+.topic 38104
+Changes shields.
+.topic 38105
+Changes helmets.
+.topic 38106
+Changes body armor.
+.topic 38107
+Changes accessories.
+.topic 38201
+Specifies which actor's name to change.
+.topic 38202
+The new name.
+.topic 38301
+Specifies which actor's class to change.
+.topic 38302
+The new class. Class determines equippable armor and weapons, as well as skills to master.
+.topic 38401
+Specifies which actor's graphic to change.
+.topic 38402
+Actor's graphic as shown on the map.
+.topic 38403
+The actor's graphic as shown in battle.
+.topic 38501
+Specifies which enemy's HP to increase or decrease.
+.topic 38502
+Selects whether to increase or decrease HP.
+.topic 38503
+Increases HP.
+.topic 38504
+Decreases HP.
+.topic 38505
+Specifies the numeric value by which to increase HP.
+.topic 38506
+Uses the entered constant.
+.topic 38507
+Uses a stored value for the specified variable.
+.topic 38508
+Allows HP to drop to 0. If Invalid, HP can be reduced only to 1.
+.topic 38601
+Specifies which enemy's SP to increase or decrease.
+.topic 38602
+Selects whether to increase or decrease SP.
+.topic 38603
+Increases SP.
+.topic 38604
+Decreases SP.
+.topic 38605
+Specifies the numeric value by which to increase SP.
+.topic 38606
+Uses the entered constant.
+.topic 38607
+Uses a stored value for the specified variable.
+.topic 38701
+Specifies which enemy's state to change.
+.topic 38702
+Selects whether to set or clear a state.
+.topic 38703
+Sets a state.
+.topic 38704
+Clears a state.
+.topic 38705
+Specifies the state to set or clear.
+.topic 38801
+Specifies an enemy for full recovery.
+.topic 38901
+Specifies enemy to spawn.
+.topic 39001
+Selects an enemy to transform.
+.topic 39002
+Specifies which enemy to transform into.
+.topic 39101
+Selects a battler to be an animation target.
+.topic 39102
+Displays the animation targeted on the specified enemy.
+.topic 39103
+Displays the animation targeted on the specified actor.
+.topic 39104
+Type of animation to be displayed.
+.topic 39201
+Selects the target battler for damage handling.
+.topic 39202
+Performs damage handling on the specified enemy.
+.topic 39203
+Performs damage handling on the specified actor.
+.topic 39204
+Specifies the numeric value for damage.
+.topic 39205
+Uses the entered constant.
+.topic 39206
+Uses a stored value for the specified variable.
+.topic 39301
+Selects the battler on which to force an action.
+.topic 39302
+Forcibly sets the specified enemy's action.
+.topic 39303
+Forcibly sets the specified actor's action.
+.topic 39304
+Specifies the contents of a forced action.
+.topic 39305
+Forces an action using no skills.
+.topic 39306
+Forces an action using skills.
+.topic 39307
+Specifies a battler target of a forced action, by a party or troop index. For example, with an actor target, [Index 1] applies to the first member. Specify [Last Target] to continue to use the action target of the previous character. When the forced action's area of influence is [All] or [User], etc., this setting is ignored.
+.topic 39308
+Selects the timing to run the specified action.
+.topic 39309
+Runs an action when it's a battler's turn. Does nothing if its actions are completed within a turn.
+.topic 39310
+Performs an action when this event command is run, without waiting for its turn. Any other actions within a turn are canceled.
+.topic 39901
+Enter a Ruby script to be evaluated.

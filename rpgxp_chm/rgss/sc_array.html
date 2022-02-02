@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Array</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Array</h1>
+<p>The array class. The elements of an array are arbitrary Ruby objects. See <a href="syntax03.html#L000279">Array Expressions</a> 
+  for more information.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Included Modules</h2>
+<ul>
+<li><a href="sm_enumerable.html">Enumerable</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+  <dt>self[nth]</dt>
+  <dd> 
+    <p>Retrieves the <var>nth</var> item from an array. The index starts from 
+      zero. If the <var>nth</var> value is negative, counts backward from the 
+      end of the array (the index of the last element is -1). If the <var>nth</var> 
+      element does not exist in the array, returns nil.</p>
+  </dd>
+  <dt>self[start, <var>length</var>]</dt>
+  <dd> 
+    <p>Returns an array containing <var>length</var> items from <var>start</var>. 
+      If the <var>start</var> value is negative, counts backward from the end 
+      of the array (the index of the last element is -1).If <var>length</var> 
+      is longer than the length of the array from <var>start</var>, the length 
+      of the overlong portion is ignored. Returns nil if <var>length</var> is 
+      negative. </p>
+  </dd>
+  <dt>self[nth]=val</dt>
+  <dd> 
+    <p>Changes the <var>nth</var> element of the array into <var>val</var>. If 
+      <var>nth</var> is outside the array range, the array will automatically 
+      be extended. The extended region will be initialized by nil.</p>
+    <p>Returns <var>val</var>.</p>
+  </dd>
+  <dt>self[start, <var>length</var>]=<var>val</var></dt>
+  <dd> 
+    <p>Replace the <var>length</var> items from index <var>start</var> with the 
+      contents of <var>val</var>. If <var>val</var> is not an array, the items 
+      will be replaced by the contents of val.to_ary or [val]. Returns <var>val</var> 
+      .</p>
+    <pre>
+ary = [0, 1, 2, 3]
+ary[1, 2] = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+p ary                        # =&gt; [0, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, 3]
+ary[2, 1] = 99
+p ary                        # =&gt; [0, &quot;a&quot;, 99, &quot;c&quot;, 3]
+ary[1, 0] = [&quot;inserted&quot;]
+p ary                        # =&gt; [0, &quot;inserted&quot;, &quot;a&quot;, 99, &quot;c&quot;, 3]
+</pre>
+  </dd>
+  <dt><var>self</var> + <var>other</var></dt>
+  <dd> 
+    <p>Returns a new array with the concatenated contents of <var>self</var> and 
+      <var>other</var>. If <var>other</var> is not an array, uses the return value 
+      of other.to_ary. If that return value is not an array, throws a <a href="s_exceptions.html#TypeError">TypeError</a> 
+      exception.</p>
+    <pre>
+a = [1, 2]
+b = [8, 9]
+p a + b     # =&gt; [1, 2, 8, 9]
+p a         # =&gt; [1, 2]        (no change)
+p b         # =&gt; [8, 9]        (no change here, either)</pre>
+  </dd>
+  <dt><var>self</var> - <var>other</var></dt>
+  <dd> 
+    <p>The set subtraction operation. Returns a new array containing <var>self</var> 
+      without the elements of <var>other</var>.</p>
+  </dd>
+  <dt><var>self</var> &amp; <var>other</var></dt>
+  <dd> 
+    <p>The set intersection operation. Returns a new array containing elements 
+      belonging to both arrays. Duplicate elements will be removed.</p>
+  </dd>
+  <dt><var>self</var> | <var>other</var></dt>
+  <dd> 
+    <p>The set union operation. Returns a new array containing all elements belonging 
+      to either array. Duplicate elements will be removed.</p>
+  </dd>
+  <dt><var>self</var> &lt;=&gt; <var>other</var></dt>
+  <dd> 
+    <p>Compares each element with &lt;=&gt; and returns 1 if <var>self</var> is 
+      greater than, 0 if equal to, or -1 if less than <var>other</var>. If the 
+      end of one array is reached with each element being equal, the shorter array 
+      will be treated as being the lesser of the two.</p>
+  </dd>
+  <dt><var>self</var> == <var>other</var></dt>
+  <dd> 
+    <p>Compares each element with == and returns TRUE if all elements are equal.</p>
+  </dd>
+  <dt>clear</dt>
+  <dd> 
+    <p>Deletes all elements of an array, making it empty. Returns self.</p>
+    <pre>
+ary = [1, 2]
+ary.clear
+p ary     # =&gt; []
+</pre>
+  </dd>
+  <dt>clone</dt>
+  <dt>dup</dt>
+  <dd> 
+    <p>Returns a new array with the same contents as the receiver. clone returns 
+      a complete clone of the original array, including freeze status and singleton 
+      methods, while dup duplicates the object contents only. Neither method copies 
+      the methods or elements themselves.</p>
+  </dd>
+  <dt>compact</dt>
+  <dt>compact!</dt>
+  <dd> 
+    <p>compact returns a new array consisting of <var>self</var> without any nil 
+      elements. compact! performs a destructive update; if modified, returns <var>self</var>, 
+      if not modified, returns nil.</p>
+    <pre>
+ary = [1, nil, 2, nil, 3, nil]
+p ary.compact   # =&gt; [1, 2, 3]
+p ary           # =&gt; [1, nil, 2, nil, 3, nil]
+ary.compact!
+p ary           # =&gt; [1, 2, 3]
+p ary.compact!  # =&gt; nil
+</pre>
+  </dd>
+  <dt>concat(<var>other</var>)</dt>
+  <dd> 
+    <p>Appends (destructively) the <var>other</var> array to the end of <var>self</var>. 
+      Returns <var>self</var>.</p>
+    <pre>
+array = [1, 2]
+a     = [3, 4]
+array.concat a
+p array          # =&gt; [1, 2, 3, 4]
+p a              # =&gt; [3, 4]       # this doesn't change</pre>
+  </dd>
+  <dt>delete(<var>val</var>)</dt>
+  <dt>delete(<var>val</var>) { ... }</dt>
+  <dd> 
+    <p>Delete all elements equal to <var>val</var> (via ==). When elements equal 
+      to <var>val</var> are found, returns <var>val</var>.</p>
+    <p>If there are no elements equal to <var>val</var>, returns nil. However, 
+      if a block has been specified, it will be evaluated and the result returned.</p>
+    <pre>
+array = [1, 2, 3, 2, 1]
+p array.delete(2)       # =&gt; 2
+p array                 # =&gt; [1, 3, 1]
+
+# if the argument is nil and there's no block, there's no way
+# to determine from the return value whether it was deleted 
+ary = [nil,nil,nil]
+p ary.delete(nil)       # =&gt; nil
+p ary                   # =&gt; []
+p ary.delete(nil)       # =&gt; nil
+</pre>
+  </dd>
+  <dt>delete_at(<var>pos</var>)</dt>
+  <dd> 
+    <p>Removes the element at the position specified by <var>pos</var> and returns 
+      the removed element. If <var>pos</var> is out of range, returns nil.</p>
+    <pre>
+array = [0, 1, 2, 3, 4]
+array.delete_at 2
+p array             # =&gt; [0, 1, 3, 4]
+</pre>
+  </dd>
+  <dt>each {|<var>item</var>| .... }</dt>
+  <dd> 
+    <p>Evaluates a block against each element. Returns <var>self</var>.</p>
+    <pre>
+# 1, 2, 3 are displayed in order
+[1, 2, 3].each do |i|
+  puts i
+end
+</pre>
+  </dd>
+  <dt>each_index {|<var>index</var>| .... }</dt>
+  <dd> 
+    <p>Evaluates a block against each element's index. Identical to the following:</p>
+    <pre>
+(0 ... ary.size).each {|index| ....  }
+</pre>
+    <p>Returns <var>self</var>.</p>
+  </dd>
+  <dt>empty?</dt>
+  <dd> 
+    <p>Returns TRUE if the number of elements in the array is zero.</p>
+  </dd>
+  <dt>include?(<var>val</var>)</dt>
+  <dd> 
+    <p>Returns TRUE if the array contains an element equal to <var>val</var> (using 
+      ==).</p>
+  </dd>
+  <dt>index(<var>val</var>)</dt>
+  <dd> 
+    <p>Returns the position of the first element equal to <var>val</var> (using 
+      ==). If no such element is found, returns nil.</p>
+  </dd>
+  <dt>insert(<var>nth</var>, [<var>val</var>[, <var>val2</var> ...]])</dt>
+  <dd> 
+    <p>Inserts the value of the second or more arguments immediately before the 
+      nth element. Returns <var>self</var>. Defined as below:</p>
+    <pre>
+class Array
+  def insert( n, *vals )
+    self[n, 0] = vals
+    self
+  end
+end
+</pre>
+    <pre>
+ary = [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]
+ary.insert 2, 'a', 'b'
+p ary                  # =&gt; [&quot;foo&quot;, &quot;bar&quot;, &quot;a&quot;, &quot;b&quot;, &quot;baz&quot;]
+</pre>
+    <p>If no argument <var>val</var> is specified, does nothing.</p>
+  </dd>
+  <dt>length</dt>
+  <dt>size</dt>
+  <dd> 
+    <p>Returns the length of the array. If the array is empty, returns zero.</p>
+  </dd>
+  <dt>nitems</dt>
+  <dd> 
+    <p>Returns the number of non-nil elements.</p>
+  </dd>
+  <dt>pop</dt>
+  <dd> 
+    <p>Removes the last element and returns it. If the array is empty, returns 
+      nil.</p>
+    <pre>
+array = [1, [2, 3], 4]
+p array.pop      # =&gt; 4
+p array.pop      # =&gt; [2, 3]
+p array          # =&gt; [1]
+
+p array.pop      # =&gt; 1
+p array.pop      # =&gt; nil
+p array          # =&gt; []
+</pre>
+  </dd>
+  <dt>push(<var>obj1</var>[, <var>obj2</var> ...])</dt>
+  <dd> 
+    <p>Appends <var>obj1</var>, <var>obj2</var> ... to the end of the array, in 
+      order.</p>
+    <p>Returns <var>self</var>.</p>
+    <pre>
+array = [1, 2, 3]
+array.push 4
+array.push [5, 6]
+array.push 7, 8
+p array          # =&gt; [1, 2, 3, 4, [5, 6], 7, 8]
+</pre>
+  </dd>
+  <dt>reverse</dt>
+  <dt>reverse!</dt>
+  <dd> 
+    <p>reverse returns a new array of all elements in reverse order. reverse! 
+      destructively updates the elements in the array.</p>
+    <p>reverse always returns a new array, while reverse! returns <var>self</var>.</p>
+  </dd>
+  <dt>shift</dt>
+  <dd> 
+    <p>Removes the first element of the array and returns it. The remaining elements 
+      are moved up to fill the gap. If the array is empty, returns nil.</p>
+  </dd>
+  <dt>sort</dt>
+  <dt>sort!</dt>
+  <dt>sort {|<var>a</var>, <var>b</var>| ... }</dt>
+  <dt>sort! {|<var>a</var>, <var>b</var>| ... }</dt>
+  <dd> 
+    <p>Sorts the contents of the array. If called with a block, it passes two 
+      arguments to the block, then uses the result to compare. Without a block, 
+      it compares elements with the operator &lt;=&gt;. sort! destructively updates 
+      the elements in the array.</p>
+  </dd>
+  <dd> 
+    <p>sort returns a new, sorted array, while sort! always returns <var>self</var>.</p>
+  </dd>
+  <dt>unshift(<var>obj1</var>[, <var>obj2</var> ...])</dt>
+  <dd> 
+    <p>Inserts <var>obj1</var>, <var>obj2</var> ... to the start of the array, 
+      in order.</p>
+    <p>Returns <var>self</var>.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

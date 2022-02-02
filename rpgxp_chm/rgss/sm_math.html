@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Math</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Math</h1>
+<p>A module that supports floating point calculations.</p>
+
+<h2>Module Functions</h2>
+<dl>
+  <dt>Math.acos(<var>x</var>)</dt>
+  <dt>Math.asin(<var>x</var>)</dt>
+  <dt>Math.atan(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the value of the inverse trigonometric functions of <var>x</var> 
+      in radians.</p>
+    <p>Values that can be returned have ranges of [0, +&#960;], [-&#960;/2, +&#960;/2], 
+      and (-&#960;/2, +&#960;/2) respectively.</p>
+    <p>In acos(x), and asin(x), <var>x</var> must be in the range -1.0 &lt;= <var>x</var> 
+      &lt;= 1 (normally returns NaN).</p>
+    <p>acos() and asin() will throw an <a href="s_exceptions.html#Errno">Errno::EDOM</a> 
+      exception for arguments out of range.</p>
+  </dd>
+  <dt>Math.atan2(<var>y</var>, <var>x</var>)</dt>
+  <dd> 
+    <p>Returns the arctangent of <var>y</var>/<var>x</var> in the range [-&#960;, 
+      &#960;].</p>
+  </dd>
+  <dt>Math.acosh(<var>x</var>)</dt>
+  <dt>Math.asinh(<var>x</var>)</dt>
+  <dt>Math.atanh(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the value of the inverse hyperbolic functions of <var>x</var>.</p>
+    <pre>
+asinh(x) = log(x + sqrt(x * x + 1))
+acosh(x) = log(x + sqrt(x * x - 1)) [x &gt;= 1]
+atanh(x) = log((1+x)/(1-x)) / 2     [-1 &lt; x &lt; 1]
+</pre>
+    <p>In acosh(x), <var>x</var> must be &gt;= 1 (normally throws an <a href="s_exceptions.html#Errno">Errno::EDOM</a> 
+      exception).</p>
+    <p>In atanh(x), <var>x</var> must be in the range -1.0 &lt; <var>x</var> &lt; 
+      1 (normally throws an <a href="s_exceptions.html#Errno">Errno::EDOM</a> 
+      exception).</p>
+  </dd>
+  <dt>Math.cos(<var>x</var>)</dt>
+  <dt>Math.sin(<var>x</var>)</dt>
+  <dt>Math.tan(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the value of the trigonometric functions of <var>x</var> in radians, 
+      in the range [-1, 1].</p>
+  </dd>
+  <dt>Math.cosh(<var>x</var>)</dt>
+  <dt>Math.sinh(<var>x</var>)</dt>
+  <dt>Math.tanh(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the value of the hyperbolic functions of <var>x</var>.</p>
+    <pre>
+cosh(x) = (exp(x) + exp(-x)) / 2
+sinh(x) = (exp(x) - exp(-x)) / 2
+tanh(x) = sinh(x) / cosh(x)
+</pre>
+  </dd>
+  <dt>Math.erf(<var>x</var>)</dt>
+  <dt>Math.erfc(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the values of the error function (erf) and complementary error 
+      function (erfc) of <var>x</var>.</p>
+  </dd>
+  <dt>Math.exp(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the value of the exponential function of <var>x</var>.</p>
+  </dd>
+  <dt>Math.frexp(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the exponent and mantissa of the real number <var>x</var>.</p>
+  </dd>
+  <dt>Math.hypot(<var>x</var>, <var>y</var>)</dt>
+  <dd> 
+    <p>Returns sqrt(x*x + y*y).</p>
+  </dd>
+  <dt>Math.ldexp(<var>x</var>, <var>exp</var>)</dt>
+  <dd> 
+    <p>Returns the real number <var>x</var> multiplied by 2 to the power of <var>exp</var>.</p>
+  </dd>
+  <dt>Math.log(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the natural logarithm of <var>x.</var></p>
+    <p><var>x</var> must be a positive value (normally returns NaN for negative 
+      values and -Infinity for 0).</p>
+    <p>Negative arguments out of range throw <a href="s_exceptions.html#Errno">Errno::EDOM</a> 
+      exceptions, while a 0 argument throws an <a href="s_exceptions.html#Errno">Errno::ERANGE</a> 
+      exception.</p>
+  </dd>
+  <dt>Math.log10(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the common logarithm of <var>x.</var></p>
+    <p><var>x</var> must be a positive value (normally returns NaN for negative 
+      values and -Infinity for 0).</p>
+    <p>Negative arguments out of range throw <a href="s_exceptions.html#Errno">Errno::EDOM</a> 
+      exceptions, while a 0 argument throws an <a href="s_exceptions.html#Errno">Errno::ERANGE</a> 
+      exception.</p>
+  </dd>
+  <dt>Math.sqrt(<var>x</var>)</dt>
+  <dd> 
+    <p>Returns the square root of <var>x</var>. When <var>x</var> is a negative 
+      value, throws an <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 
+      exception.</p>
+    <p>Normally, when <var>x</var> is negative, throws an <a href="s_exceptions.html#Errno">Errno::EDOM</a> 
+      exception.</p>
+  </dd>
+</dl>
+
+<h2>Definitions</h2>
+<dl>
+<dt>E</dt>
+<dd>
+    <p>The natural logarithmic base.</p>
+<pre>
+p Math::E
+# =&gt; 2.718281828
+</pre></dd>
+<dt>PI</dt>
+<dd>
+    <p>The circle ratio.</p>
+<pre>
+p Math::PI
+# =&gt; 3.141592654
+</pre></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

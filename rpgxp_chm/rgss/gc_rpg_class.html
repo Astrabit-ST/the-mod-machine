@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Class</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Class</h1>
+<p>Data class for class.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>id</dt>
+  <dd> 
+    <p>The class's ID.</p>
+  </dd>
+  <dt>name</dt>
+  <dd> 
+    <p>The class name.</p>
+  </dd>
+  <dt>position</dt>
+  <dd> 
+    <p>The class position (0: front, 1: middle, 2: rear).</p>
+  </dd>
+  <dt>weapon_set</dt>
+  <dd> 
+    <p>Array containing IDs for equippable weapons.</p>
+  </dd>
+  <dt>armor_set</dt>
+  <dd> 
+    <p>Array containing IDs for equippable armor.</p>
+  </dd>
+  <dt>element_ranks</dt>
+  <dd> 
+    <p>Level of elemental effectiveness. 1-dimensional array using element IDs 
+      as subscripts (<a href="gc_table.html">Table</a>), with 6 levels (0: A, 
+      1: B, 2: C, 3: D, 4: E, 5: F).</p>
+  </dd>
+  <dt>state_ranks</dt>
+  <dd> 
+    <p>Level of status effectiveness. 1-dimensional array using status IDs as 
+      subscripts (<a href="gc_table.html">Table</a>), with 6 levels (0: A, 1: 
+      B, 2: C, 3: D, 4: E, 5: F).</p>
+  </dd>
+  <dt>learnings</dt>
+  <dd> 
+    <p>Skills to Learn. An <a
+href="gc_rpg_class_learning.html">RPG::Class::Learning</a> array.</p>
+  </dd>
+</dl>
+
+<h2>Inner Class</h2>
+<ul>
+<li><a href="gc_rpg_class_learning.html">RPG::Class::Learning</a></li>
+</ul>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class Class
+    def initialize
+      @id = 0
+      @name = ""
+      @position = 0
+      @weapon_set = []
+      @armor_set = []
+      @element_ranks = Table.new(1)
+      @state_ranks = Table.new(1)
+      @learnings = []
+    end
+    attr_accessor :id
+    attr_accessor :name
+    attr_accessor :position
+    attr_accessor :weapon_set
+    attr_accessor :armor_set
+    attr_accessor :element_ranks
+    attr_accessor :state_ranks
+    attr_accessor :learnings
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

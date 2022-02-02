@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::State</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::State</h1>
+<p>Data class for state.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>id</dt>
+  <dd> 
+    <p>State ID.</p>
+  </dd>
+  <dt>name</dt>
+  <dd> 
+    <p>State name.</p>
+  </dd>
+  <dt>animation_id</dt>
+  <dd> 
+    <p>The state's animation ID.</p>
+  </dd>
+  <dt>restriction</dt>
+  <dd> 
+    <p>Sets restrictions (0: none, 1: can't use magic, 2: always attack enemies, 
+      3: always attack allies, 4: can't move).</p>
+  </dd>
+  <dt>nonresistance</dt>
+  <dd> 
+    <p>Truth value of the [Nonresistance] option.</p>
+  </dd>
+  <dt>zero_hp</dt>
+  <dd> 
+    <p>Truth value of the [Regard as HP 0] option.</p>
+  </dd>
+  <dt>cant_get_exp</dt>
+  <dd> 
+    <p>Truth value of the [Can't Get EXP] option.</p>
+  </dd>
+  <dt>cant_evade</dt>
+  <dd> 
+    <p>Truth value of the [Can't Evade] option.</p>
+  </dd>
+  <dt>slip_damage</dt>
+  <dd> 
+    <p>Truth value of the [Slip Damage] option.</p>
+  </dd>
+  <dt>rating</dt>
+  <dd> 
+    <p>State rating (0..10).</p>
+  </dd>
+  <dt>hit_rate</dt>
+  <dd> 
+    <p>Hit percentage.</p>
+  </dd>
+  <dt>maxhp_rate</dt>
+  <dd> 
+    <p>Maximum HP percentage.</p>
+  </dd>
+  <dt>maxsp_rate</dt>
+  <dd> 
+    <p>Maximum SP percentage.</p>
+  </dd>
+  <dt>str_rate</dt>
+  <dd> 
+    <p>Strength percentage.</p>
+  </dd>
+  <dt>dex_rate</dt>
+  <dd> 
+    <p>Dexterity percentage.</p>
+  </dd>
+  <dt>agi_rate</dt>
+  <dd> 
+    <p>Agility percentage.</p>
+  </dd>
+  <dt>int_rate</dt>
+  <dd> 
+    <p>Intelligence percentage.</p>
+  </dd>
+  <dt>atk_rate</dt>
+  <dd> 
+    <p>Attack percentage.</p>
+  </dd>
+  <dt>pdef_rate</dt>
+  <dd> 
+    <p>Physical defense percentage.</p>
+  </dd>
+  <dt>mdef_rate</dt>
+  <dd> 
+    <p>Magic defense percentage.</p>
+  </dd>
+  <dt>eva</dt>
+  <dd> 
+    <p>Evasion correction.</p>
+  </dd>
+  <dt>battle_only</dt>
+  <dd> 
+    <p>Truth value of whether the state wears off at battle end.</p>
+  </dd>
+  <dt>hold_turn</dt>
+  <dt>auto_release_prob</dt>
+  <dd> 
+    <p>Percent probability of wearing off after the number of turns in hold_turn 
+      have passed.</p>
+  </dd>
+  <dt>shock_release_prob</dt>
+  <dd> 
+    <p>Percent probability of wearing off after receiving physical damage.</p>
+  </dd>
+  <dt>guard_element_set</dt>
+  <dd> 
+    <p>Elemental defense. An Elemental ID array.</p>
+  </dd>
+  <dt>plus_state_set</dt>
+  <dd> 
+    <p>States to add. A State ID array.</p>
+  </dd>
+  <dt>minus_state_set</dt>
+  <dd> 
+    <p>States to cancel. A State ID array.</p>
+  </dd>
+</dl>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class State
+    def initialize
+      @id = 0
+      @name = ""
+      @animation_id = 0
+      @restriction = 0
+      @nonresistance = false
+      @zero_hp = false
+      @cant_get_exp = false
+      @cant_evade = false
+      @slip_damage = false
+      @rating = 5
+      @hit_rate = 100
+      @maxhp_rate = 100
+      @maxsp_rate = 100
+      @str_rate = 100
+      @dex_rate = 100
+      @agi_rate = 100
+      @int_rate = 100
+      @atk_rate = 100
+      @pdef_rate = 100
+      @mdef_rate = 100
+      @eva = 0
+      @battle_only = true
+      @hold_turn = 0
+      @auto_release_prob = 0
+      @shock_release_prob = 0
+      @guard_element_set = []
+      @plus_state_set = []
+      @minus_state_set = []
+    end
+    attr_accessor :id
+    attr_accessor :name
+    attr_accessor :animation_id
+    attr_accessor :restriction
+    attr_accessor :nonresistance
+    attr_accessor :zero_hp
+    attr_accessor :cant_get_exp
+    attr_accessor :cant_evade
+    attr_accessor :slip_damage
+    attr_accessor :rating
+    attr_accessor :hit_rate
+    attr_accessor :maxhp_rate
+    attr_accessor :maxsp_rate
+    attr_accessor :str_rate
+    attr_accessor :dex_rate
+    attr_accessor :agi_rate
+    attr_accessor :int_rate
+    attr_accessor :atk_rate
+    attr_accessor :pdef_rate
+    attr_accessor :mdef_rate
+    attr_accessor :eva
+    attr_accessor :battle_only
+    attr_accessor :hold_turn
+    attr_accessor :auto_release_prob
+    attr_accessor :shock_release_prob
+    attr_accessor :guard_element_set
+    attr_accessor :plus_state_set
+    attr_accessor :minus_state_set
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

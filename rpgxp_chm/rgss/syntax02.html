@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Variables and Constants</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Variables and Constants</h1>
+<ul>
+<li><a href="#L000228">Global Variables</a></li>
+<li><a href="#L000226">Instance Variables</a></li>
+<li><a href="#L000225">Local Variables</a></li>
+<li><a href="#L000236">Constants</a></li>
+  <li><a href="#L000229">Pseudo Variables</a></li>
+</ul>
+<p>The type of variable or constant in Ruby--global variable, instance variable, 
+  local variables, and constants--can be determined from its initial character. 
+  Normally a variable has an alphanumeric name (outside of its first character) which can include an underscore, 
+  but some built-in variables begin with '$' + one character (see <a href="s_variables.html">Built-In 
+  Variables</a>).</p>
+<p>Variables and constants point to specified objects. Assigning objects to variables 
+  and constants simply makes them point to new objects; it does not create new 
+  copies of objects.</p>
+
+<h2><a name="L000228">Global Variables</a></h2>
+<p>Example:</p>
+<pre>
+$foobar
+</pre>
+<p>Variables beginning with '$' are global variables and can be referenced from 
+  anywhere in the program (thus requiring some caution when using). Global variables 
+  do not need declarations. When referenced, the value of an uninitialized global 
+  variable is nil.</p>
+
+<h2><a name="L000226">Instance Variables</a></h2>
+<p>Example:</p>
+<pre>
+@foobar
+</pre>
+<p>Variables beginning with '@' are instance variables and belong to specific 
+  objects. Instance variables can be referenced from any method of their class 
+  or subclass. When referenced, the value of an uninitialized instance variable 
+  is nil.</p>
+
+<h2><a name="L000225">Local Variables</a></h2>
+<p>Example:</p>
+<pre>
+foobar
+</pre>
+<p>Identifiers beginning with a lowercase letter or '_' are local variables or 
+  method calls.</p>
+<p>Within a local variable's scope (classes, modules, method definitions), the 
+  initial assignment to an identifier beginning with lowercase letters is the 
+  declaration of that scope's local variable. Referencing undeclared identifiers 
+  is considered a call to a method with no arguments.</p>
+
+<h2><a name="L000236">Constants</a></h2>
+<p>Example:</p>
+<pre>
+FOOBAR
+</pre>
+<p>Identifiers beginning with an uppercase letter are constants. The definition 
+  of a constant (and its initialization) depends on its assignment; constants 
+  cannot be defined with a method. Accessing an undefined constant throws a <a href="s_exceptions.html#NameError">NameError</a> 
+  exception.</p>
+<p>Within the class or module in which a constant is defined, the constant can 
+  be referenced by inheriting classes, classes that include modules, and modules. 
+  To reference constants externally, use the '::' operator.</p>
+<pre>
+class Foo
+  FOO = 'FOO'
+end
+
+class Bar &lt; Foo
+  p FOO             # =&gt; &quot;FOO&quot;
+end
+
+p Foo::FOO          # =&gt; &quot;FOO&quot;
+</pre>
+<p>The names of classes and modules are handled as constants.</p>
+
+<h2><a name="L000229">Pseudo Variables</a></h2>
+<p>Apart from the usual variables, there are also special variables known as pseudo 
+  variables.</p>
+<dl>
+<dt>self</dt>
+<dd>
+    <p>The current method's execution constituent.</p>
+</dd>
+<dt>nil</dt>
+<dd>
+    <p>The only instance of the <a href="sc_nilclass.html">NilClass</a> class. 
+      Signifies NIL.</p>
+</dd>
+<dt>true</dt>
+<dd>
+    <p>The only instance of the <a href="sc_nilclass.html"></a><a href="sc_trueclass.html">TrueClass</a> 
+      class. Signifies TRUE.</p>
+</dd>
+<dt>false</dt>
+<dd>
+    <p>The only instance of the <a href="sc_nilclass.html"></a><a href="sc_falseclass.html">FalseClass</a> 
+      class. Signifies FALSE.</p>
+</dd>
+</dl>
+<p>The value of a pseudo variable cannot be changed. Assigning values to pseudo 
+  variables will result in a syntax error.</p>
+
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RGSS Specifications</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RGSS Specifications</h1>
+<ul>
+  <li><a href="#game_run">Starting a Game</a></li>
+<li><a href="#game_ini">Game.ini</a></li>
+<li><a href="#rgss_rtp">RGSS-RTP</a>
+<ul>
+      <li><a href="#rgss_rtp_install">Installation Data</a></li>
+</ul></li>
+  <li><a href="#encryption_archive">Encrypted Archives</a></li>
+  <li><a href="#others">Other</a> 
+    <ul>
+      <li><a href="#character_code">Character Set</a> </li>
+<li><a href="#smooth_mode">Smooth Mode</a></li>
+      <li><a href="#property">Properties</a></li>
+</ul></li>
+</ul>
+
+<h2><a name="game_run">Starting a Game</a></h2>
+<img src="img/folder.png" alt="Game folder"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>Normally, you launch RGSS by double-clicking the icon for the game file, <var>Game.exe</var> 
+  (or <var>Game</var> if the Windows option &quot;Hide extensions for known file 
+  types&quot; has been turned on). The folder that contains this file is called 
+  the <var>game folder</var>.</p>
+<p>In-progress games can be started up by selecting [Playtest] from the menu or 
+  [Battle Test] from the Troop database. In both cases, the game will start in 
+  debug mode, and the built-in Ruby variable <a href="s_variables.html#L000462">$DEBUG</a> 
+  will be set automatically. While battle testing, the variable $BTEST will also 
+  be set to true.</p>
+<p>Game operation is specified in <a href="#game_ini">Game.ini</a>, the configuration 
+  file.</p>
+
+<h2><a name="game_ini">Game.ini</a></h2>
+<p>The Game.ini file is automatically created and updated by RPGXP. It can also 
+  be edited manually with Notepad or another text editor.</p>
+<p>Example:</p>
+<pre>
+[Game]
+Library=RGSS100J.dll
+Scripts=Data\Scripts.rxdata
+Title=RubyQuest
+RTP1=Standard
+RTP2=
+RTP3=
+</pre>
+<dl>
+<dt>Library</dt>
+<dd>
+    <p>The name of the RGSS DLL. This file is usually installed in the Windows 
+      system folder.</p>
+    <p>If there's a DLL specified in the game folder, it will be given precedence.</p>
+</dd>
+<dt>Scripts</dt>
+<dd>
+    <p>The data file in which scripts are stored, specified with a path relative 
+      to the game folder.</p>
+    <p>Ruby's scripts usually take the form of text files with the extension .rb, 
+      but RGSS uses one proprietary packaged file. This file cannot usually be 
+      edited without using RPGXP's script editor. The data is comprised of multiple 
+      sections and is executed in the listed order, as displayed.</p>
+</dd>
+<dt>Title</dt>
+<dd>
+    <p>The game title, displayed in the game window's title bar.</p>
+</dd>
+<dt>RTP1</dt>
+<dt>RTP2</dt>
+<dt>RTP3</dt>
+<dd>
+    <p>The title of the RGSS-RTP the game is using. If the specified RTP isn't 
+      installed, an error message will be displayed.</p>
+    <p>If you place an RGSS DLL (specified by Library) in the game folder without 
+      specifying an RTP, you can create a game that doesn't require RTP to be 
+      installed. This distribution method isn't actively recommended, but it might 
+      be advantageous when a large majority of the materials used are original 
+      creations.</p>
+</dd>
+</dl>
+
+<h2><a name="rgss_rtp">RGSS-RTP</a></h2>
+<p> RTP (Run Time Package) is a mechanism that reduces game data size for distribution. 
+  RTP contains standard graphics and audio files used across many different games. 
+  Installing these materials as a common file before playing a game eliminates 
+  the need to download duplicate files over and over.</p>
+<p> The RGSS-RTP configuration file can use the following methods from the built-in 
+  game library to access files as though they were in the game folder. The extensions 
+  can be left off the file names that are passed to the methods below--their file 
+  types (such as .png or .mid) are identified automatically.</p>
+<p><a
+href="gc_bitmap.html#new">Bitmap.new</a>, <a
+href="gm_audio.html#bgm_play">Audio.bgm_play</a>, <a
+href="gm_audio.html#bgs_play">Audio.bgs_play</a>, <a
+href="gm_audio.html#me_play">Audio.me_play</a>, <a
+href="gm_audio.html#se_play">Audio.se_play</a>, <a
+href="gm_graphics.html#transition">Graphics.transition</a></p>
+<h3><a name="rgss_rtp_install">Installation Data</a></h3>
+<p>RPGXP's default RTP is the single &quot;Standard&quot; type, but structurally 
+  speaking, you can use multiple RTPs at the same time. If you know how to make 
+  an installer, follow these steps to create a unique RTP at the user level. However, 
+  using common names for RTP titles, such as &quot;Extension&quot;, is not recommended; 
+  they might conflict with the names of new, official RTPs in the future.</p>
+<p>By default, RTP is installed in the following folder:</p>
+<pre>
+[CommonFilesFolder]\Enterbrain\RGSS\[RTPName]
+</pre>
+Here, [CommonFilesFolder] is the location of the Windows &quot;Common Files&quot; 
+folder, while [RTPName] is the name of the RTP. Here's an example: 
+<pre>
+C:\Program Files\Common Files\Enterbrain\RGSS\Standard
+</pre>
+<p>The RTP installer creates a string value containing the RTP name in the &quot;HKEY_LOCAL_MACHINE\SOFTWARE\Enterbrain\RGSS\RTP&quot; 
+  registry key and uses it to set the path. RGSS recognizes the string specified 
+  in this key as the RTP.</p>
+
+<h2><a name="encryption_archive">Encrypted Archives</a></h2>
+<p>Encrypted archives make it difficult for others to analyze and/or rebuild the 
+  game contents. Normally all data and graphic files (not audio files) are stored 
+  in Game.rgssad. You can create an encrypted archive by checking the [Create encrypted archive] box when compressing the game data.</p>
+<p>The files within the encrypted archive can use the following methods from the 
+  built-in game library to access files as though they were in the game folder:</p>
+<p><a href="g_functions.html#load_data">load_data</a>, <a
+href="gc_bitmap.html#new">Bitmap.new</a>, <a
+href="gm_graphics.html#transition">Graphics.transition</a></p>
+<p>When there is an encrypted archive in the game folder, the script data (normally 
+  Data\Scripts.rxdata) defined in the Scripts line of <a href="#game_ini">Game.ini</a> 
+  will always be read from the archive. This is a limitation that prevents files 
+  within the archive from being read by an external script.</p>
+<p>Due to its nature, the encrypted archive's internal format has not, and will not, been released 
+  to the public. Please refrain from analyzing it.</p>
+
+<h2><a name="others">Other</a></h2>
+
+<h3><a name="character_code">Character Set</a></h3>
+<p>RGSS uses the UTF-8 character set. UTF-8 is a way of encoding Unicode, a character 
+  set that can display letters and characters from all the world's languages.</p>
+<p>Ruby's built-in variable $KCODE (not included in this reference) is set to 
+  &quot;UTF8&quot; by default. RPGXP's script data and all other string data are 
+  also in UTF-8, so you don't have to worry about any encoding conflicts as you 
+  build your game.</p>
+<p>However, to guarantee proper operation, you should not create games that include characters only available in Unicode, as Windows 98 and Windows Me do not support it.</p>
+
+<h3><a name="smooth_mode">Smooth Mode</a></h3>
+<p>RGSS games usually run at 20 frames per second, but you can check [Smooth Mode] 
+  in the game's Properties to run it at a 40 fps framerate instead. This is why 
+  the scripts move at an internal rate of 40 fps whether [Smooth Mode] is on or 
+  off. Be aware that most values, like wait length, will be handled as though 
+  they've been doubled.</p>
+<p>You can change the framerate with <a href="gm_graphics.html#frame_rate">Graphics.frame_rate</a>.</p>
+
+<h3>
+<a name="property">Properties</a></h2>
+<p>The term &quot;property&quot; is used in the <a href="g_index.html">game library</a> 
+  overview. This is not a concept in Ruby's specifications, but rather a term 
+  unique to RGSS.</p>
+<p>For example, this is how to obtain and set a sprite's x-coordinate (<a href="gc_sprite.html#x">Sprite#x</a>):</p>
+<pre>
+x = sprite1.x         # obtain
+sprite2.x = x + 32    # set
+</pre>
+<p>For the sake of convenience, methods that are defined to both obtain (read) 
+  and set (write) via assignment operators in this way are called &quot;properties&quot;.</p>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Window</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Window</h1>
+<p>The game window class. Created internally from multiple sprites.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Method</h2>
+<dl>
+  <dt>Window.new([<var>viewport</var>])</dt>
+  <dd> 
+    <p>Creates a Window object. Specifies a Viewport (<a href="gc_viewport.html">Viewport</a>) 
+      when necessary.</p>
+  </dd>
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt>viewport</dt>
+  <dd> 
+    <p>Gets the Viewport (<a href="gc_viewport.html">Viewport</a>) specified 
+      when the window was created.</p>
+  </dd>
+  <dt>dispose</dt>
+  <dd> 
+    <p>Frees the window. If the window has already been freed, does nothing.</p>
+  </dd>
+  <dt>disposed?</dt>
+  <dd> 
+    <p>Returns TRUE if the window has been freed.</p>
+  </dd>
+  <dt>update</dt>
+  <dd> 
+    <p>Refreshes the cursor blink and the pause graphic animation. As a rule, 
+      this method is called once per frame.</p>
+  </dd>
+</dl>
+
+<h2>Properties</h2>
+<dl>
+  <dt>windowskin</dt>
+  <dd> 
+    <p>Refers to the bitmap (<a href="gc_bitmap.html">Bitmap</a>) used as a 
+      windowskin.</p>
+  </dd>
+  <dt>contents</dt>
+  <dd> 
+    <p>Refers to the bitmap (<a href="gc_bitmap.html">Bitmap</a>) used for 
+      the window's contents.</p>
+  </dd>
+  <dt>stretch</dt>
+  <dd> 
+    <p>The wallpaper display method. If TRUE, stretches the wallpaper graphic; 
+      if FALSE, tiles it. The default value is TRUE.</p>
+  </dd>
+  <dt>cursor_rect</dt>
+  <dd> 
+    <p>The cursor box (<a href="gc_rect.html">Rect</a>). Sets the window's upper 
+      left corner using relative coordinates (-16, -16).</p>
+  </dd>
+  <dt>active</dt>
+  <dd> 
+    <p>Cursor blink status. If TRUE, the cursor is blinking.</p>
+  </dd>
+  <dt>visible</dt>
+  <dd> 
+    <p>The window's visibility. If TRUE, the window is visible.</p>
+  </dd>
+  <dt>pause</dt>
+  <dd> 
+    <p>The pause graphic's visibility. This is a symbol that appears in the message 
+      window when waiting for the player to press a button. If TRUE, the graphic 
+      is visible.</p>
+  </dd>
+  <dt>x</dt>
+  <dd> 
+    <p>The window's X-coordinate.</p>
+  </dd>
+  <dt>y</dt>
+  <dd> 
+    <p>The window's Y-coordinate.</p>
+  </dd>
+  <dt>width</dt>
+  <dd> 
+    <p>The window's width.</p>
+  </dd>
+  <dt>height</dt>
+  <dd> 
+    <p>The window's height.</p>
+  </dd>
+  <dt>z</dt>
+  <dd> 
+    <p>The window's Z-coordinate. The larger this value, the closer to the player 
+      the window will be displayed. If multiple objects share the same Z-coordinate, 
+      the more recently created object will be displayed closest to the player. 
+      The Z-coordinate of the window's contents equals the window background's 
+      Z-coordinate plus 2.</p>
+  </dd>
+  <dt>ox</dt>
+  <dd> 
+    <p>The X-coordinate of the starting point of the window's contents. Change 
+      this value to scroll the window's contents.</p>
+  </dd>
+  <dt>oy</dt>
+  <dd> 
+    <p>The Y-coordinate of the starting point of the window's contents. Change 
+      this value to scroll the window's contents.</p>
+  </dd>
+  <dt>opacity</dt>
+  <dd> 
+    <p>The window's opacity (0-255). Values out of range are automatically corrected.</p>
+  </dd>
+  <dt>back_opacity</dt>
+  <dd> 
+    <p>The window background's opacity (0-255). Values out of range are automatically 
+      corrected.</p>
+  </dd>
+  <dt>contents_opacity</dt>
+  <dd> 
+    <p>The opacity of the window's contents (0-255). Values out of range are automatically 
+      corrected.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

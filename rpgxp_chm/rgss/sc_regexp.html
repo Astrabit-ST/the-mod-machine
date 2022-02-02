@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Regexp</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Regexp</h1>
+<p>The <a href="appendix01.html">regular expression</a> class. See <a href="syntax03.html#L000274">Regular 
+  Expressions</a> for details.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Methods</h2>
+<dl>
+  <dt><a name="L001314">Regexp.last_match</a></dt>
+  <dd> 
+    <p>Returns the <a href="sc_matchdata.html">MatchData</a> object for the last 
+      regular expression match performed in the current scope. This method call 
+      is identical to a <a href="s_variables.html#L000428">$~</a> reference.</p>
+    <pre>
+/(.)(.)/ =~ &quot;ab&quot;
+p Regexp.last_match      # =&gt; #&lt;MatchData:0x4599e58&gt;
+p Regexp.last_match[0]   # =&gt; &quot;ab&quot;
+p Regexp.last_match[1]   # =&gt; &quot;a&quot;
+p Regexp.last_match[2]   # =&gt; &quot;b&quot;
+p Regexp.last_match[3]   # =&gt; nil
+</pre>
+  </dd>
+  <p></p>
+  <dt>Regexp.last_match([<var>nth</var>])</dt>
+  <dd> 
+    <p>If the integer <var>nth</var> is 0, returns the matching string (<a href="s_variables.html#L000427">$&amp;</a>). 
+      Otherwise, returns the substring matching the <var>nth</var> set of parentheses 
+      (<a href="s_variables.html#L000432">$1</a>, <a href="s_variables.html#L000433">$2</a>, 
+      ...). When there are no corresponding parentheses or no matches, returns 
+      nil.</p>
+    <pre>
+/(.)(.)/ =~ &quot;ab&quot;
+p Regexp.last_match      # =&gt; #&lt;MatchData:0x4599e58&gt;
+p Regexp.last_match(0)   # =&gt; &quot;ab&quot;
+p Regexp.last_match(1)   # =&gt; &quot;a&quot;
+p Regexp.last_match(2)   # =&gt; &quot;b&quot;
+p Regexp.last_match(3)   # =&gt; nil
+</pre>
+    <p>Because Regexp.last_match, with no arguments, returns nil when the entire 
+      regular expression does not match, the format last_match[1] will throw a 
+      <a href="s_exceptions.html#NameError">NameError</a> exception. On the other 
+      hand, last_match(1) returns nil.</p>
+  </dd>
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt><var>self</var> =~ <var>string</var></dt>
+  <dt><var>self</var> === <var>string</var></dt>
+  <dd> 
+    <p>Matches the string string to a regular expression. If the argument is not 
+      a string or does not match, returns false; if it matches, returns true.</p>
+    <p>Matching information can be configured in the built-in variable <a href="s_variables.html#L000428">$~</a>.</p>
+    <p>If <var>string</var> is neither nil nor a <a href="sc_string.html">String</a> 
+      object, throws a <a href="s_exceptions.html#TypeError">TypeError</a> exception.</p>
+  </dd>
+  <dt><a name="L001322">match(<var>str</var>)</a></dt>
+  <dd> 
+    <p>Identical to self=~str, except that it does not return a <a href="sc_matchdata.html">MatchData</a> 
+      object. If there is no match, returns nil.</p>
+    <p>When only the substring matching the regular expression is needed, use 
+      match(str) like this:</p>
+    <pre>
+bar = /foo(.*)baz/.match(&quot;foobarbaz&quot;).to_a[1]
+
+_, foo, bar, baz = */(foo)(bar)(baz)/.match(&quot;foobarbaz&quot;)
+</pre>
+    <p>to_a takes failed matches into account.</p>
+  </dd>
+  <dt>to_s</dt>
+  <dd> 
+    <p>Creates and returns a string expression for a regular expression. Preserves 
+      the meaning of the returned string even if the string is embedded in another 
+      regular expression.</p>
+    <pre>
+re = /foo|bar|baz/i
+p re.to_s       # =&gt; &quot;(?i-mx:foo|bar|baz)&quot;
+p /#{re}+/o     # =&gt; /(?i-mx:foo|bar|baz)+/
+</pre>
+    <p>However, some regular expressions with backreferences may not work as expected. 
+      This is because backreferences can only be specified by number at present.</p>
+    <pre>
+re = /(foo|bar)\1/      # \1 is foo or bar
+p /(baz)#{re}/          # \1 is baz
+
+# =&gt; /(baz)(?-mix:(foo|bar)\1)/
+</pre>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

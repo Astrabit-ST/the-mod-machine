@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Bitmap</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Bitmap</h1>
+<p>The bitmap class. Bitmaps are expressions of so-called graphics.</p>
+<p>Sprites (<a href="gc_sprite.html">Sprite</a>) and other objects must be used 
+  to display bitmaps on the screen.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Methods</h2>
+<dl>
+
+<dt><a name="new">Bitmap.new(<var>filename</var>)</a></dt>
+<dd>
+    <p>Loads the graphic file specified in <var>filename</var> and creates a bitmap 
+      object.</p>
+    <p>Also automatically searches files included in <a href="rgss.html#rgss_rtp">RGSS-RTP</a> 
+      and <a href=
+"rgss.html#encryption_archive">encrypted archives</a>. File extensions may be 
+      omitted.</p>
+  </dd>
+
+<dt>Bitmap.new(<var>width</var>, <var>height</var>)</dt>
+<dd>
+    <p>Creates a bitmap object with the specified size.</p>
+  </dd>
+
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt><a name="dispose">dispose</a></dt>
+  <dd> 
+    <p>Frees the bitmap. If the bitmap has already been freed, does nothing.</p>
+  </dd>
+  <dt>disposed?</dt>
+  <dd> 
+    <p>Returns TRUE if the bitmap has been freed.</p>
+  </dd>
+  <dt>width</dt>
+  <dd> 
+    <p>Gets the bitmap width.</p>
+  </dd>
+  <dt>height</dt>
+  <dd> 
+    <p>Gets the bitmap height.</p>
+  </dd>
+  <dt>rect</dt>
+  <dd> 
+    <p>Gets the bitmap rectangle (<a href="gc_rect.html">Rect</a>).</p>
+  </dd>
+  <dt>blt(<var>x</var>, <var>y</var>, <var>src_bitmap</var>, <var>src_rect</var>[, 
+    <var>opacity</var>])</dt>
+  <dd> 
+    <p>Performs a block transfer from the <var>src_bitmap</var> box <var>src_rect</var> 
+      (<a href="gc_rect.html">Rect</a>) to the specified bitmap coordinates (<var>x</var>, 
+      <var>y</var>).</p>
+    <p><var>opacity</var> can be set from 0 to 255.</p>
+  </dd>
+  <dt>stretch_blt(<var>dest_rect</var>, <var>src_bitmap</var>, <var>src_rect</var>[, 
+    <var>opacity</var>])</dt>
+  <dd> 
+    <p>Performs a block transfer from the <var>src_bitmap</var> box <var>src_rect</var> 
+      (<a href="gc_rect.html">Rect</a>) to the specified bitmap box <var>dest_rect</var> 
+      (<a href="gc_rect.html">Rect</a>).</p>
+    <p><var>opacity</var> can be set from 0 to 255.</p>
+  </dd>
+  <dt>fill_rect(<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>, 
+    <var>color</var>)</dt>
+  <dt>fill_rect(<var>rect</var>, <var>color</var>)</dt>
+  <dd> 
+    <p>Fills the bitmap box (<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>) 
+      or <var>rect</var> (<a href="gc_rect.html">Rect</a>) with <var>color</var> 
+      (<a href="gc_color.html">Color</a>).</p>
+  </dd>
+  <dt>clear</dt>
+  <dd> 
+    <p>Clears the entire bitmap.</p>
+  </dd>
+  <dt>get_pixel(<var>x</var>, <var>y</var>)</dt>
+  <dd> 
+    <p>Gets the color (<a href="gc_color.html">Color</a>) at the specified 
+      pixel (<var>x</var>, <var>y</var>).</p>
+  </dd>
+  <dt>set_pixel(<var>x</var>, <var>y</var>, <var>color</var>)</dt>
+  <dd> 
+    <p>Sets the specified pixel (<var>x</var>, <var>y</var>) to <var>color</var> 
+      (<a href="gc_color.html">Color</a>).</p>
+  </dd>
+  <dt>hue_change(<var>hue</var>)</dt>
+  <dd> 
+    <p>Changes the bitmap's hue within 360 degrees of displacement.</p>
+    <p>This process is time-consuming. Furthermore, due to conversion errors, 
+      repeated hue changes may result in color loss.</p>
+  </dd>
+  <dt>draw_text(<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>, 
+    <var>str</var>[, <var>align</var>])</dt>
+  <dt>draw_text(<var>rect</var>, <var>str</var>[, <var>align</var>])</dt>
+  <dd> 
+    <p>Draws a string <var>str</var> in the bitmap box (<var>x</var>, <var>y</var>, 
+      <var>width</var>, <var>height</var>) or <var>rect</var> (<a href="gc_rect.html">Rect</a>).</p>
+    <p>If the text length exceeds the box's width, the text width will automatically 
+      be reduced by up to 60 percent.</p>
+    <p>Horizontal text is left-aligned by default; set <var>align</var> to 1 to 
+      center the text and to 2 to right-align it. Vertical text is always centered.</p>
+    <p>As this process is time-consuming, redrawing the text with every frame 
+      is not recommended.</p>
+  </dd>
+  <dt>text_size(<var>str</var>)</dt>
+  <dd> 
+    <p>Gets the box (<a href="gc_rect.html">Rect</a>) used when drawing a 
+      string <var>str</var> with the draw_text method. Does not include the angled 
+      portions of italicized text.</p>
+  </dd>
+</dl>
+
+<h2>Property</h2>
+<dl>
+  <dt>font</dt>
+  <dd> 
+    <p>The font (<a href="gc_font.html">Font</a>) used to draw a string with the 
+      draw_text method.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

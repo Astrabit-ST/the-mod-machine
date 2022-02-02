@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Method Calls</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Method Calls</h1>
+<ul>
+<li><a href="#L000322">super</a></li>
+  <li><a href="#L000323">Iterators</a></li>
+<li><a href="#L000324">yield</a></li>
+</ul>
+<p>Example:</p>
+<pre>
+foo.bar()
+foo.bar
+bar()
+print &quot;hello world\n&quot;
+print
+</pre>
+<p>Syntax:</p>
+<pre>
+[expr '.'] identifier ['(' expr ... ['*' [expr]] ')']
+</pre>
+<p>Method calls invoke the method of the receiver (the value of the expression 
+  to the left of the dot). If no receiver is specified, calls the method of self.</p>
+<p>Method names can be normal identifiers or identifiers followed by the character 
+  ? or !. Customarily, ? is used for predicates (methods returning true/false 
+  values), while ! is used for methods that are more destructive than their !-less 
+  counterparts (tr versus tr!).</p>
+<p>If the last argument is preceded by *, the value of that expression is expanded 
+  to its arguments:</p>
+<pre>
+foo(*[1,2,3])   # same as foo(1,2,3)
+</pre>
+
+<h2><a name="L000322">super</a></h2>
+<p>Example:</p>
+<pre>
+super
+super(1,2,3)
+</pre>
+<p>Syntax:</p>
+<pre>
+super
+super(expr , ... )
+</pre>
+<p>super calls the method that is being overridden by the current method. If the 
+  parentheses and arguments are omitted, the current method's arguments are passed 
+  to super as is. To call the overridden method without passing any arguments, 
+  indicate the parentheses as in super().</p>
+<pre>
+class Foo
+  def foo(arg=nil)
+    p arg
+  end
+end
+
+class Bar &lt; Foo
+  def foo(arg)
+    super(5)       # called with 5 as an argument
+    super(arg)     # called with 5 as an argument
+    super          # called with 5 as an argument; abbreviation of super(arg)
+    arg = 1
+    super          # called with 1 as an argument; abbreviation of super(arg)
+    super()        # called with no argument
+  end
+end
+Bar.new.foo 5
+</pre>
+
+<h2><a name="L000323">Iterators</a></h2>
+<p>Example:</p>
+<pre>
+[1,2,3].each do |i| print i*2, &quot;\n&quot; end
+[1,2,3].each {|i| print i*2, &quot;\n&quot; }
+</pre>
+<p>Syntax:</p>
+<pre>
+method(arg1, arg2, ...)  do ['|' expr ... '|'] expr ... end
+method(arg1, arg2, ...) '{' ['|' expr ... '|'] expr ... '}'
+</pre>
+<p>Iterators are methods used for abstracting control structures (especially loops). 
+  If you call a method that is followed by a code segment enclosed by do ... end 
+  or by { ... } (called a block), the method can evaluate the block from within. 
+  Methods that call these kinds of blocks are called iterators. Block calls from 
+  iterators use <a href="#L000324">yield</a>. The value passed to yield is assigned 
+  to the variable between the two pipes ( | ).</p>
+<p>{ ... } binds more strongly than a do ... end block.</p>
+<pre>
+foobar a, b do .. end   # foobar is called as an iterator
+foobar a, b { .. }      # b is called as an iterator
+</pre>
+<p> Local variables that are first assigned (declared) in a block are only valid 
+  within that block.</p>
+<pre>
+foobar {
+  i = 20                # local variable 'i' is declared
+   ...
+}
+                        # 'i' is undefined here
+foobar a, b do
+  i = 11                # declaration of a totally different variable 'i'
+   ...
+end
+</pre>
+<p>Like most methods, an iterator's return value is nil if it is interrupted by 
+  <a href="syntax05.html#L000308">break</a> from within a block. When break has 
+  an argument, that value will become the iterator's return value.</p>
+
+<h2><a name="L000324">yield</a></h2>
+<p>Example:</p>
+<pre>
+yield data
+</pre>
+<p>Syntax:</p>
+<pre>
+yield '(' [ expr [',' expr ... ]] ')'
+yield [ expr [',' expr ... ]]
+</pre>
+<p>Passes the argument(s) as the block's argument(s) and evaluates the block. 
+  yield is used within <a href="syntax07.html#L000330">MethodDefinition</a> to 
+  define <a href="#L000323">iterators</a>.</p>
+<pre>
+def foo
+  yield(1,2)
+end
+
+foo {|a,b| p [a,b]}
+</pre>
+<p>Assignment of the block argument(s) is carried out according to the rules of 
+  <a href="syntax04.html#L000288">multiple assignment</a>. If no block is supplied 
+  to the method that executed yield (i.e., it is not an iterator), throws a <a href="s_exceptions.html#LocalJumpError">LocalJumpError</a> 
+  exception.</p>
+<p>yield returns the result of the block's last evaluated expression. If block 
+  execution has been interrupted by <a href="syntax05.html#L000309">next</a>, 
+  returns nil. When next has an argument, that value will become yield's return 
+  value.</p>
+
+<h6></h6>
+</body>
+</html>

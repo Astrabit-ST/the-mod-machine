@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Weather</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Weather</h1>
+<p>Class for weather effects (rain, storm, snow) displayed via RPGXP's Event command.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Method</h2>
+<dl>
+
+<dt>RPG::Weather.new([<var>viewport</var>])</dt>
+<dd>
+    <p>Creates an RPG::Weather object. Specifies a Viewport (<a href="gc_viewport.html">Viewport</a>) 
+      when necessary.</p>
+  </dd>
+
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt>dispose</dt>
+  <dd> 
+    <p>Frees a weather effect.</p>
+  </dd>
+  <dt>update</dt>
+  <dd> 
+    <p>Advances the weather effect. As a rule, this method is called once per 
+      frame.</p>
+  </dd>
+</dl>
+
+<h2>Properties</h2>
+<dl>
+  <dt>type</dt>
+  <dd> 
+    <p>Weather type (0: none, 1: rain, 2: storm; 3: snow).</p>
+  </dd>
+  <dt>max</dt>
+  <dd> 
+    <p>Amount of weather to be shown at once (0..40).</p>
+  </dd>
+  <dt>ox</dt>
+  <dd> 
+    <p>The X-coordinate of the effect's starting point. Correlates with the tilemap 
+      starting point and scrolls.</p>
+  </dd>
+  <dt>oy</dt>
+  <dd> 
+    <p>The Y-coordinate of the effect's starting point. Correlates with the tilemap 
+      starting point and scrolls.</p>
+  </dd>
+</dl>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class Weather
+    def initialize(viewport = nil)
+      @type = 0
+      @max = 0
+      @ox = 0
+      @oy = 0
+      color1 = Color.new(255, 255, 255, 255)
+      color2 = Color.new(255, 255, 255, 128)
+      @rain_bitmap = Bitmap.new(7, 56)
+      for i in 0..6
+        @rain_bitmap.fill_rect(6-i, i*8, 1, 8, color1)
+      end
+      @storm_bitmap = Bitmap.new(34, 64)
+      for i in 0..31
+        @storm_bitmap.fill_rect(33-i, i*2, 1, 2, color2)
+        @storm_bitmap.fill_rect(32-i, i*2, 1, 2, color1)
+        @storm_bitmap.fill_rect(31-i, i*2, 1, 2, color2)
+      end
+      @snow_bitmap = Bitmap.new(6, 6)
+      @snow_bitmap.fill_rect(0, 1, 6, 4, color2)
+      @snow_bitmap.fill_rect(1, 0, 4, 6, color2)
+      @snow_bitmap.fill_rect(1, 2, 4, 2, color1)
+      @snow_bitmap.fill_rect(2, 1, 2, 4, color1)
+      @sprites = []
+      for i in 1..40
+        sprite = Sprite.new(viewport)
+        sprite.z = 1000
+        sprite.visible = false
+        sprite.opacity = 0
+        @sprites.push(sprite)
+      end
+    end
+    def dispose
+      for sprite in @sprites
+        sprite.dispose
+      end
+      @rain_bitmap.dispose
+      @storm_bitmap.dispose
+      @snow_bitmap.dispose
+    end
+    def type=(type)
+      return if @type == type
+      @type = type
+      case @type
+      when 1
+        bitmap = @rain_bitmap
+      when 2
+        bitmap = @storm_bitmap
+      when 3
+        bitmap = @snow_bitmap
+      else
+        bitmap = nil
+      end
+      for i in 1..40
+        sprite = @sprites[i]
+        if sprite != nil
+          sprite.visible = (i &lt;= @max)
+          sprite.bitmap = bitmap
+        end
+      end
+    end
+    def ox=(ox)
+      return if @ox == ox;
+      @ox = ox
+      for sprite in @sprites
+        sprite.ox = @ox
+      end
+    end
+    def oy=(oy)
+      return if @oy == oy;
+      @oy = oy
+      for sprite in @sprites
+        sprite.oy = @oy
+      end
+    end
+    def max=(max)
+      return if @max == max;
+      @max = [[max, 0].max, 40].min
+      for i in 1..40
+        sprite = @sprites[i]
+        if sprite != nil
+          sprite.visible = (i &lt;= @max)
+        end
+      end
+    end
+    def update
+      return if @type == 0
+      for i in 1..@max
+        sprite = @sprites[i]
+        if sprite == nil
+          break
+        end
+        if @type == 1
+          sprite.x -= 2
+          sprite.y += 16
+          sprite.opacity -= 8
+        end
+        if @type == 2
+          sprite.x -= 8
+          sprite.y += 16
+          sprite.opacity -= 12
+        end
+        if @type == 3
+          sprite.x -= 2
+          sprite.y += 8
+          sprite.opacity -= 8
+        end
+        x = sprite.x - @ox
+        y = sprite.y - @oy
+        if sprite.opacity &lt; 64 or x &lt; -50 or x &gt; 750 or y &lt; -300 or y &gt; 500
+          sprite.x = rand(800) - 50 + @ox
+          sprite.y = rand(800) - 200 + @oy
+          sprite.opacity = 255
+        end
+      end
+    end
+    attr_reader :type
+    attr_reader :max
+    attr_reader :ox
+    attr_reader :oy
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

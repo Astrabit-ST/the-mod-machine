@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Viewport</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Viewport</h1>
+<p>The viewport class. Used when displaying sprites in one portion of the screen, 
+  with no overflow into other regions.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Methods</h2>
+<dl>
+
+<dt>Viewport.new(<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>)</dt>
+<dt>Viewport.new(<var>rect</var>)</dt>
+<dd>
+    <p>Creates a viewport object.</p>
+  </dd>
+
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt>dispose</dt>
+  <dd> 
+    <p>Frees the viewport. If the viewport has already been freed, does nothing.</p>
+  </dd>
+  <dt>disposed?</dt>
+  <dd> 
+    <p>Returns TRUE if the viewport has been freed.</p>
+  </dd>
+  <dt><a name="flash">flash(<var>color</var>, <var>duration</var>)</a></dt>
+  <dd> 
+    <p>Begins flashing the viewport. <var>duration</var> specifies the number 
+      of frames the flash will last.</p>
+    <p>If <var>color</var> is set to nil, the viewport will disappear while flashing.</p>
+  </dd>
+  <dt>update</dt>
+  <dd> 
+    <p>Refreshes the viewport flash. As a rule, this method is called once per 
+      frame.</p>
+    <p>It is not necessary to call this method if no flash effect is needed.</p>
+  </dd>
+</dl>
+
+<h2>Properties</h2>
+<dl>
+  <dt>rect</dt>
+  <dd> 
+    <p>The box (<a href="gc_rect.html">Rect</a>) defining the viewport.</p>
+  </dd>
+  <dt>visible</dt>
+  <dd> 
+    <p>The viewport's visibility. If TRUE, the viewport is visible.</p>
+  </dd>
+  <dt>z</dt>
+  <dd> 
+    <p>The viewport's Z-coordinate. The larger this value, the closer to the player 
+      the viewport will be displayed. If multiple objects share the same Z-coordinate, 
+      the more recently created object will be displayed closest to the player.</p>
+  </dd>
+  <dt>ox</dt>
+  <dd> 
+    <p>The X-coordinate of the viewport's starting point. Change this value to 
+      shake the screen, etc.</p>
+  </dd>
+  <dt>oy</dt>
+  <dd> 
+    <p>The Y-coordinate of the viewport's starting point. Change this value to 
+      shake the screen, etc.</p>
+  </dd>
+  <dt>color</dt>
+  <dd> 
+    <p>The color (<a href="gc_color.html">Color</a>) to be blended with the viewport. 
+      Alpha values are used in the blending ratio.</p>
+    <p>Handled separately from the color blended into a <a href="#flash">flash</a> 
+      effect.</p>
+  </dd>
+  <dt>tone</dt>
+  <dd> 
+    <p>The viewport's color tone (<a href="gc_tone.html">Tone</a>).</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

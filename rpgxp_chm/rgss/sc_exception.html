@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Exception</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Exception</h1>
+<p>The ancestor class of all exceptions.</p>
+<p>Refer to <a href="s_exceptions.html">Built-in Exception Classes</a> for information 
+  on its subclasses.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Method</h2>
+<dl>
+  <dt>Exception.new([<var>error_message</var>])</dt>
+  <dd> 
+    <p>Creates and returns a new exception object. A string indicating an error 
+      message can be supplied as an argument. This message will become the value 
+      of the <a href="#L000732">message</a> attribute (below) and will be displayed 
+      by the default exception handler.</p>
+    </dd>
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt>exception([<var>error_message</var>])</dt>
+  <dd> 
+    <p>Returns <var>self</var> when no argument is specified. Otherwise, creates 
+      a copy of itself with the <a href="#L000732">message</a> attribute as <var>error_message</var> 
+      and returns it.</p>
+    <p><a href="s_functions.html#L000388">raise</a> actually calls the Exception 
+      object's exception method.</p>
+  </dd>
+  <dt>backtrace</dt>
+  <dd> 
+    <p>Returns backtrace information as a <a href="sc_string.html">String</a> 
+      array in the follow formats:</p>
+    <ul>
+      <li> 
+        <p>&quot;#{sourcefile}:#{sourceline}:in '#{method}'&quot;</p>
+        <p>(within methods)</p>
+      </li>
+      <li> 
+        <p>&quot;#{sourcefile}:#{sourceline}&quot;</p>
+        <p>(at the top level)</p>
+      </li>
+    </ul>
+  </dd>
+  <p></p>
+  <dt><a name="L000732">message</a> 
+  <dd> 
+    <p>Returns the error message string.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

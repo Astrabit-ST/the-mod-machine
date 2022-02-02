@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Audio</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Audio</h1>
+<p>The module that carries out music and sound processing.</p>
+
+<h2>Module Methods</h2>
+<dl>
+  <dt><a name="bgm_play">Audio.bgm_play(<var>filename</var>[, <var>volume</var>[, 
+    <var>pitch</var>]])</a></dt>
+  <dd> 
+    <p>Starts BGM playback. Sets the file name, volume, and pitch in turn.</p>
+    <p>Also automatically searches files included in <a href="rgss.html#rgss_rtp">RGSS-RTP</a>. 
+      File extensions may be omitted.</p>
+  </dd>
+  <dt>Audio.bgm_stop</dt>
+  <dd> 
+    <p>Stops BGM playback.</p>
+  </dd>
+  <dt>Audio.bgm_fade(<var>time</var>)</dt>
+  <dd> 
+    <p>Starts BGM fadeout. <var>time</var> is the length of the fadeout in milliseconds.</p>
+  </dd>
+  <dt><a name="bgs_play">Audio.bgs_play(<var>filename</var>[, <var>volume</var>[, 
+    <var>pitch</var>]])</a></dt>
+  <dd> 
+    <p>Starts BGS playback. Sets the file name, volume, and pitch in turn.</p>
+    <p>Also automatically searches files included in <a href="rgss.html#rgss_rtp">RGSS-RTP</a>. 
+      File extensions may be omitted.</p>
+  </dd>
+  <dt>Audio.bgs_stop</dt>
+  <dd> 
+    <p>Stops BGS playback.</p>
+  </dd>
+  <dt>Audio.bgs_fade(<var>time</var>)</dt>
+  <dd> 
+    <p>Starts BGS fadeout. <var>time</var> is the length of the fadeout in milliseconds.</p>
+  </dd>
+  <dt><a name="me_play">Audio.me_play(<var>filename</var>[, <var>volume</var>[, 
+    <var>pitch</var>]])</a></dt>
+  <dd> 
+    <p>Starts ME playback. Sets the file name, volume, and pitch in turn.</p>
+    <p>Also automatically searches files included in <a href="rgss.html#rgss_rtp">RGSS-RTP</a>. 
+      File extensions may be omitted.</p>
+  </dd>
+  <dt>Audio.me_stop</dt>
+  <dd> 
+    <p>Stops ME playback.</p>
+  </dd>
+  <dt>Audio.me_fade(<var>time</var>)</dt>
+  <dd> 
+    <p>Starts ME fadeout. <var>time</var> is the length of the fadeout in milliseconds.</p>
+  </dd>
+  <dt><a name="se_play">Audio.se_play(<var>filename</var>[, <var>volume</var>[, 
+    <var>pitch</var>]])</a></dt>
+  <dd> 
+    <p>Starts SE playback. Sets the file name, volume, and pitch in turn.</p>
+    <p>Also automatically searches files included in <a href="rgss.html#rgss_rtp">RGSS-RTP</a>. 
+      File extensions may be omitted.</p>
+    <p>When attempting to play the same SE more than once in a very short period, 
+      they will automatically be filtered to prevent choppy playback.</p>
+  </dd>
+  <dt>Audio.se_stop</dt>
+  <dd> 
+    <p>Stops SE playback.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

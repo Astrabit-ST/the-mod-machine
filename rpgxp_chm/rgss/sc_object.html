@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Object</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Object</h1>
+<p>The superclass of all classes. Defines the general behavior of objects.</p>
+
+<h2>Included Modules</h2>
+<ul>
+<li><a href="sm_kernel.html">Kernel</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+  <dt><a name="L000555"><var>self</var> == <var>other</var></a></dt>
+  <dd> 
+    <p>Checks if <var>self</var> and <var>other</var> are equal. By default, has 
+      the same effect as <var>equal?</var>.</p>
+    <p>This method must be redefined with respect to each class's properties.</p>
+  </dd>
+  <dt><var>self</var> === <var>other</var></dt>
+  <dd> 
+    <p>This method is mostly used for comparison within <a href="syntax05.html#L000301">case</a> 
+      statements. By default, acts like <a href="#L000555">Object#==</a>, but 
+      this behavior can be redefined in the subclass to implement an ownership 
+      check.</p>
+  </dd>
+  <dt>class</dt>
+  <dd> 
+    <p>Returns the receiver class.</p>
+  </dd>
+  <dt>clone</dt>
+  <dt>dup</dt>
+  <dd> 
+    <p>Creates a copy of the object. clone returns a complete clone of the original 
+      object, including freeze status and singleton methods, while dup duplicates 
+      the object contents only.</p>
+    <p>Note that clone and dup perform only a shallow copy. They duplicate the 
+      object itself, but nothing it points to (such as array elements).</p>
+    <p>For duplicated objects,</p>
+    <pre>
+obj.equal?(obj.clone)
+</pre>
+    <p>generally does not hold, while</p>
+    <pre>
+obj == obj.clone
+</pre>
+    <p>is correct in most cases.</p>
+    <p>Attempting to duplicate true, false, nil, <a href="sc_numeric.html">Numeric</a> 
+      objects, <a
+href="sc_symbol.html">Symbol</a> objects, and the like result in <a href="s_exceptions.html#TypeError">TypeError</a> 
+      exceptions.</p>
+  </dd>
+  <dt>equal?(<var>other</var>)</dt>
+  <dd> 
+    <p>When <var>other</var> is <var>self</var>, returns true. This method must 
+      not be redefined.</p>
+  </dd>
+  <dt>freeze</dt>
+  <dd> 
+    <p>Prohibits an object's contents from being modified. Modifying a frozen 
+      object throws a <a href="s_exceptions.html#TypeError">TypeError</a> exception.</p>
+  </dd>
+  <dt>frozen?</dt>
+  <dd> 
+    <p>Returns true when the object's contents are prohibited from being modified.</p>
+  </dd>
+  <dt><a name="L000572">inspect</a></dt>
+  <dd> 
+    <p>Returns the object in a human-readable string format.</p>
+  </dd>
+  <dt>instance_of?(<var>klass</var>)</dt>
+  <dd> 
+    <p>Returns true when <var>self</var> is a direct instance of the class <var>klass</var>. 
+      When obj.instance_of?(c) is true, obj.kind_of?(c) is always true as well.</p>
+  </dd>
+  <dt>is_a?(<var>mod</var>)</dt>
+  <dt><a name="L000580">kind_of?(<var>mod</var>)</a></dt>
+  <dd> 
+    <p>Returns true when <var>self</var> is the class <var>mod</var> (or its subclass). 
+      or a class (or its subclass) that includes the module <var>mod</var>.</p>
+    <pre>
+module M
+end
+class C &lt; Object
+  include M
+end
+class S &lt; C
+end
+
+obj = S.new
+p obj.is_a? S       # true
+p obj.is_a? M       # true
+p obj.is_a? C       # true
+p obj.is_a? Object  # true
+p obj.is_a? Hash    # false
+</pre>
+  </dd>
+  <dt>nil?</dt>
+  <dd> 
+    <p>Checks if the receiver is nil.</p>
+  </dd>
+  <dt><a name="L000571">object_id</a></dt>
+  <dd> 
+    <p>Returns a unique integer for each object. The integers are assigned to 
+      objects arbitrarily.</p>
+  </dd>
+  <dt>to_ary</dt>
+  <dd> 
+    <p>Called internally when an object's implicit conversion to an array is required.</p>
+  </dd>
+  <dt>to_hash</dt>
+  <dd> 
+    <p>Called internally when an object's implicit conversion to a hash is required.</p>
+  </dd>
+  <dt>to_int</dt>
+  <dd> 
+    <p>Called internally when an object's implicit conversion to an integer is 
+      required.</p>
+  </dd>
+  <dt>to_s</dt>
+  <dd> 
+    <p>Returns the string representation of the object. This method is used internally 
+      by print and sprintf. </p>
+    <p>When non-string objects are passed to arguments in <a href="s_functions.html#L000382">print</a> 
+      and <a href="s_functions.html#L000402">sprintf</a>, use this method to convert 
+      the objects to strings.</p>
+  </dd>
+  <dt>to_str</dt>
+  <dd> 
+    <p>Called when an object's implicit conversion to a string is required.</p>
+  </dd>
+</dl>
+
+<h2>Private Method</h2>
+<dl>
+  <dt><a name="L000609">initialize</a></dt>
+  <dd> 
+    <p>The initialization method for user-defined classes. This method is called 
+      from <a href="sc_class.html#L001138">Class#new</a> to initialize a newly 
+      created object. The default behavior is to do nothing; it is assumed that 
+      this method will be redefined in the subclass as needed. The argument given 
+      to <a href="sc_class.html#L001138">Class#new</a> will be passed to <var>initialize</var> 
+      as is.</p>
+    </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

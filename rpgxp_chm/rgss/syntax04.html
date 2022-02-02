@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Operator Expressions</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Operator Expressions</h1>
+<ul>
+  <li><a href="#L000286">Assignment</a> 
+    <ul>
+      <li><a href="#L000287">Self-Assignment</a></li>
+      <li><a href="#L000288">Multiple Assignment</a></li>
+</ul></li>
+<li><a href="#L000290">and</a></li>
+<li><a href="#L000291">or</a></li>
+<li><a href="#L000292">not</a></li>
+  <li><a href="#L000293">Conditional Operators</a></li>
+</ul>
+<p>Example:</p>
+<pre>
+1+2*3/4
+</pre>
+<p>Some method calls and control structures take the form of operators for ease 
+  in programming. Ruby contains the following operators:</p>
+<pre>
+high   ::
+       []
+       **
+       -(unary)  +(unary)  !  ~
+       *  /  %
+       +  -
+       &lt;&lt; &gt;&gt;
+       &amp;
+       |  ^
+       &gt; &gt;=  &lt; &lt;=
+       &lt;=&gt; ==  === !=  =~  !~
+       &amp;&amp;
+       ||
+       ..  ...
+       ?:(conditional operator)
+       =(+=, -= ... )
+       not
+low    and or
+</pre>
+<p>&quot;High&quot; and &quot;low&quot; signify the operators' priority level. 
+  For example, &quot;&amp;&amp;&quot; has a higher priority than &quot;||&quot;, so it would be interpreted 
+  in the following way:</p>
+<pre>
+a &amp;&amp; b || c   # =&gt; (a &amp;&amp; b) || c
+a || b &amp;&amp; c   # =&gt;  a || (b &amp;&amp; c)
+</pre>
+<p>Most operators are method calls in special form, but some are built into the 
+  language and cannot be redefined.</p>
+<ul>
+  <li> 
+    <p>Redefinable operators (methods)</p>
+    <p>+@ and -@ represent the unary operators + and -. This notation is used 
+      in method definitions and the like.</p>
+    <pre>
+|  ^  &amp;  &lt;=&gt;  ==  ===  =~  &gt;   &gt;=  &lt;   &lt;=   &lt;&lt;  &gt;&gt;
++  -  *  /    %   **   ~   +@  -@  []  []=  `
+</pre>
+  </li>
+  <li> 
+    <p>Nonredefinable operators (control structures)</p>
+    <p>Combination operators (i.e., self-assignment operators, !=, and !~) cannot 
+      be redefined.</p>
+    <pre>
+=  ?:  ..  ...  !  not  &amp;&amp;  and  ||  or  ::
+</pre>
+  </li>
+</ul>
+
+<h2><a name="L000286">Assignment</a></h2>
+<p>Example:</p>
+<pre>
+foo = bar
+foo[0] = bar
+foo.bar = baz
+</pre>
+<p>Syntax:</p>
+<pre>
+variable '=' expr
+constant '=' expr
+expr '['expr..']' '=' expr
+expr '.' identifier '=' expr
+</pre>
+<p>Assignment expressions are used to assign values to variables and the like. 
+  Assignments can also be used as declarations for local variables or constants. 
+  The left side of an assignment expression must be one of the following:</p>
+<ul>
+  <li> 
+    <p>a variable</p>
+    <pre>
+variable '=' expr
+</pre>
+    <p>If there is a variable on the left side, the value of the expression is 
+      assigned to the variable.</p>
+  </li>
+  <li> 
+    <p>an array reference</p>
+    <pre>
+expr1 '[' expr2 ... ']' '=' exprN
+</pre>
+    <p>For the object obtained by evaluating expr1, this form is converted into 
+      a []= method call with expr2 through exprN as arguments.</p>
+    <pre>
+class C
+  def initialize
+    @ary = [0,1,2,3,4,5,6,7]
+  end
+  def [](i)
+    @ary[i * 2]
+  end
+  def []=( i, v )
+    @ary[i * 2] = v
+  end
+end
+c = C.new
+p c[3]      # converted to c.[]( 3 ); result is 6
+p c[3] = 1  # converted to c.[]=(3,1); result is 1
+</pre>
+  </li>
+  <li> 
+    <p>an attribute reference</p>
+    <pre>
+expr1 '.' identifier '=' expr2
+</pre>
+    <p>For the object obtained by evaluating expr1, calls the identifier= method 
+      with expr2 as an argument.</p>
+    <pre>
+class C
+  def foo
+    @foo
+  end
+  def foo=( v )
+    @foo = v
+  end
+end
+c = C.new
+c.foo = 5   # converted to c.foo=( 5 )
+p c.foo     # =&gt; 5
+</pre>
+    <p>Attributes can be defined with <a href="sc_module.html#L001113">attr_accessor</a> 
+      in the same way:</p>
+    <pre>
+class C
+  attr_accessor :foo
+end
+c = C.new
+c.foo = 5   # converted to c.foo=( 5 )
+p c.foo     # =&gt; 5
+</pre>
+  </li>
+</ul>
+<h3><a name="L000287">Self-Assignment</a></h3>
+<p>Example:</p>
+<pre>
+foo += 12       # foo = foo + 12
+foo *= 3        # foo = foo * 3
+</pre>
+<p>Syntax:</p>
+<pre>
+expr1 op= expr2     # expr1 is part of the right-hand assignment
+</pre>
+<p>op is one of the following. There can be no space between the operator and 
+  =.</p>
+<pre>
++, -, *, /, %, **, &amp;, |, ^, &lt;&lt;, &gt;&gt;, &amp;&amp;, ||
+</pre>
+<p>In this assignment format, most cases are evaluated as:</p>
+<pre>
+expr1 = expr1 op expr2
+</pre>
+<h3><a name="L000288">Multiple Assignment</a></h3>
+<p>Example:</p>
+<pre>
+foo, bar, baz = 1, 2, 3
+foo, = list()
+foo, *rest = list2()
+</pre>
+<p>Syntax:</p>
+<pre>
+expr [',' [ expr ',' ... ] ['*' [ expr ]]] = expr [, expr ... ]['*' expr ]
+'*' [ expr ] = expr [, expr ... ]['*' expr ]
+</pre>
+<p>Multiple assignment performs assignments from multiple expressions or arrays. 
+  Each expression on the left must be assignable. If there is only one expression 
+  on the right, its value will be converted into an array whose elements will 
+  be assigned to the expressions on the left. If there are more elements in the 
+  array than on the left, the extra elements are ignored. If there are too few 
+  elements in the array, nil will be assigned to the extra elements on the left.</p>
+<p>Prepend * to the final expression on the left to assign all extra lefthand 
+  elements to that expression as an array. If there are no extra elements, an 
+  empty array will be assigned.</p>
+<pre>
+foo, bar  = [1, 2]      # foo = 1; bar = 2
+foo, bar  = 1, 2        # foo = 1; bar = 2
+foo, bar  = 1           # foo = 1; bar = nil
+foo, bar  = 1, 2, 3     # foo = 1; bar = 2
+foo       = 1, 2, 3     # foo = [1, 2, 3]
+*foo      = 1, 2, 3     # foo = [1, 2, 3]
+foo, *bar = 1, 2, 3     # foo = 1; bar = [2, 3]
+</pre>
+
+<h2><a name="L000290">and</a></h2>
+<p>Example:</p>
+<pre>
+test &amp;&amp; set
+test and set
+</pre>
+<p>Syntax:</p>
+<pre>
+expr '&amp;&amp;' expr
+expr and expr
+</pre>
+<p>First evaluates the left side; if the result is true, evaluates the right side. 
+  <var>and</var> does the same as <var>&amp;&amp;</var>, but is a lower priority 
+  operator.</p>
+
+<h2><a name="L000291">or</a></h2>
+<p>Example:</p>
+<pre>
+demo || die
+demo or die
+</pre>
+<p>Syntax:</p>
+<pre>
+expr '||' expr
+expr or expr
+</pre>
+<p>First evaluates the left side; if the result is false, evaluates the right 
+  side. <var>or</var> does the same as <var>||</var>, but is a lower priority 
+  operator.</p>
+
+<h2><a name="L000292">not</a></h2>
+<p>Example:</p>
+<pre>
+! me
+not me
+i != you
+</pre>
+<p>Syntax:</p>
+<pre>
+'!' expr
+not expr
+</pre>
+<p>If the value of the expression is true, returns FALSE; if the value is false, 
+  returns TRUE.</p>
+<p>The following notation is also possible:</p>
+<pre>
+expr '!=' expr          # same as !(expr == expr)
+expr '=~' expr          # same as !(expr =~ expr)
+</pre>
+
+<h2><a name="L000293">Conditional Operators</a></h2>
+<p>Example:</p>
+<pre>
+obj == 1 ? foo : bar
+</pre>
+<p>Syntax:</p>
+<pre>
+expr1 ? expr2 : expr3
+</pre>
+<p>Returns expr2 or expr3 depending on the results of expr1. This is identical 
+  to: </p>
+<pre>
+if expr1 then expr2 else expr3 end
+</pre>
+<h6></h6>
+</body>
+</html>

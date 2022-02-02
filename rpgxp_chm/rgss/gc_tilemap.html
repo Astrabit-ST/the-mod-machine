@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Tilemap</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Tilemap</h1>
+<p>The class governing tilemaps. Tilemaps are a specialized concept used in 2D 
+  game map displays, created internally from multiple sprites.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Class Method</h2>
+<dl>
+  <dt>Tilemap.new([<var>viewport</var>])</dt>
+  <dd> 
+    <p>Creates a Tilemap object. Specifies a Viewport (<a href="gc_viewport.html">Viewport</a>) 
+      when necessary.</p>
+  </dd>
+</dl>
+
+<h2>Methods</h2>
+<dl>
+  <dt>dispose</dt>
+  <dd> 
+    <p>Frees the tilemap. If the tilemap has already been freed, does nothing.</p>
+  </dd>
+  <dt>disposed?</dt>
+  <dd> 
+    <p>Returns TRUE if the tilemap has been freed.</p>
+  </dd>
+  <dt>viewport</dt>
+  <dd> 
+    <p>Gets the Viewport (<a href="gc_viewport.html">Viewport</a>) specified 
+      when the tilemap was created.</p>
+  </dd>
+  <dt>update</dt>
+  <dd> 
+    <p>Updates the autotile animation, etc. As a rule, this method is called once 
+      per frame.</p>
+  </dd>
+</dl>
+
+<h2>Properties</h2>
+<dl>
+  <dt>tileset</dt>
+  <dd> 
+    <p>Refers to the bitmap (<a href="gc_bitmap.html">Bitmap</a>) used as a 
+      tileset.</p>
+  </dd>
+  <dt>autotiles[<var>index</var>]</dt>
+  <dd> 
+    <p>Refers to the bitmap (<a href="gc_bitmap.html">Bitmap</a>) used as an 
+      autotile with an <var>index</var> number from 0 to 6.</p>
+  </dd>
+  <dt>map_data</dt>
+  <dd> 
+    <p>Refers to map data (<a href="gc_table.html">Table</a>). Defines a 3-dimensional 
+      array measuring [ horizontal size * vertical size * 3 ].</p>
+  </dd>
+  <dt>flash_data</dt>
+  <dd> 
+    <p>Refers to the flash data (<a href="gc_table.html">Table</a>) used when 
+      showing range of possible movement in simulation games, etc. Defines a 2-dimensional 
+      array measuring [ horizontal size * vertical size ]. This array must be 
+      the same size as the map data. Each element uses 4 bits to represent a tile's 
+      flash color in RGB; for example, 0xf84 flashes in RGB(15,8,4).</p>
+  </dd>
+  <dt>priorities</dt>
+  <dd> 
+    <p>Reference to the priority table (<a href="gc_table.html">Table</a>). Defines 
+      a 1-dimensional array containing elements corresponding to tile IDs.</p>
+  </dd>
+  <dt>visible</dt>
+  <dd> 
+    <p>The tilemap's visibility. If TRUE, the tilemap is visible.</p>
+  </dd>
+  <dt>ox</dt>
+  <dd> 
+    <p>The X-coordinate of the tilemap's starting point. Change this value to 
+      scroll the tilemap.</p>
+  </dd>
+  <dt>oy</dt>
+  <dd> 
+    <p>The Y-coordinate of the tilemap's starting point. Change this value to 
+      scroll the tilemap.</p>
+  </dd>
+</dl>
+
+<h2>Notes</h2>
+
+<p>The Z-coordinate of each sprite used to create a tilemap is fixed at a specific 
+  value.</p>
+<ol>
+  <li>Tiles with a priority of 0 always have a Z-coordinate of 0.</li>
+  <li>Priority 1 tiles placed at the top edge of the screen have a Z-coordinate 
+    of 64.</li>
+  <li>Every time the priority increases by 1 or the next tile down is selected, 
+    the Z-coordinate increases by 32.</li>
+  <li>The Z-coordinate changes accordingly as the tilemap scrolls vertically.</li>
+</ol>
+<p>Keep these rules in mind when setting the Z-coordinates of any map characters.</p>
+
+
+<h6></h6>
+</body>
+</html>

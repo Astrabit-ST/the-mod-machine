@@ -1,0 +1,255 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Regular Expression</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Regular Expressions</h1>
+<ul>
+<li><a href="#L000160">Back References </a></li>
+<li><a href="#L000161">Character Class</a></li>
+</ul>
+<p>Bellow is a list of all the metacharacters that Ruby supports. </p>
+<ul>
+<li>
+  <p>Letters and numbers without \ are not metacharacters </p>
+</li>
+<li>
+  <p>Symbols with \ are not metacharacters </p>
+</li>
+</ul>
+<p>…is the rule. </p>
+<ul>
+<li><p>^</p>
+<p>Beginning of line. Match directly before the first character or line feed. </p></li>
+<li><p>$</p>
+<p>End of line. Match directly before the end of a character string or line feed. </p>
+<pre>
+p &quot;\n&quot;.gsub(/$/, &quot;o&quot;)     # =&gt; &quot;o\no&quot;
+</pre></li>
+<li><p>.</p>
+<p>Match any single character that excludes a line feed (when working with multi-byte characters, this refers to one character, not one byte). With the Regular Expression option m (multiple line mode. See the <a href="syntax03.html#L000274">Regular Expression Literal</a>.), it matches with any character that includes a line feed. </p></li>
+<li><p>\w</p>
+<p>Letters or numbers. The same as [0-9A-Za-z_] </p>
+<p>Matches the Japanese double-byte characters.</p></li>
+<li><p>\W</p>
+<p>Non-alphanumeric character. Characters besides \w. </p></li>
+<li><p>\s</p>
+<p>Space character. The same as [ \t\n\r\f]. </p></li>
+<li><p>\S</p>
+<p>Non-blank character. Characters besides [ \t\n\r\f] </p></li>
+<li><p>\d</p>
+<p>Number. The same as [0-9]. </p></li>
+<li><p>\D</p>
+<p>Non-number. </p></li>
+<li><p>\A</p>
+<p>Beginning of a Character String. Differently from ^, it does not influence the effectiveness of a line feed. </p></li>
+<li><p>\Z</p>
+<p>End of a character string. Matches the front of a line feed if the character string ends at the line feed. </p>
+<pre>
+p &quot;\n&quot;.gsub(/\Z/, &quot;o&quot;)     # =&gt; &quot;o\no&quot;
+</pre></li>
+<li><p>\z</p>
+<p>End of a character string. Differently from $ or \Z, it does not influence the effectiveness of a line feed. </p></li>
+<li><p>\b</p>
+<p>Outside the specified character class it is a language boundary. (Matches between \a and \W.) While in the specified class it is a back space (0x08). </p></li>
+<li><p>\B</p>
+<p>Non-language boundary. </p></li>
+<li><p>\G</p>
+<p>Matches (doesn't have a width) the place matched from the previous one (directly after). Matches the front position only the first time. (Same as \A) </p>
+<p>Can use with <a href="sc_string.html#L001412">scan</a> or <a href="sc_string.html#L001390">gsub</a>. Use when you want to make a match after the location that was matched the time before. </p>
+<pre>
+#  Takes values from the front of the line three at a time (for as long as the values continue.)
+str = &quot;123456 789&quot;
+str.scan(/\G\d\d\d/) {|m| p m }
+</pre></li>
+<li><p>[ ]</p>
+<p>Set character class. See <a href="#L000161">character class</a>.</p></li>
+<li><p>*</p>
+<p>Return the expression from directly before more then 0 times. Will try to match for as long as possible. </p></li>
+<li><p>*?</p>
+<p>Quantifiers. Return the expression from directly before more then 0 times. (At shortest 1 match) </p></li>
+<li><p>+</p>
+<p>Quantifiers. Return the expression from directly before more then 1 time. </p></li>
+<li><p>+?</p>
+<p>Quantifiers. Return the expression from directly before more then 1 time. (At shortest 1 match.) </p></li>
+<li>{m}</li>
+<li>{m,}</li>
+<li><p>{m,n}</p>
+<p>Control the return of a set group (interval quantifier). Return all of the Regular Expressions from directly before. </p>
+<ul>
+<li>m times </li>
+<li>more then m times </li>
+<li>more then m times, at most n times. </li>
+</ul>
+<p>Matches for {n} or {,} will always fail. </p>
+<pre>
+str = &quot;foofoofoo&quot;
+p str[/(foo){1}/]   # =&gt; &quot;foo&quot;
+p str[/(foo){2,}/]  # =&gt; &quot;foofoofoo&quot;
+p str[/(foo){1,2}/] # =&gt; &quot;foofoo&quot;
+</pre>
+<p>Regular Expression ?, *, + are all the same as {0,1}, {0,} {1,}. </p></li>
+<li>{m}?</li>
+<li>{m,}?</li>
+<li><p>{m,n}?</p>
+<p>Interval Quantifier. Will return the regular expression from each before for </p>
+<ul>
+<li>m times </li>
+<li>more then m times </li>
+<li>more then m times, at most n times. </li>
+</ul>
+<p>at least one time. </p></li>
+<li><p>?</p>
+<p>Quantifiers. Will return the previous regular expression 1 or 0 times. </p></li>
+<li><p>??</p>
+<p>Quantifiers. Will return the previous regular expression 1 or 0 times (at least once). </p></li>
+<li><p>|</p>
+<p>Alternative. </p></li>
+<li><p>( )</p>
+<p>Regular Expression group movement. The character string matched to the regular expression in parenthesis is remembered for back referencing. </p></li>
+<li><p>\1, \2 ... \<var>n</var></p>
+<p>Back reference. Reference a <a href="#L000160">Back Reference</a>. </p></li>
+<li><p>(?# )</p>
+<p>Comment. Ignore all the character strings in parentheses. </p></li>
+<li><p>(?: )</p>
+<p>Back Reference without group movement. That is, use a flexible group movement without becoming the targets \1, \2 (also <a href="s_variables.html#L000432">$1</a>, <a href="s_variables.html#L000433">$2</a>) etc . </p>
+<pre>
+/(abc)/ =‾ &quot;abc&quot;
+p $1
+=&gt; &quot;abc&quot;
+
+/(?:abc)/ =‾ &quot;abc&quot;
+p $1
+=&gt; nil
+</pre></li>
+<li><p>(?= )</p>
+<p>Lookahead. Set location according to pattern. (Has no width.) <br>
+  <br>
+  The
+</p>
+<pre>
+(?=re1)re2
+</pre>
+<p>expression is a regular expression that matches a match of both re1 and re2. <br>
+  <br>
+  The
+</p>
+<pre>
+re1(?=re2)
+</pre>
+<p>expression, is a regular expression that continues to the following character string which matches with re2, called re1. </p>
+<pre>
+p /foo(?=bar)/ =‾ &quot;foobar&quot;      # =&gt; 0
+p $&amp;    # =&gt; &quot;foo&quot;   (no information about the &quot;bar&quot; section)
+</pre>
+</li>
+<li><p>(?! )</p>
+<p> Negative Loookahead. Set place depending on the negation of a pattern. (Has not width.) <br>
+  <br>
+  The
+</p>
+<pre>
+(?!re1)re2
+</pre>
+<p>expression, is a regular expression that does not match re1 but does match re2. </p>
+<pre>
+# 000 Number that excludes 3 characters
+re = /(?!000)\d\d\d/
+p re =‾ &quot;000&quot;   # =&gt; nil
+p re =‾ &quot;012&quot;   # =&gt; 0
+p re =‾ &quot;123&quot;   # =&gt; 0
+
+#C Identifier (Starts at [A-Za-z_] and continues with the [0-9A-Za-z_] character string. </pre>
+<pre>
+/\b(?![0-9])\w+\b/
+</pre>
+</li>
+</ul>
+
+<h2><a name="L000160">Back References </a></h2>
+<p>The regular expression \1 \2 … \n is a back reference. It matches the character string matched in the nth parentheses (Regular Expression ( ) Grouping). </p>
+<pre>
+/((foo)bar)\1\2/
+</pre>
+<p>is the same as: </p>
+<pre>
+/((foo)bar)foobarfoo/
+</pre>
+<p>Example: </p>
+<pre>
+re = /(foo|bar|baz)\1/
+p re =‾ 'foofoo'   # =&gt; 0
+p re =‾ 'barbar'   # =&gt; 0
+p re =‾ 'bazbaz'   # =&gt; 0
+p re =‾ 'foobar'   # =&gt; nil
+</pre>
+<p>The parentheses in use must be more to the left than the back reference. </p>
+<p>If there is a back reference in the parentheses in use the match will consistently fail. Also, the match will consistently fail when a single digit back reference has no parenthesis too. </p>
+<pre>
+p /(\1)/ =‾ &quot;foofoofoo&quot; # =&gt; nil
+p /(foo)\2/ =‾ &quot;foo\2&quot;  # =&gt; nil
+</pre>
+<p>While one can specify a back reference greater then 2 digits, one must be carefull not to confuse it with \nnn (characters corresponding to the octal nnn) of <a href="syntax03.html#L000255">backslash notation</a>. If a numeric value is 1 digit, it is a back reference. When establishing more then 2 digits, it will be perceived as 8-bit code if parentheses are not used. </p>
+<p>Also, when working with regular expressions it is necessary to start with 0 (such as \01, etc.) when using 1 bit code in 8 bit. (There is no back reference \0 so it isn't unclear.) </p>
+<pre>
+p   /\1/ =‾ &quot;\1&quot;   # =&gt; nil     # back reference that doesn’t use parentheses.
+p  /\01/ =‾ &quot;\1&quot;   # =&gt; 0       8 bit code
+p  /\11/ =‾ &quot;\11&quot;  # =&gt; 0       8 bit code
+
+# 8 bit code (because there are no parentheses in use)
+p /(.)\10/ =‾ &quot;1\10&quot; # =&gt; 0
+
+# back reference (because there are parentheses in use)
+p /((((((((((.))))))))))\10/ =‾ &quot;aa&quot;  # =&gt; 0
+
+# 8 bit code (However because there is no such
+# \08 &quot;\0&quot; + &quot;8&quot; 8 bit code)
+p /(.)\08/ =‾ &quot;1\0008&quot; # =&gt; 0
+
+#If you want to write numbers following a back reference 
+#you have to use parentheses to group them and split them up.
+p /(.)(\1)1/ =‾ &quot;111&quot;   # =&gt; 0
+</pre>
+
+<h2><a name="L000161">Character Class </a></h2>
+<p>Regular class [] is a set character class. One character listed inside the [] will be matched. </p>
+<p>For example, for /[abc]/ one of "a", "b" or "c" will be matched. You can also write character strings using the "-" when characters follow the ASCII code order like this: /[a-c]/. Also, if the first character is a ^ character from outside of the set character string will be matched. </p>
+<p>Any ‘^' not at the beginning will be matched with that character. Also, any  "-" at the front or end of a line will be matched with that character. </p>
+<pre>
+p /[a^]/ =‾ &quot;^&quot;   # =&gt; 0
+p /[-a]/ =‾ &quot;-&quot;   # =&gt; 0
+p /[a-]/ =‾ &quot;-&quot;   # =&gt; 0
+p /[-]/ =‾ &quot;-&quot;   # =&gt; 0
+</pre>
+<p>A blank character class will result in an error. </p>
+<pre>
+p /[]/ =‾ &quot;&quot;
+p /[^]/ =‾ &quot;^&quot;
+# =&gt; invalid regular expression; empty character class: /[^]/
+</pre>
+<p>The "]" at the front of a line (or directly after a NOT "^") doesn't mean that the character class is over but is just a simple "]". It is recommended that this kind of "]" performs a backslash escape.</p>
+<pre>
+p /[]]/ =‾ &quot;]&quot;       # =&gt; 0
+p /[^]]/ =‾ &quot;]&quot;      # =&gt; nil
+</pre>
+<p>&quot;^&quot;, &quot;-&quot;, &quot;]&quot; and &quot;\\&quot; (backslash) can do a backslash escape and make a match with that character. </p>
+<pre>
+p /[\^]/ =‾ &quot;^&quot;   # =&gt; 0
+p /[\-]/ =‾ &quot;-&quot;   # =&gt; 0
+p /[\]]/ =‾ &quot;]&quot;   # =&gt; 0
+p /[\\]/ =‾ &quot;\\&quot;  # =&gt; 0
+</pre>
+<p>Inside the [] you can use character string and the same <a href="syntax03.html#L000255">backslash notation</a>, and also the regular expressions \w, \W, \s, \S, \d, \D (these are short-hand for the character class). </p>
+<p>Please pay attention to to the fact that the character classes below can make a match with a line feed character too according to the negation (the same is true with regular expressions \W and \D.) </p>
+<pre>
+p /[^a-z]/ =‾ &quot;\n&quot;    # =&gt; 0
+</pre>
+
+<h6></h6>
+</body>
+</html>

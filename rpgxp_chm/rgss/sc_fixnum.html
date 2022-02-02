@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Fixnum</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Fixnum</h1>
+<p>The class for fixed-length integers that fit into the machine's pointer, which 
+  is usually 31 bits long. If the result of an operation is out of Fixnum range, 
+  it is automatically extended into a <a href="sc_bignum.html">Bignum</a>.</p>
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_integer.html">Integer</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+  <dt>id2name</dt>
+  <dd> 
+    <p>Returns the string corresponding to a <a href="sc_symbol.html">Symbol</a> 
+      integer (obtained with <a href="c_symbol.html#L001482">Symbol#to_i</a>). 
+      If there is no symbol that corresponds to the integer, returns nil.</p>
+  </dd>
+  <dt><a name="L001220">to_sym</a></dt>
+  <dd> 
+    <p>Returns the <a href="sc_symbol.html">Symbol</a> object corresponding to 
+      the integer value of the object's self. If there is no symbol that corresponds 
+      to the integer, returns nil.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

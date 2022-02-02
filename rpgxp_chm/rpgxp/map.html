@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Maps</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Maps</h1>
+
+<ul>
+<li><a href="#tile">Tiles and Tilesets</a></li>
+<li><a href="#create">Creating New Maps</a></li>
+<li><a href="#layer">Layers</a></li>
+<li><a href="#draw">Placing Tiles</a></li>
+<li><a href="#autotile">Autotiles</a></li>
+</ul>
+
+<p>The fields and dungeons, town exteriors and building interiors--any &quot;stage&quot; 
+  where the player moves around is called a <i>map</i>.</p>
+<p>Games are made up from multiple maps, and the player can come and go among 
+  these various maps by way of events. For example, when a player steps into a 
+  doorway, you can set off an invisible event that will transport him or her to 
+  another map displaying the inside of that building. This is how all the maps 
+  appear to be connected to one another.</p>
+
+
+<h2><a name="tile">Tiles and Tilesets</a></h2>
+<img src="img/map1.png" alt="Tiles"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>Maps may look like a single picture, but in fact it's made up of many pieces 
+  that fit together like a jigsaw puzzle. These small pieces are called <i>tiles</i>, 
+  and each tile contains information such as whether characters are allowed to 
+  pass through it.</p>
+<p>A collection of multiple tiles that represent certain settings, each with their 
+  own configuration, is called a <i>tileset</i>. Each map uses a single tileset whose 
+  tiles are then placed on the map. Tilesets also include information for battle 
+  backgrounds to be displayed during battles that take place on that particular 
+  map, so you automatically gain access to a setting-appropriate background just 
+  by selecting a tileset.</p>
+
+
+<h2><a name="create">Creating New Maps</a></h2>
+<img src="img/map2.png" alt="Creating New Maps"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>Map creation takes place in the map tree view, in the lower left of the main 
+  window.</p>
+<p>First, right-click on a map or a project folder and select [New Map] from the 
+  pop-up menu. You'll be shown a dialog box containing settings that cover the 
+  tileset to be used, the size of the map, and so on. Fill in the necessary information 
+  and click [OK]. Check the Pop-up hints for more information on each setting.</p>
+<p>After the map has been configured, a new map will be created below the one 
+  you right-clicked initially. This has the same hierarchy as Windows folders. 
+  While this structure has no direct effect on the game, using it wisely can make 
+  it easier to manage a large number of maps; for example, by placing the interior 
+  maps of all the buildings in a village below the village map. You can change 
+  the hierarchy simply by dragging and dropping.</p>
+
+
+<h2><a name="layer">Layers</a></h2>
+<img src="img/map3.png" alt="Layers"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>Maps have 3 layers, each one containing different tiles. You're free to place 
+  anything you like on any layer, but your mapmaking may go more smoothly if, 
+  as a general rule, you place land on layer 1, fences and buildings on layer 
+  2, and windows and chimneys on layer 3.</p>
+<p>Layers edited in the map editor can be selected with [Mode] on the main menu. 
+  You can also change various settings under the [View] menu, such as whether 
+  to darken all layers except the one you're currently working on.
+<h2><a name="draw">Placing Tiles</a></h2>
+<p>The tiles you place on a map are selected from the tile palette on the left 
+  side of the main window. You can select multiple tiles at once by clicking and 
+  dragging within the tile palette. Selected tiles can then be placed in the map 
+  view, on the right side; it's a little like using a painting program.</p>
+<p>Set the tile placement method with [Draw] on the main menu. Here's a rundown 
+  of the drawing tools and their capabilities:</p>
+<dl>
+  <dt>Pencil</dt>
+  <dd>The standard drawing method. Places a tile where you click the mouse.</dd>
+  <dt>Rectangle</dt>
+  <dd>Define a rectangle by dragging out a diagonal line; this rectangle will be filled 
+    with the selected tile.</dd>
+  <dt>Ellipse</dt>
+  <dd>Define a circle by dragging out a diagonal line; this circle will be filled 
+    with the selected tile.</dd>
+  <dt>Fill</dt>
+  <dd>All identical tiles adjacent to the tile you click will be filled with the 
+    selected tile.</dd>
+  <dt>Select</dt>
+  <dd>Define an area of the map to cut or copy. Once an area is selected, right-click 
+    to make a pop-up menu appear that will allow you to copy, paste, and use other 
+    editing commands. Copy and cut apply to all layers within the selected area.</dd>
+</dl>
+<p>Right-click on the map view with any drawing tool besides [Select] to select 
+  the tile placed at that point. This function is called the <i>eyedropper</i>. 
+  Making good use of the eyedropper can allow you to skip the tile palette altogether, 
+  increasing efficiency. </p>
+
+
+<h2><a name="autotile">Autotiles</a></h2>
+<img src="img/map4.png" alt="Autotiles"
+ style="float:right;margin-left=1.5em;margin-bottom=1.0em"> 
+<p>The tiles displayed in the very top row of the tile palette are a special variety 
+  called <i>autotiles</i>. Autotiles contain multiple patterns per tile type, 
+  automatically adjusting their borders as they're placed on the map.</p>
+<p>Press [Shift] while placing tiles or using the eyedropper to temporarily disable 
+  the autotile function.</p>
+<p>Double-click an autotile in the tile palette to make the Autotile Expansion 
+  dialog box appear. Here you can select autotile border patterns directly.</p>
+
+
+<h6></h6>
+</body>
+</html>

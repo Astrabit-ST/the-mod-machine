@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Built-in Variables</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Built-in Variables</h1>
+<p>Built-in variables are a type of global variable, but their values are not 
+  only used globally.</p>
+<p>The following are examples of built-in variables divided up by their scope.</p>
+
+<h2>Local Scope</h2>
+<dl>
+  <dt><a name="L000428">$~</a></dt>
+  <dd> 
+    <p>The information about the last match in the current scope (<a href="sc_matchdata.html">MatchData</a> 
+      object). Setting this variable changes the values of $&amp;, $1 ... $9, 
+      etc.</p>
+    <p>Identical to <a href="sc_regexp.html#L001314">Regexp.last_match</a>. </dd>
+  <dt><a name="L000427">$&amp;</a></dt>
+  <dd> 
+    <p>The string matched by the last successful pattern match in this scope, 
+      or nil if the last pattern match failed.</p>
+    <p>Identical to <a href="sc_regexp.html#L001314">Regexp.last_match</a>[0]</p>
+  </dd>
+  <dt><a name="L000432">$1</a> 
+  <dt><a name="L000433">$2</a> 
+  <dt>$3 ...</dt>
+  <dd> 
+    <p>Contains the subpattern from the corresponding set of parentheses in the 
+      last successful pattern matched, or nil if the last pattern match failed.</p>
+    <p>Identical to <a href="sc_regexp.html#L001314">Regexp.last_match</a>[1], 
+      <a href="sc_regexp.html#L001314">Regexp.last_match</a>[2], ...</p>
+  </dd>
+</dl>
+
+<h2>Global Scope</h2>
+<dl>
+<dt><a name="L000437">$!</a></dt>
+<dd>
+    <p>Information on the latest exception. Set with <a href="s_functions.html#L000388">raise</a>.</p>
+  </dd>
+<dt><a name="L000462">$DEBUG</a></dt>
+<dd>
+    <p>The debug mode flag. RGSS sets this flag during playtesting.</p>
+    <p>There are some differences in exception behavior, etc., while in Ruby's 
+      debug mode, but you need not be concerned about them in RGSS.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

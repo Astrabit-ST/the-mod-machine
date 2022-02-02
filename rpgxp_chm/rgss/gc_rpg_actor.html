@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Actor</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Actor</h1>
+<p>Data class for actors.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>id</dt>
+  <dd> 
+    <p>The actor ID.</p>
+  </dd>
+  <dt>name</dt>
+  <dd> 
+    <p>The actor name.</p>
+  </dd>
+  <dt>class_id</dt>
+  <dd> 
+    <p>The actor class ID.</p>
+  </dd>
+  <dt>initial_level</dt>
+  <dd> 
+    <p>The actor's initial level.</p>
+  </dd>
+  <dt>final_level</dt>
+  <dd> 
+    <p>The actor's final level.</p>
+  </dd>
+  <dt>exp_basis</dt>
+  <dd> 
+    <p>The value on which the experience curve is based (10..50).</p>
+  </dd>
+  <dt>exp_inflation</dt>
+  <dd> 
+    <p>The amount of experience curve inflation (10..50).</p>
+  </dd>
+  <dt>character_name</dt>
+  <dd> 
+    <p>The actor's character graphic file name.</p>
+  </dd>
+  <dt>character_hue</dt>
+  <dd> 
+    <p>The adjustment value for the character graphic's hue (0..360).</p>
+  </dd>
+  <dt>battler_name</dt>
+  <dd> 
+    <p>The actor's battler graphic file name.</p>
+  </dd>
+  <dt>battler_hue</dt>
+  <dd> 
+    <p>The adjustment value for the battler graphic's hue (0..360).</p>
+  </dd>
+  <dt>parameters</dt>
+  <dd> 
+    <p>2-dimensional array containing base parameters for each level (<a href="gc_table.html">Table</a>).</p>
+    <p>Generally takes the form parameters[<var>kind</var>, <var>level</var>].</p>
+    <p><var>kind</var> indicates the parameter type (0: max HP, 1: max SP, 2: 
+      strength, 3: dexterity, 4: agility, 5: intelligence).</p>
+  </dd>
+  <dt>weapon_id</dt>
+  <dd> 
+    <p>ID of the actor's initially equipped weapon.</p>
+  </dd>
+  <dt>armor1_id</dt>
+  <dd> 
+    <p>ID of the actor's initially equipped shield.</p>
+  </dd>
+  <dt>armor2_id</dt>
+  <dd> 
+    <p>ID of the actor's initially equipped helmet.</p>
+  </dd>
+  <dt>armor3_id</dt>
+  <dd> 
+    <p>ID of the actor's initially equipped body armor.</p>
+  </dd>
+  <dt>armor4_id</dt>
+  <dd> 
+    <p>ID of the actor's initially equipped accessory.</p>
+  </dd>
+  <dt>weapon_fix</dt>
+  <dd> 
+    <p>Flag making the actor's weapon unremovable.</p>
+  </dd>
+  <dt>armor1_fix</dt>
+  <dd> 
+    <p>Flag making the actor's shield unremovable.</p>
+  </dd>
+  <dt>armor2_fix</dt>
+  <dd> 
+    <p>Flag making the actor's helmet unremovable.</p>
+  </dd>
+  <dt>armor3_fix</dt>
+  <dd> 
+    <p>Flag making the actor's body armor unremovable.</p>
+  </dd>
+  <dt>armor4_fix</dt>
+  <dd> 
+    <p>Flag making the actor's accessory unremovable.</p>
+  </dd>
+</dl>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class Actor
+    def initialize
+      @id = 0
+      @name = ""
+      @class_id = 1
+      @initial_level = 1
+      @final_level = 99
+      @exp_basis = 30
+      @exp_inflation = 30
+      @character_name = ""
+      @character_hue = 0
+      @battler_name = ""
+      @battler_hue = 0
+      @parameters = Table.new(6,100)
+      for i in 1..99
+        @parameters[0,i] = 500+i*50
+        @parameters[1,i] = 500+i*50
+        @parameters[2,i] = 50+i*5
+        @parameters[3,i] = 50+i*5
+        @parameters[4,i] = 50+i*5
+        @parameters[5,i] = 50+i*5
+      end
+      @weapon_id = 0
+      @armor1_id = 0
+      @armor2_id = 0
+      @armor3_id = 0
+      @armor4_id = 0
+      @weapon_fix = false
+      @armor1_fix = false
+      @armor2_fix = false
+      @armor3_fix = false
+      @armor4_fix = false
+    end
+    attr_accessor :id
+    attr_accessor :name
+    attr_accessor :class_id
+    attr_accessor :initial_level
+    attr_accessor :final_level
+    attr_accessor :exp_basis
+    attr_accessor :exp_inflation
+    attr_accessor :character_name
+    attr_accessor :character_hue
+    attr_accessor :battler_name
+    attr_accessor :battler_hue
+    attr_accessor :parameters
+    attr_accessor :weapon_id
+    attr_accessor :armor1_id
+    attr_accessor :armor2_id
+    attr_accessor :armor3_id
+    attr_accessor :armor4_id
+    attr_accessor :weapon_fix
+    attr_accessor :armor1_fix
+    attr_accessor :armor2_fix
+    attr_accessor :armor3_fix
+    attr_accessor :armor4_fix
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

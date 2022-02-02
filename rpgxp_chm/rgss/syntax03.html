@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Literals</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Literals</h1>
+<ul>
+<li><a href="#L000240">Numeric Literals</a></li>
+<li><a href="#L000254">String Literals</a>
+<ul>
+<li><a href="#L000255">Backslash Notation</a></li>
+<li><a href="#L000271">Expression Substitution</a></li>
+</ul></li>
+  <li><a href="#L000274">Regular Expressions</a></li>
+<li><a href="#L000279">Array Expressions</a></li>
+<li><a href="#L000280">Hash Expressions</a></li>
+  <li><a href="#L000281">Range Expressions</a></li>
+<li><a href="#L000282">Symbols</a></li>
+</ul>
+<p>Values that can be expressed directly in Ruby programs, such as the number 
+  1 or the string &quot;hello world&quot;, are called <var>literals</var>.</p>
+
+<h2><a name="L000240">Numeric Literals</a></h2>
+<dl>
+  <dt>123</dt>
+  <dt>0d123</dt>
+  <dd> 
+    <p>integer</p>
+  </dd>
+  <dt>-123</dt>
+  <dd> 
+    <p>integer (signed)</p>
+  </dd>
+  <dt>123.45</dt>
+  <dd> 
+    <p>floating point number</p>
+    <p>Floating point numbers beginning with a decimal point, like .1, are not 
+      allowed. They must be written with a leading zero (0.1).</p>
+  </dd>
+  <dt>1.2e-3</dt>
+  <dd> 
+    <p>floating point number</p>
+  </dd>
+  <dt>0xffff</dt>
+  <dd> 
+    <p>hexadecimal integer</p>
+  </dd>
+  <dt>0b1011</dt>
+  <dd> 
+    <p>binary integer</p>
+  </dd>
+  <dt>0377</dt>
+  <dt>0o377</dt>
+  <dd> 
+    <p>octal integer</p>
+  </dd>
+</dl>
+<p>Numeric literals can contain an underscore. The Ruby interpreter simply ignores 
+  these underscores and does not interpret them in a special way. This can be 
+  useful as a thousands separator for large values. However, placing an underscore 
+  before and after a literal or connecting literals with an underscore will result 
+  in an error.</p>
+<pre>
+1_000_000_000   # =&gt; 1000000000
+0xffff_ffff     # =&gt; 0xffffffff
+</pre>
+
+<h2><a name="L000254">String Literals</a></h2>
+<p>Example:</p>
+<pre>
+&quot;this is a string expression\n&quot;
+'this is a string expression'
+</pre>
+<p><a href="sc_string.html">String</a> expressions begin and end with double or 
+  single quote marks. </p>
+<p>Double-quoted string expressions are subject to <a href="#L000255">backslash 
+  notation</a> and <a href="#L000271">expression substitution</a>. Single-quoted 
+  strings are not (except for \' and \\).</p>
+<p>String literals with white space on either side are treated as a single string 
+  literal.</p>
+<pre>
+p &quot;foo&quot; &quot;bar&quot;   # =&gt; &quot;foobar&quot;
+</pre>
+<h3><a name="L000255">Backslash Notation</a></h3>
+<dl>
+  <dt>\t</dt>
+  <dd> 
+    <p>tab (0x09)</p>
+  </dd>
+  <dt>\n</dt>
+  <dd> 
+    <p>newline (0x0a)</p>
+  </dd>
+  <dt>\r</dt>
+  <dd> 
+    <p>carriage return (0x0d)</p>
+  </dd>
+  <dt>\f</dt>
+  <dd> 
+    <p>form feed (0x0c)</p>
+  </dd>
+  <dt>\s</dt>
+  <dd> 
+    <p>whitespace (0x20)</p>
+  </dd>
+  <dt>\nnn</dt>
+  <dd> 
+    <p>character at octal value nnn (n = 0-7)</p>
+  </dd>
+  <dt>\xnn</dt>
+  <dd> 
+    <p>character at hexadecimal value nn (n = 0-9, a-f)</p>
+  </dd>
+</dl>
+<h3><a name="L000271">Expression Substitution</a></h3>
+<p>In double-quoted strings and regular expressions, the form &quot;#{expression}&quot; 
+  can be extended to the (string of the) contents of that expression. If the expressions 
+  are variables beginning with either $ or @, the surrounding braces may be omitted 
+  and the variable can be expressed as a #variable. The character # is interpreted 
+  literally if it is not followed by the characters {, $, or @. To explicitly 
+  prevent expression substitution, place a backslash in front of the #.</p>
+<pre>
+$ruby = &quot;RUBY&quot;
+p &quot;my name is #{$ruby}&quot;     # =&gt; &quot;my name is RUBY&quot;
+p 'my name is #{$ruby}'     # =&gt; &quot;my name is #{$ruby}&quot;
+</pre>
+
+<h2><a name="L000274">Regular Expressions</a></h2>
+<p>Example:</p>
+<pre>
+/^Ruby the OOPL/
+/Ruby/i
+/my name is #{myname}/
+</pre>
+<p>Strings delimited by slashes are regular expressions, which are instances of 
+  the <a href="sc_regexp.html">Regexp</a> class.</p>
+<p>Refer to <a href="appendix01.html">Regular Expressions</a> for more information 
+  on which metacharacters are interpreted as regular expressions.</p>
+<p>The characters immediately following the final slash denotes a regular expression 
+  option:</p>
+<dl>
+<dt>i</dt>
+<dd>
+    <p>Regular expression matching is case insensitive.</p>
+</dd>
+<dt>m</dt>
+<dd>
+    <p>Multiple run mode. Newlines are treated as normal characters (matching 
+      with the . character).</p>
+</dd>
+</dl>
+<p>Ruby correctly handles multibyte characters (such as Chinese and Japanese) in regular expressions.</p>
+<p><a href="#L000255">Backslash notation</a> and <a href="#L000271">expression 
+  substitution</a> are available in regular expressions, as in strings.</p>
+<p>If a regular expression does not include <a href="#L000271">expression substitution</a>, 
+  it will return the same regular expression object every time it is evaluated. 
+  If <a href="#L000271">expression substitution</a> is included, the regular expression 
+  will be compiled with every evaluation (based on the expression substitution 
+  results) and a new regular expression object will be created.</p>
+
+<h2><a name="L000279">Array Expressions</a></h2>
+<p>Example:</p>
+<pre>
+[1, 2, 3]
+</pre>
+<p>Syntax:</p>
+<pre>
+'[' expr ',' ... ']'
+</pre>
+<p>Returns an array containing the result of each expression. Arrays are instances 
+  of the class <a href="sc_array.html">Array</a>.</p>
+<p>Array expressions spawn a new array object every time they are evaluated.</p>
+
+<h2><a name="L000280">Hash Expressions</a></h2>
+<p>Example:</p>
+<pre>
+{1=&gt;2, 2=&gt;4, 3=&gt;6}
+</pre>
+<p>Syntax:</p>
+<pre>
+'{' expr '=&gt;' expr ',' ... '}'
+'{' expr ',' expr ',' ... '}'
+</pre>
+<p>Returns a new hash object that maps each resulting value to a key. Hashes are 
+  instances of the class <a href="sc_hash.html">Hash</a>. </p>
+<p></p>
+<p>A hash (also called an associative array) can associate one object of an arbitrary 
+  type with another.</p>
+<p>Hash expressions spawn a new hash object every time they are evaluated.</p>
+
+<h2><a name="L000281">Range Expressions</a></h2>
+<p>Example:</p>
+<pre>
+1 .. 20
+</pre>
+<p>Syntax:</p>
+<pre>
+expr1 '..' expr2
+expr1 '...' expr2
+</pre>
+<p>If a range expression appears anywhere but a conditional expression, returns 
+  the range object from expression 1 to expression 2. Range objects are instances 
+  of the class <a href="sc_range.html">Range</a>.</p>
+<p>Range objects spawned by .. operators include the final expression, while those 
+  spawned by ... operators do not.</p>
+<p>If both ends of a range expression are numeric literals, the expression will 
+  return the same object every time it is evaluated. Otherwise, the expression 
+  will return a new range object every time it is evaluated.</p>
+
+<h2><a name="L000282">Symbols</a></h2>
+<p>Example:</p>
+<pre>
+:class
+:lvar
+:method
+:$gvar
+:@ivar
+:+
+</pre>
+<p>Syntax:</p>
+<pre>
+':' identifier
+':' variable name
+':' operator
+</pre>
+<p>Returns symbols that have a one-to-one correspondence with arbitrary strings. 
+  Symbols are an instance of the <a href="sc_symbol.html">Symbol</a> class.</p>
+<p>Symbols are unique objects that return the same object every time they are 
+  evaluated.</p>
+
+<h6></h6>
+</body>
+</html>

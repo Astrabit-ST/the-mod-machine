@@ -1,0 +1,1004 @@
+.topic 10001
+Saves any changes and closes this dialog box.
+.topic 10002
+Closes this dialog box without saving any changes.
+.topic 10003
+Saves all changes without closing this dialog box.
+.topic 10004
+Click to see a description of the dialog box.
+.topic 10005
+Closes this dialog box.
+.topic 11001
+Name of the project management folder.
+.topic 11002
+The game title. Displays in the window's title bar.
+.topic 11003
+Location to create the project folder.
+.topic 11004
+Uses a directory tree to specify the project location.
+.topic 11101
+Location to create a self-extracting distributable file.
+.topic 11102
+Uses a directory tree to specify where to create the file.
+.topic 11103
+Combines all data and graphic files into one file and encrypts it. Encrypted archives are larger than usual, but the game data cannot be opened in RPG Maker. Use this to keep others from viewing your game data.
+.topic 11201
+In the Editor, sets the color to use as the transparency background.
+.topic 11202
+Shows the transparency color as the Windows default.
+.topic 11203
+Sets the transparency color.
+.topic 11204
+Sets the transparency color's R value.
+.topic 11205
+Sets the transparency color's G value.
+.topic 11206
+Sets the transparency color's B value.
+.topic 11207
+Previews the transparency color.
+.topic 11211
+Settings for the Map Editor grid.
+.topic 11212
+Turns the Map Editor grid display on/off.
+.topic 11213
+Sets the horizontal spacing between grid tiles.
+.topic 11214
+Sets the vertical spacing between grid tiles.
+.topic 11301
+The game title. Displays in the window's title bar.
+.topic 11401
+Sets the RGSS-RTP type to use with this project.
+.topic 11601
+Folders containing material files. The selected folder's contents are displayed in the window to the right.
+.topic 11602
+Currently usable material files. Red icons indicate project materials, while blue icons indicate shared materials in RGSS-RTP files.
+.topic 11603
+Imports external material files into a folder.
+.topic 11604
+Exports the specified material file.
+.topic 11605
+Checks the contents of the specified material file.
+.topic 11606
+Deletes the specified material file.
+.topic 11701
+Displays graphics at full size.
+.topic 11702
+Displays graphics at 200% zoom.
+.topic 11703
+Displays graphics at 400% zoom.
+.topic 11711
+Displays imported graphics. Left-click assigns a transparency color; right-click assigns a translucency color.
+.topic 11712
+Treats the color as transparent (alpha = 0).
+.topic 11713
+Reverts the transparency color to black (0,0,0).
+.topic 11714
+Treats the color as translucent (alpha = 128).
+.topic 11715
+Reverts the translucency color to black (0,0,0).
+.topic 11801
+Displays the graphic. Double-click to close the window.
+.topic 12001
+Basic program data controlling game execution.
+.topic 12002
+The contents of the selected script are displayed in the
+
+window to the right. The following hotkeys are available.
+
+  [F5] : Selects the next script.
+
+  [F4] : Selects the previous script.
+
+.topic 12003
+The script name. Used only in the Editor for convenience.
+.topic 12004
+The script contents. Right-click for a pop-up menu of editing commands.
+.topic 12101
+Specifies the search string.
+.topic 12102
+Specifies the replace string.
+.topic 12103
+Runs a search distinguishing between upper- and lower case.
+.topic 12104
+Searches for a string by word.
+.topic 12111
+Searches for the previous matching string.
+.topic 12112
+Searches for the next matching string.
+.topic 12113
+Replaces the string and searches for the next string.
+.topic 12114
+Replaces all strings matching the query string.
+.topic 12115
+Begins searching for strings matching the query string.
+.topic 12201
+Specifies a line number to jump to.
+.topic 12301
+The search results.
+.topic 12302
+Jump to the selected location.
+.topic 16001
+The map name. Used only in the Editor for convenience.
+.topic 16002
+A tileset used on the map.
+.topic 16003
+Map width (horizontal size).
+.topic 16004
+Map height (vertical size).
+.topic 16005
+Makes the BGM change automatically when moving to the map.
+.topic 16006
+Makes the BGS change automatically when moving to the map.
+.topic 16011
+Settings for random encounters.
+.topic 16012
+List of randomly spawning troops for when the player is moving. To add a new setting, double-click a blank space. The spawn rate for each troop in a list will be similar, so to raise one troop's spawn rate in particular, you must first duplicate that troop.
+.topic 16013
+Specifies encounters occurring after having walked a certain number of steps.
+.topic 16021
+Type of troop in the encounter.
+.topic 16101
+Selects an expanded autotile set.
+.topic 16201
+Specifies the direction in which to shift the map. Event locations will be corrected automatically, but movement destinations must be reset.
+.topic 16202
+Specifies the number of tiles by which to shift the map. Portions shifted off the map will be pasted into blank areas on the opposite side.
+.topic 17001
+Message window graphic as shown in-game.
+.topic 18001
+Selects a map.
+.topic 18002
+Displays the map in 1:1 scale.
+.topic 18003
+Displays the map in 1:2 scale.
+.topic 18004
+Displays the map in 1:4 scale.
+.topic 18005
+Coordinates for the selected position.
+.topic 18006
+Specifies the tile at the destination.
+.topic 19001
+Files registered as this type of graphic.
+.topic 19002
+Files registered as character graphics.
+.topic 19003
+Files registered as character graphics. Can also specify which tileset to use on this map.
+.topic 19011
+Displays the selected graphic.
+.topic 19012
+Displays the selected graphic. Click to specify direction and animation pattern.
+.topic 19013
+Displays the selected graphic. For a tileset, can also specify the tileset type; for a character, click to set direction and animation.
+.topic 19021
+Move the slider to adjust the graphic's hue.
+.topic 19031
+Sets the event's display method.
+.topic 19032
+Event's opacity level when drawn. 0 = full transparency.
+.topic 19033
+Blending method used when an event is drawn.
+.topic 19041
+Sets the fog display method.
+.topic 19042
+Fog's opacity level when drawn. 0 = full transparency.
+.topic 19043
+Blending method used when fog is drawn.
+.topic 19044
+Fog's zoom ratio.
+.topic 19045
+Speed at which the fog scrolls on the X axis. Even values scroll right, odd values left.
+.topic 19046
+Speed at which the fog scrolls on the Y axis. Even values scroll right, odd values left.
+.topic 19101
+Files registered as sounds of this type.
+.topic 19102
+Plays the selected file.
+.topic 19103
+Stops the current playback.
+.topic 19104
+Sets the volume for sound playback.
+.topic 19105
+Sets the pitch for sound playback.
+.topic 20001
+The settings for the selected data are displayed in the
+
+window to the right. The following hotkeys are available.
+
+  [F5] : Selects the next data.
+
+  [F4] : Selects the previous data.
+
+.topic 20002
+Changes the number of data entries. The more data, the more memory is needed.
+.topic 20011
+Number of new data entries. The more data, the more memory is needed. Decrease the maximum number and any existing entries above that number will be deleted.
+.topic 20021
+Number of data entries to copy. Starting with the selected entry, copies all specified data to the clipboard.
+.topic 20101
+Data for player-controlled party members.
+.topic 20102
+The actor's name.
+.topic 20103
+The actor's class. Class determines equippable armor and weapons, as well as skills to master.
+.topic 20104
+The starting level. The character begins the game at this level.
+.topic 20105
+The maximum level. The character cannot go above this level.
+.topic 20106
+Values for determining the curve that shows how many EXP are needed to gain levels.
+.topic 20107
+The actor's graphic as shown on the map.
+.topic 20108
+The actor's graphic as shown in battle.
+.topic 20111
+Graph of parameters by level.
+.topic 20112
+Graph of max HP by level. Shows how much damage a character can take.
+.topic 20113
+Graph of max SP by level. Shows how much a character can use his or her skills.
+.topic 20114
+Graph of strength by level. Influences the power of physical attacks, etc.
+.topic 20115
+Graph of dexterity by level. Influences the hit rate of physical attacks, etc.
+.topic 20116
+Graph of agility by level. Influences the evade rate of physical attacks, etc.
+.topic 20117
+Graph of intelligence by level. Influences the strength of magical attacks, etc.
+.topic 20121
+The starting equipment.
+.topic 20122
+The starting weapon.
+.topic 20123
+Prevents the player from changing weapons.
+.topic 20124
+The starting shield.
+.topic 20125
+Prevents the player from changing shields.
+.topic 20126
+The starting helmet.
+.topic 20127
+Prevents the player from changing helmets.
+.topic 20128
+The starting body armor.
+.topic 20129
+Prevents the player from changing body armor.
+.topic 20130
+The starting accessory.
+.topic 20131
+Prevents the player from changing accessories.
+.topic 20201
+Actor-specific data, such as usable equipment and skills to master.
+.topic 20202
+The class name.
+.topic 20203
+Relative position within the party. Influences the ease with which enemies can target a character. This setting acts as a hidden parameter and is not displayed in-game.
+.topic 20211
+Equippable weapons for actors in this class.
+.topic 20212
+Equippable armor for actors in this class.
+.topic 20221
+Sets the efficacy of actions with various attributes for actors in this class, on a 6-point scale.
+
+A:200%, B:150%, C:100%, D:50%, E:0%, F:-100%
+
+.topic 20222
+Sets the success rate of applying states for actors in this class, on a 6-point scale.
+
+A:100%, B:80%, C:60%, D:40%, E:20%, F:0%
+
+.topic 20231
+Skills mastered at level-up for actors in this class. To add a new setting, double-click a blank space.
+.topic 20301
+Data for techniques and magic that mostly use SP for special effects.
+.topic 20302
+The skill name.
+.topic 20303
+Icon appearing to the left of the skill name in-game.
+.topic 20304
+Comment displayed when the skill is selected in-game.
+.topic 20311
+Skill's target area of influence.
+.topic 20312
+Screen(s) on which this skill can be used.
+.topic 20313
+Animation displayed for the user when using this skill in battle.
+.topic 20314
+Animation displayed for the target when using this skill in battle.
+.topic 20315
+SE that plays when using this skill on the menu screen.
+.topic 20316
+Common event called up immediately after using this skill.
+.topic 20321
+Amount of SP consumed when using this skill.
+.topic 20322
+Base value used to calculate the effects.
+.topic 20323
+Coefficient indicating how much the user's attack power influences the effects. Set high for skills that should do great damage when attack power is high. 100 = average attack. Skills where this value is 0 are treated as "Magic" and cannot be used when the user's status is "Mute". For non-magic skills, this value is set to 1 and above.
+.topic 20324
+Coefficient indicating the degree of influence of the evade rate, calculated from the user's dexterity and the target's agility. 100 = average attack.
+.topic 20325
+Coefficient indicating how much the user's physical strength influences the effects. Set high for physical skills. 100 = average attack.
+.topic 20326
+Coefficient indicating how much the user's dexterity influences the effects. Set only for skills whose damage changes with dexterity.
+.topic 20327
+Coefficient indicating how much the user's agility influences the effects. Set only for skills whose damage changes with agility.
+.topic 20328
+Coefficient indicating how much the user's intelligence influences the effects. Set high for magic skills. For general attack magic, a value of 100 is recommended.
+.topic 20329
+Success rate of a skill's use. Not affected by the target's evade rate, etc.
+.topic 20330
+Coefficient indicating how much the target's physical defense influences the effects. Set high for physical skills. 100 = average attack.
+.topic 20331
+Coefficient indicating how much the target's magic defense influences the effects. Set high for magic skills. For general attack magic, a value of 100 is recommended.
+.topic 20332
+Degree of fluctuation in final effect strength. The effect strength value varies by only as much as the percentage. 15 = average attack.
+.topic 20341
+Sets the elemental attributes for this skill. The effect strength varies according to the target's strengths and weaknesses.
+.topic 20342
+Indicates the skill's states set [+] and cleared [-] on the target. When setting states, the success rate is determined by the target's strengths and weaknesses.
+.topic 20401
+Data for non-equipment items, such as recovery and event items.
+.topic 20402
+The item name.
+.topic 20403
+Icon appearing to the left of the item name in-game.
+.topic 20404
+Comment displayed when the item is selected in-game.
+.topic 20411
+Item's target area of influence.
+.topic 20412
+Screen(s) on which this item can be used.
+.topic 20413
+Animation displayed for the user when using this item in battle.
+.topic 20414
+Animation displayed for the target when using this item in battle.
+.topic 20415
+SE that plays when using this item on the menu screen.
+.topic 20416
+Common event called up immediately after using this item.
+.topic 20421
+Item price. The player can sell the item for half this price. 0 = cannot sell in shops.
+.topic 20422
+Sets whether or not the item disappears after use.
+.topic 20423
+Type of parameter that can be increased infinitely.
+.topic 20424
+Value of parameter that can be increased infinitely.
+.topic 20425
+Recovered HP as percentage of max HP.
+.topic 20426
+Amount of recovered HP. An odd value allows creation of an attack item.
+.topic 20427
+Recovered SP as percentage of max SP.
+.topic 20428
+Amount of recovered SP.
+.topic 20429
+Success rate of an item's use. Not affected by the target's evade rate, etc.
+.topic 20430
+Coefficient indicating how much the target's physical defense influences the effects. Set high for physical attack items.
+.topic 20431
+Coefficient indicating how much the target's magic defense influences the effects. Set high for magic attack items.
+.topic 20432
+Degree of fluctuation in final effect strength. The effect strength value varies by only as much as the percentage. 15 = average attack.
+.topic 20441
+Sets the elemental attributes for this item. The effect strength varies according to the target's strengths and weaknesses.
+.topic 20442
+Indicates the item's states set [+] and cleared [-] on the target. When setting states, the success rate is determined by the target's strengths and weaknesses.
+.topic 20501
+Data for weapons that increase attack power. Handled as items.
+.topic 20502
+The weapon name.
+.topic 20503
+Icon appearing to the left of the weapon name in-game.
+.topic 20504
+Comment displayed when the weapon is selected in-game.
+.topic 20513
+Animation displayed for the user when using this weapon in battle.
+.topic 20514
+Animation displayed for the target when using this weapon in battle.
+.topic 20521
+Weapon price. The player can sell the weapon for half this price. 0 = cannot sell in shops.
+.topic 20522
+Basic amount of damage done by this weapon.
+.topic 20523
+Physical defense increase when equipped. Set only when treating the weapon as a kind of armor.
+.topic 20524
+Magic defense increase when equipped. Set only when treating the weapon as a kind of armor.
+.topic 20525
+Strength bonus received when equipped.
+.topic 20526
+Dexterity bonus received when equipped.
+.topic 20527
+Agility bonus received when equipped.
+.topic 20528
+Intelligence bonus received when equipped.
+.topic 20541
+Sets the elemental attributes for this weapon. The amount of damage done varies according to the target's strengths and weaknesses.
+.topic 20542
+Indicates the skill's states set [+] and cleared [-] on the target. When setting states, the success rate is determined by the target's strengths and weaknesses.
+.topic 20601
+Data for armor that increases physical and magic defense. Handled as items.
+.topic 20602
+The armor name.
+.topic 20603
+Icon appearing to the left of the armor name in-game.
+.topic 20604
+Comment displayed when the armor is selected in-game.
+.topic 20611
+Where the armor is equipped. Can equip different kinds of armor at the same time.
+.topic 20612
+State applied to the character while the armor is equipped. Takes precedence over the Status Defense setting.
+.topic 20621
+Armor's price. The player can sell the armor for half this price. 0 = cannot sell in shops.
+.topic 20622
+Physical defense increase when equipped. The higher the value, the stronger the armor is against physical damage.
+.topic 20623
+Magic defense increase when equipped. The higher the value, the stronger the armor is against magic damage.
+.topic 20624
+Evasion correction when equipped. Handled as a hidden parameter, not displayed in-game. Set only to create armor that makes it easy to dodge attacks.
+.topic 20625
+Strength bonus received when equipped.
+.topic 20626
+Dexterity bonus received when equipped.
+.topic 20627
+Agility bonus received when equipped.
+.topic 20628
+Intelligence bonus received when equipped.
+.topic 20641
+Sets the attributes this armor protects against. The effect of these attribute actions will be reduced by half for the actor wearing this armor.
+.topic 20642
+Sets the states this armor protects against. The effect of these state-setting actions will be completely nullified for the actor wearing this armor.
+.topic 20701
+Data for enemies fought in random and event battles.
+.topic 20702
+The enemy name.
+.topic 20703
+Enemy's graphic as shown in battle.
+.topic 20711
+Maximum ability to guard against damage.
+.topic 20712
+Maximum ability to use skills.
+.topic 20713
+Influences the strength, etc. of physical attacks.
+.topic 20714
+Influences the hit rate, etc. of physical attacks.
+.topic 20715
+Influences the evade rate, etc. of physical attacks.
+.topic 20716
+Influences the power, etc., of magic.
+.topic 20717
+Basic amount of physical damage.
+.topic 20718
+The higher this value, the stronger the enemy is against physical damage.
+.topic 20719
+The higher this value, the stronger the enemy is against magic damage.
+.topic 20720
+Evasion differential. Set only to create an enemy with average agility and a high evade rate.
+.topic 20721
+Animation displayed for the enemy when attacking normally in battle.
+.topic 20722
+Animation displayed for the target when the enemy attacks normally in battle.
+.topic 20723
+Sets the efficacy of attribute actions for this enemy, on a 6-point scale.
+
+A:200%, B:150%, C:100%, D:50%, E:0%, F:-100%
+
+.topic 20724
+Sets the success rate of applying states for this enemy, on a 6-point scale.
+
+A:100%, B:80%, C:60%, D:40%, E:20%, F:0%
+
+.topic 20725
+Preset list of enemy moves in battle. To add a new setting, double-click a blank space.
+.topic 20731
+EXP earned by the party by winning a battle.
+.topic 20732
+Gold earned by the party by winning a battle.
+.topic 20733
+Items and equipment earned by the party by winning a battle. Can win up to 6 treasures per battle.
+.topic 20801
+Enemy group. The unit in which they appear in the game.
+.topic 20802
+The troop name. Used only in the Editor for convenience.
+.topic 20803
+A troop is automatically given a name based on the names of the enemies within it.
+.topic 20804
+Changes the battle background currently displayed for editing. This setting is used only in the Editor and has no effect on the game.
+.topic 20805
+Runs a test battle with the troop being edited.
+.topic 20810
+Displays the enemies in a troop. Drag enemies to move them in 8-pixel increments (Alt-drag = 2 pixels). Right-click an enemy to open a menu of special option settings.
+.topic 20812
+Places the selected enemy into the troop.
+.topic 20813
+Removes the selected enemy from the troop.
+.topic 20814
+Removes all enemies from the troop.
+.topic 20815
+Lines up all troop enemies in one row.
+.topic 20816
+Press the [Add] button on the left to add selected enemies to the troop.
+.topic 20821
+Events run during battle. Set up enemy dialogs, etc. here.
+.topic 20901
+Status data influencing battler abilities and movement in various ways.
+.topic 20902
+The state name.
+.topic 20903
+Looping animation that plays for a battler in this state.
+.topic 20904
+Movement limitations.
+
+  None: Normal state--no limitations.
+
+  Cannot Use Magic: Cannot use skills whose [Attack Power F] is 0.
+
+  Attack Enemy: Ignore commands and only fight enemies.
+
+  Attack Friends: Ignore commands and only fight allies.
+
+  Cannot Perform Action: Ignore commands and do nothing.
+
+When more than one of these are in effect, the lowest in the list takes precedence.
+
+.topic 20905
+Changing to this state always succeeds, regardless of validity settings. If the same state is applied to a battler already in that state, no Miss message will be displayed. As a rule, set to a state with a positive effect, such as raised parameters.
+.topic 20906
+The so-called "downed" status. Automatically applied when HP reaches 0, and vice versa. Usually set with [Can't Get EXP] and [Cannot Perform Action] limitations.
+.topic 20907
+Cannot earn EXP even having won a battle.
+.topic 20908
+Cannot evade attacks, regardless of speed or evade differential, unless the attacker misses.
+.topic 20909
+Lose about 1/10 of max HP every turn. On the map, lose 1/100 of max HP every 2 steps.
+.topic 20911
+The priority sequence of state names and animations. If multiple states are applied at the same time, the one for which this value is highest will take precedence and be displayed. When this rating is the same, the state with the highest [Restriction] takes precedence, then the state with the newest ID. When this rating is 0, the state name is not displayed.
+.topic 20912
+Sets percentage change rate for hit rate.
+.topic 20913
+Sets percentage change rate for max HP.
+.topic 20914
+Sets percentage change rate for max SP.
+.topic 20915
+Sets percentage change rate for strength.
+.topic 20916
+Sets percentage change rate for dexterity.
+.topic 20917
+Sets percentage change rate for agility.
+.topic 20918
+Sets percentage change rate for intelligence.
+.topic 20919
+Sets percentage change rate for attack power.
+.topic 20920
+Sets percentage change rate for physical defense.
+.topic 20921
+Sets percentage change rate for magic defense.
+.topic 20922
+The evade rate differential.
+.topic 20931
+Conditions for state removal, apart from using skills and items.
+.topic 20932
+Specifies that the state is valid only in battle.
+.topic 20933
+Sets the number of turns for the state to last, or the probability (calculated every turn) of the state being removed after that number of turns.
+.topic 20935
+Sets the probability of the state being removed after receiving physical damage (a normal attack or a skill of Attack Power F 1 or above).
+.topic 20941
+Sets the attributes to defend against. The effect of these attribute actions will be reduced by half for the battler in this state.
+.topic 20942
+When this state is applied, any other applied states are automatically set to [+], while removed states are set to [-]. Always succeeds regardless of the target's strengths or weaknesses.
+.topic 21001
+Animation data used for weapon and skill visual effects.
+.topic 21002
+The animation name. Used only in the Editor for convenience.
+.topic 21003
+Pattern used for animation creation.
+.topic 21004
+The animation's display position.
+
+  Top: Centers the animation above the target.
+
+  Middle: Centers the animation in the middle of the target.
+
+  Bottom: Centers the animation below the target.
+
+  Screen: Displays over the entire screen.
+
+.topic 21005
+Sets the number of frames used for animation creation.
+.topic 21006
+SE and flash colors, etc. used when a frame is displayed. To add a new setting, double-click a blank space.
+.topic 21011
+Selects the previous frame. In Frame View, press the [B] key for the same function.
+.topic 21012
+The frame list. The selected frame is displayed in Frame View on the right.
+.topic 21013
+Selects the next frame. In Frame View, press the [N] key for the same function.
+.topic 21020
+Displays the contents of the selected frame. Left-click on an empty area and the selected pattern will be laid out as cells in the palette below. Drag laid-out cells to move them in 8-pixel increments (Alt-drag = 2 pixels). Right-click a cell for its operation menu.
+.topic 21021
+Changes the battler currently displayed for editing. This setting is used only in the Editor and has no effect on the game.
+.topic 21022
+Makes the currently selected frame identical to the previous frame.
+.topic 21023
+Copies multiple frames at once.
+.topic 21024
+Clears multiple frames at once.
+.topic 21025
+Automatically tweens the frames between two frames for smoother animation.
+.topic 21026
+Changes the settings for all cells in a frame.
+.topic 21027
+Shifts the positions of all cells in a frame.
+.topic 21028
+Tests the animation with [Hit] SE and flash effects.
+.topic 21029
+Tests the animation with [Miss] SE and flash effects.
+.topic 21031
+Displays the animation's pattern. Click the pattern to place a white frame around it and it can be added to a frame.
+.topic 21101
+Data defining the behavior of mapmaking tilesets.
+.topic 21102
+The tileset name. Used only in the Editor for convenience.
+.topic 21103
+Graphics containing key mapmaking tiles.
+.topic 21104
+Graphics that tile and border automatically, used mainly for land, ceilings, etc.
+.topic 21105
+Graphic displayed under the map. Good for backgrounds of tall buildings, etc.
+.topic 21106
+Graphic displayed over the map. Good for fog, trailing clouds, etc.
+.topic 21107
+Background used in battle on a map made with this tileset.
+.topic 21111
+Edit the selected information here. Click the mark to change settings. See the button help for details.
+.topic 21112
+Sets whether a normal character can pass through the tile. [O] = passable and [X] = impassable. Only autotiles can be marked with a square. These are basically impassable, but when laid out in a row, the tiles on the top edge become passable.
+.topic 21113
+Sets the direction from which a normal character can enter the tile. Possible entries/exits are indicated by arrows. For example, a tile with only up and down arrows can only be entered/exited from the neighboring tiles above and below.
+.topic 21114
+Sets the tile display priority, which can make a character seemingly pass behind the tile. The larger the number, the higher the priority, and the closer to the foreground the tile is displayed.
+.topic 21115
+Sets as translucent the bottom 12 pixels of a character on the tile, which can make the character's feet seemingly hidden in a thicket. The size of the translucent portion is fixed and is independent of character size.
+.topic 21116
+Sets an event to start after a certain count has been reached. Even when events cannot normally begin without the player being adjacent, place counter tiles in between and an event can be triggered even when the player is not directly setting it off.
+.topic 21117
+Each tile is allotted a number from 0 to 7. There are no concrete application rules. Use the [Control Variables] event command to get the terrain tag from the tile where the character is standing. All terrain tags (except 0) have priority on the top layer.
+.topic 21201
+Data for commonly-used events.
+.topic 21202
+Common command name. Used only in the Editor for convenience.
+.topic 21203
+Conditions to set off an event and start running its contents.
+
+  None: Starts only when explicitly called up.
+
+  Autorun: Starts when the [Condition Switch] is ON.
+
+  Parallel: Runs cyclically while the [Condition Switch] is ON.
+
+Parallel Process is a special setting that allows events to run
+
+alongside other events. Use caution.
+
+Both auto run and parallel operation are valid only on the map screen.
+
+.topic 21204
+When the trigger is [Autorun] or [Parallel], the contents will be run when the switch set here is ON.
+.topic 21205
+Event commands to be run for this event. Right-click to view a pop-up menu. Hold down Shift and click to select multiple entries.
+.topic 21301
+The starting party members. To add a new actor, double-click a blank space. To not display a player graphic during the opening, leave this setting at 0 and use an event to add actors later.
+.topic 21302
+Data for skill and item characteristics.
+.topic 21303
+The selected attribute names in this list can
+
+be edited below. The following hotkeys are available:
+
+  [F5] : Selects the following data entry.
+
+  [F4] : Selects the previous data entry.
+
+.topic 21304
+The attribute name. Used only in the Editor for convenience.
+.topic 21305
+Changes the number of attributes.
+.topic 21310
+Sets the material types to be used throughout the game.
+.topic 21311
+In-game window graphics. To change these settings in-game, use the [Change Windowskin] event command.
+.topic 21312
+Image displayed on the title screen.
+.topic 21313
+Image displayed on the Game Over screen.
+.topic 21314
+Image defining the transition method when switching from the map to battle.
+.topic 21315
+BGM played at the title screen.
+.topic 21316
+BGM played during battles. To change this setting in-game, use the command [Change Battle BGM].
+.topic 21317
+ME played at battle end. To change this setting in-game, use the command [Change Battle End ME].
+.topic 21318
+ME played at the Game Over screen.
+.topic 21319
+SE played when moving the cursor.
+.topic 21320
+SE played when confirming a command.
+.topic 21321
+SE played when canceling a command.
+.topic 21322
+SE played when selecting an invalid command.
+.topic 21323
+SE played when changing equipment.
+.topic 21324
+SE played when buying or selling items.
+.topic 21325
+SE played when saving a game.
+.topic 21326
+SE played when loading a game.
+.topic 21327
+SE played when encountering an enemy.
+.topic 21328
+SE played when running from an enemy.
+.topic 21329
+SE played when an actor is defeated.
+.topic 21330
+SE played when an enemy is defeated.
+.topic 21340
+Sets the terms used in the game.
+.topic 21341
+The game world's unit of currency.
+.topic 21342
+Term used for HP.
+.topic 21343
+Term used for SP.
+.topic 21344
+Term used for strength.
+.topic 21345
+Term used for dexterity.
+.topic 21346
+Term used for agility.
+.topic 21347
+Term used for intelligence.
+.topic 21348
+Term used for attack power.
+.topic 21349
+Term used for physical defense.
+.topic 21350
+Term used for magic defense.
+.topic 21351
+Term used for weapons.
+.topic 21352
+Term used for shields.
+.topic 21353
+Term used for helmets.
+.topic 21354
+Term used for body armor.
+.topic 21355
+Term used for accessories.
+.topic 21356
+Term used for attacks.
+.topic 21357
+Term used for skills.
+.topic 21358
+Term used for defense.
+.topic 21359
+Term used for items.
+.topic 21360
+Term used for equipment.
+.topic 22001
+Conditions that start an event and run its contents. The contents will be run only when all the set conditions have been met. If there are multiple event pages meeting conditions, the contents will be run in order from lower- to higher-numbered page.
+.topic 22002
+Interval during which the event contents are allowed to run.
+
+  Battle: Run only once in battle, even when conditions are met.
+
+  Turn: Run only once per turn, even when conditions are met.
+
+  Moment: Repeat while conditions continue to be met.
+
+.topic 22003
+Event commands to be run for this event. Right-click to view a pop-up menu. Hold down Shift and click to select multiple entries.
+.topic 22101
+Run when the specified turn has been surpassed. Specify the turn count with a + bx. If a = 1 and b = 3, the condition will be met at turn 1, 4, 7... Turn 0 (a = 0, b = 0) signifies the command will be run before command entry.
+.topic 22102
+Run when an enemy's HP is at or below a specified percentage. However, being downed (HP = 0) takes priority. To show a message on-screen just before an enemy dies, check [Immortal] on the enemy menu and use the [Change Enemy State] event command to set the downed state.
+.topic 22103
+Run when an actor's HP is at or below a specified percentage.
+.topic 22104
+Run when the specified switch is ON.
+.topic 22201
+EXP necessary for each level. Automatically calculated by combining a base value and an incremental amount.
+.topic 22202
+Base value for calculating necessary EXP.
+.topic 22203
+Percentage increase of necessary EXP.
+.topic 22301
+Press buttons A, B, C, D, and E to set a parameter randomly within a predefined range.
+.topic 22302
+The set parameter values for the specified level are displayed in the [Value] on the right.
+.topic 22303
+The set parameter values for the [Level] specified on the left.
+.topic 22304
+Specify values for levels 1 and 99 and the remaining values will be filled in automatically.
+.topic 22305
+The parameter graph. The X axis is the level number, and the Y axis shows the parameter value at each level. Left-click the graph to manually change it, or right-click to view the current settings at that level.
+.topic 22311
+Preset parameter values for level 1.
+.topic 22312
+Preset parameter values for level 99.
+.topic 22313
+Sets the curve of the parameter graph. The closer to [Fast], the lower the value added on level up. The closer to [Slow], the higher the value added on level up.
+.topic 22401
+Levels at which skills are mastered.
+.topic 22402
+Types of skills to master.
+.topic 22501
+Turns off treasure spawning.
+.topic 22502
+Spawns the selected item as treasure.
+.topic 22503
+Spawns the selected weapon as treasure.
+.topic 22504
+Spawns the selected armor as treasure.
+.topic 22505
+Sets the treasure spawning probability.
+.topic 22601
+Standards for possible actions.
+.topic 22602
+Possible when the specified turn has been surpassed. Specify the turn count with a + bx. If a = 1 and b = 3, the condition will be met at turn 1, 4, 7... Turn 0 (a = 0, b = 0) signifies the moment before command entry, but has no meaning here.
+.topic 22603
+Possible when this enemy's HP is at or below a specified percentage.
+.topic 22604
+Possible when the party members' average level is at or above a specified number.
+.topic 22605
+Possible when the specified switch is ON.
+.topic 22611
+The action's details.
+.topic 22612
+Actions that do not use skills.
+.topic 22613
+Actions that use skills.
+.topic 22621
+The action's priority of use. Of all actions meeting the conditions, the one with the highest rating will be the standard, and the one within 2 rating points of the standard will be used. Actions 1 rating point away will be used 2/3 of the time and those 2 rating points away will be used 1/3 of the time.
+.topic 23001
+The frame number keyed to a SE or a flash effect.
+.topic 23002
+A SE playing when a frame is displayed.
+.topic 23003
+Conditions under which these settings are applied.
+
+  None: Applied unconditionally.
+
+  Hit: Applied when an attack succeeds.
+
+  Miss: Applied when an attack fails.
+
+.topic 23004
+Settings for the flash effect appearing when a frame is displayed.
+.topic 23005
+No flash effect.
+.topic 23006
+Flashes when an animation is displayed.
+.topic 23007
+Flashes the entire screen.
+.topic 23008
+Deletes an animated target for a given time. Use when moving an active character.
+.topic 23009
+R value for the flash effect color.
+.topic 23010
+G value for the flash effect color.
+.topic 23011
+B value for the flash effect color.
+.topic 23012
+Intensity of the flash effect color. The higher the number, the more opaque the flash.
+.topic 23013
+Previews the flash effect color.
+.topic 23014
+Sets the flash time in 1/20 sec. increments.
+.topic 23031
+Number of new frames. Decrease the frame number and the content of any existing frames above that number will be deleted.
+.topic 23051
+Pattern number assigned to the cell.
+.topic 23052
+X-coordinate for the drawn cell.
+.topic 23053
+Y-coordinate for the drawn cell.
+.topic 23054
+Cell zoom ratio.
+.topic 23055
+Cell's angle of rotation, from 1 to 360. Note: Use a lot of rotation and the cell size will skyrocket.
+.topic 23056
+Selects whether to draw the cell flipped horizontally.
+.topic 23057
+Cell's opacity level when drawn. 0 = full transparency.
+.topic 23058
+Blending method used when cell is drawn.
+.topic 23061
+Range of frame numbers for batch settings.
+.topic 23062
+Range of cell numbers for batch settings.
+.topic 23071
+Range of frame numbers to be copied.
+.topic 23072
+Frame number acting as start point for the target frame.
+.topic 23081
+Range of frame numbers to be cleared.
+.topic 23091
+Range of frame numbers to be tweened.
+.topic 23092
+Range of cell numbers to be tweened.
+.topic 23093
+Sets the data type to be tweened.
+.topic 23094
+Pattern for tweening.
+.topic 23095
+Position, zoom ratio, and angle of rotation for tweening.
+.topic 23096
+Opacity level and blending method for tweening.
+.topic 23101
+Range of frame numbers for sliding.
+.topic 23102
+Sets the slide distance.
+.topic 23103
+Value to be added to the cell's X-coordinate.
+.topic 23104
+Value to be added to the cell's Y-coordinate.
+.topic 23201
+Actor appearing in the starting party.
+.topic 24001
+Data stored as either ON or OFF throughout the game.
+.topic 24002
+The selected switches are displayed on the right.
+.topic 24003
+Changes the number of switches. The more data, the more memory is needed.
+.topic 24004
+Selectable switches.
+
+The following hotkeys are available:
+
+  [F5] : Selects the following data entry.
+
+  [F4] : Selects the previous data entry.
+
+.topic 24005
+The switch name. Used only in the Editor for convenience.
+.topic 24101
+Data storing integers (up to 8 digits) throughout the game.
+.topic 24102
+The selected variables are displayed on the right.
+.topic 24103
+Changes the number of variables. The more data, the more memory is needed.
+.topic 24104
+Selectable variables.
+
+The following hotkeys are available:
+
+  [F5] : Selects the following data entry.
+
+  [F4] : Selects the previous data entry.
+
+.topic 24105
+The variable name. Used only in the Editor for convenience.
+.topic 25001
+Selects actor to use in battle test.
+.topic 25002
+Actor's level.
+.topic 25010
+Actor's equipment.
+.topic 25011
+Actor's equipped weapon.
+.topic 25012
+Actor's equipped shield.
+.topic 25013
+Actor's equipped helmet.
+.topic 25014
+Actor's equipped body armor.
+.topic 25015
+Actor's equipped accessory.
+.topic 25020
+Displays status computation based on level and equipment.
+.topic 25030
+Initializes actor's level and equipment.

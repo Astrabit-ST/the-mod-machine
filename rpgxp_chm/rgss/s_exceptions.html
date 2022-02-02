@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Built-in Exception Classes</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Built-in Exception Classes</h1>
+<dl>
+  <dt><a href="sc_exception.html">Exception</a></dt>
+  <dd>The superclass of all exceptions. 
+    <dl>
+      <dt><a name="NoMemoryError"><em>NoMemoryError</em></a></dt>
+      <dd>Thrown when attempting to reserve too much memory at once.</dd>
+      <dt><a name="ScriptError"><em>ScriptError</em></a></dt>
+      <dd>Indicates a script error. 
+        <dl>
+          <dt><a name="NotImplementedError"><em>NotImplementedError</em></a></dt>
+          <dd>Thrown when an unimplemented feature is invoked.</dd>
+          <dt><a name="SyntaxError"><em>SyntaxError</em></a></dt>
+          <dd>Thrown by a syntax error.</dd>
+        </dl>
+      </dd>
+      <dt><a name="StandardError"><em>StandardError</em></a></dt>
+      <dd>Without a class specified, the <a href="syntax05.html#L000314">rescue 
+        class</a> will catch the subclasses of this exception class. 
+        <dl>
+          <dt><a name="ArgumentError"><em>ArgumentError</em></a></dt>
+          <dd>Thrown when argument numbers do not match or when the values are 
+            incorrect.</dd>
+          <dt><a name="IndexError"><em>IndexError</em></a></dt>
+          <dd>Thrown when the index is out of range.</dd>
+          <dt><a name="IOError"><em>IOError</em></a></dt>
+          <dd>Thrown when an I/O error occurs. 
+            <dl>
+              <dt><a name="EOFError"><em>EOFError</em></a></dt>
+              <dd>Thrown when EOF (End Of File) has been reached.</dd>
+            </dl>
+          </dd>
+          <dt><a name="LocalJumpError"><em>LocalJumpError</em></a></dt>
+          <dd>Thrown when no jump destination is found for a control structure.</dd>
+          <dt><a name="NameError"><em>NameError</em></a></dt>
+          <dd>Thrown when accessing an undefined local variable or constant. 
+            <dl>
+              <dt><a name="NoMethodError"><em>NoMethodError</em></a></dt>
+              <dd>Thrown when calling an undefined method.</dd>
+            </dl>
+          </dd>
+          <dt><a name="RangeError"><em>RangeError</em></a></dt>
+          <dd>A range exception. Thrown when an out-of-range integer conversion 
+            (from <a href="sc_bignum.html">Bignum</a> to <a href="sc_fixnum.html">Fixnum</a>) 
+            , etc., occurs. 
+            <dl>
+              <dt><a name="FloatDomainError"><em>FloatDomainError</em></a></dt>
+              <dd>Thrown when trying to convert a positive or negative infinite 
+                number or NaN (Not a Number) into <a href="sc_bignum.html">Bignum</a> 
+                , or when comparing a number to a NaN.</dd>
+            </dl>
+          </dd>
+          <dt><a name="RegexpError"><em>RegexpError</em></a></dt>
+          <dd>Thrown when compiling a regular expression fails.</dd>
+          <dt><a name="RuntimeError"><em>RuntimeError</em></a></dt>
+          <dd>A runtime exception. Thrown when calling <a href="s_functions.html#L000388">raise</a> 
+            without specifying an exception.</dd>
+          <dt><a name="SystemCallError"><em>SystemCallError</em></a></dt>
+          <dd>Thrown when a system call fails. 
+            <dl>
+              <dt><a name="Errno"><em>Errno::EXXX</em></a></dt>
+              <dd>Exception class for each errno. See the <a href="sm_errno.html">Errno</a> 
+                module for more on each class name.</dd>
+            </dl>
+          </dd>
+          <dt><a name="SystemStackError"><em>SystemStackError</em></a></dt>
+          <dd>Thrown when a stack level becomes too deep.</dd>
+          <dt><a name="TypeError"><em>TypeError</em></a></dt>
+          <dd>Thrown when an illegal type is invoked.</dd>
+          <dt><a name="ZeroDivisionError"><em>ZeroDivisionError</em></a></dt>
+          <dd>Thrown when dividing by zero.</dd>
+        </dl>
+      </dd>
+      <dt><a name="SystemExit"><em>SystemExit</em></a></dt>
+      <dd>Terminates the program. See <a href="s_functions.html#L000363">exit</a> 
+        for more information.</dd>
+      <dt><a name="fatal"><em>fatal</em></a></dt>
+      <dd>A fatal (internal) error. This object is not visible with normal methods.</dd>
+    </dl>
+  </dd>
+</dl>
+
+
+</body>
+</html>

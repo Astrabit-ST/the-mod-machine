@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Bignum</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Bignum</h1>
+<p>The class for long integers, limited only by memory size. The result of an 
+  operation is automatically converted into a <a href="sc_fixnum.html">Fixnum</a> 
+  if its value is within range; conversely, if the value is out of Fixnum range, 
+  it is extended into a Bignum. For bit operations, Bignum can be considered to 
+  be an infinite 2's complement bit string. Negative numbers in particular can 
+  operate as a string of 1 bits extending indefinitely to the left. Mixing Bignum 
+  with <a href="sc_float.html">Float</a> can result in digit cancellation errors 
+  upon conversion.</p>
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_integer.html">Integer</a></li>
+</ul>
+
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Enumerable</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Enumerable</h1>
+<p>A mix-in for repeating classes. This module's methods are all defined via each, 
+  so each must be defined in any class which includes this module.</p>
+
+<h2>Method</h2>
+<dl>
+  <dt>all?</dt>
+  <dt>all? {|<var>item</var>| ... }</dt>
+  <dd> 
+    <p>Returns TRUE when all items are true. If any item is false, immediately 
+      returns FALSE.</p>
+    <p>When using a block, evaluates the block against each item and returns TRUE 
+      if all outcomes are true. If the block returns FALSE at any time, immediately 
+      returns FALSE.</p>
+    <pre>
+p [1,2,3].all? {|v| v &gt; 0}   # =&gt; true
+p [1,2,3].all? {|v| v &gt; 1}   # =&gt; false
+</pre>
+  </dd>
+  <dt>any?</dt>
+  <dt>any? {|<var>item</var>| ... }</dt>
+  <dd> 
+    <p>Returns FALSE when all items are false. If any item is true, immediately 
+      returns TRUE.</p>
+    <p>When using a block, evaluates the block against each item and returns FALSE 
+      if all outcomes are false. If the block returns TRUE at any time, immediately 
+      returns TRUE.</p>
+    <pre>
+p [1,2,3].any? {|v| v &gt; 3}   # =&gt; false
+p [1,2,3].any? {|v| v &gt; 1}   # =&gt; true
+</pre>
+  </dd>
+  <dt>find {|<var>item</var>| ... }</dt>
+  <dd> 
+    <p>Returns the first item that tested as true during the block evaluation. 
+      If no item was true, returns nil.</p>
+  </dd>
+  <dt>find_all {|<var>item</var>| ... }</dt>
+  <dd> 
+    <p>Returns an array of all items that tested as true during the block evaluation. 
+      If no item was true, returns an empty array.</p>
+  </dd>
+  <dt>include?(<var>val</var>)</dt>
+  <dd> 
+    <p>Returns TRUE when the list includes an item that satisfies the relationship 
+      <var>val</var> ==.</p>
+  </dd>
+  <dt>max</dt>
+  <dd> 
+    <p>Returns the largest item. Assumes all items are comparable via the &lt;=&gt; 
+      method.</p>
+  </dd>
+  <dt>max {|<var>a</var>, <var>b</var>| ... }</dt>
+  <dd> 
+    <p>Compares each item based on the block's evaluated value and returns the 
+      largest item.</p>
+    <p>Anticipates a block value that will be a positive integer when a&gt;b, 
+      0 when a==b, and a negative integer when a&lt;b. When the block returns 
+      a non-integer, throws a <a href="s_exceptions.html#TypeError">TypeError</a> 
+      exception. </p>
+  </dd>
+  <dt>min</dt>
+  <dd> 
+    <p>Returns the smallest item. Assumes all items are comparable via the &lt;=&gt; 
+      method.</p>
+  </dd>
+  <dt>min {|<var>a</var>, <var>b</var>| ... }</dt>
+  <dd> 
+    <p>Compares each item based on the block's evaluated value and returns the 
+      smallest item.</p>
+    <p>Anticipates a block value that will be a positive integer when a&gt;b, 
+      0 when a==b, and a negative integer when a&lt;b. When the block returns 
+      a non-integer, throws a <a href="s_exceptions.html#TypeError">TypeError</a> 
+      exception.</p>
+  </dd>
+  <dt>sort</dt>
+  <dt>sort {|<var>a</var>, <var>b</var>| ... }</dt>
+  <dd> 
+    <p>Creates and returns an array of all items sorted in ascending order.</p>
+    <p>When not using a block, calls the &lt;=&gt; against each item and sorts 
+      based upon those results.</p>
+    <p>To sort using other methods besides &lt;=&gt;, select a block; the items 
+      will be sorted based on the evaluation of this block. Anticipates a block 
+      value that will be a positive integer when a&gt;b, 0 when a==b, and a negative 
+      integer when a&lt;b. When the block returns a non-integer, throws a <a href="s_exceptions.html#TypeError">TypeError</a> 
+      exception.</p>
+  </dd>
+  <dt>to_a</dt>
+  <dt>entries</dt>
+  <dd> 
+    <p>Returns an array of all items.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

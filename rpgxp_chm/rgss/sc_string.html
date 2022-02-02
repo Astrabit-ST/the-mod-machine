@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>String</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>String</h1>
+<p>The string class. Can handle byte sequences of arbitrary lengths. See <a href="syntax03.html#L000254">String 
+  Literals</a> for details.</p>
+<p>The String class itself behaves like a byte sequence. Use scan(/./), etc. to 
+  extract characters from a multibyte string one at a time.</p>
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Included Modules</h2>
+<ul>
+<li><a href="sm_comparable.html">Comparable</a></li>
+<li><a href="sm_enumerable.html">Enumerable</a></li>
+</ul>
+
+<h2>Methods</h2>
+<dl>
+  <dt><var>self</var> + <var>other</var></dt>
+  <dd> 
+    <p>Returns a new concatenated string.</p>
+  </dd>
+  <dt><var>self</var> * <var>times</var></dt>
+  <dd> 
+    <p>Creates and returns a new string consisting of the string contents repeated 
+      <var>times</var> times.</p>
+  </dd>
+  <dt><var>self</var> &lt;=&gt; <var>other</var></dt>
+  <dd> 
+    <p>Compares <var>self</var> with <var>other</var> by ASCII order; returns 
+      a positive integer if <var>self</var> is larger, 0 if the two are equal, 
+      and a negative integer if <var>self</var> is smaller.</p>
+  </dd>
+  <dt><var>self</var> == <var>other</var></dt>
+  <dd> 
+    <p>Determines whether the strings are equal.</p>
+  </dd>
+  <dt>self[<var>nth</var>, <var>len</var>]</dt>
+  <dd> 
+    <p>Returns a <var>len</var>-byte-long substring found at the <var>nth</var> 
+      byte. When <var>nth</var> is negative, counts from the end of the string.</p>
+    <p>If <var>nth</var> is out of range, returns nil.</p>
+  </dd>
+  <dt>self[regexp]</dt>
+  <dd> 
+    <p>Returns the first substring matching <var>regexp</var>. Matching information 
+      can be configured in the built-in variable <a href="s_variables.html#L000428">$~</a>.</p>
+    <p>If there is no match to <var>regexp</var>, returns nil.</p>
+    <pre>
+p &quot;foobar&quot;[/bar/]   # =&gt; &quot;bar&quot;
+</pre>
+  </dd>
+  <p></p>
+  <dt><a name="L001349">self[<var>nth</var>, <var>len</var>]=<var>val</var></a></dt>
+  <dd> 
+    <p>Replaces the <var>len</var>-byte-long substring found at the <var>nth</var> 
+      byte with the string <var>val</var>. When <var>nth</var> is negative, counts 
+      from the end of the string.</p>
+    <p>Returns <var>val</var> .</p>
+  </dd>
+  <dt>self[regexp]=val</dt>
+  <dd> 
+    <p>Replaces the first substring matching the regular expression <var>regexp</var> 
+      with the string <var>val</var>.</p>
+    <p>If there is no match to the regular expression, throws an <a href="s_exceptions.html#IndexError">IndexError</a> 
+      exception. </p>
+    <p>Returns <var>val</var>.</p>
+  </dd>
+  <dt>clone</dt>
+  <dt>dup</dt>
+  <dd> 
+    <p>Returns a new string with the same contents as the original string. Using 
+      clone on a frozen string will return a similarly frozen string, but dup 
+      returns an unfrozen string with identical contents.</p>
+  </dd>
+  <dt>concat(<var>other</var>)</dt>
+  <dd> 
+    <p>Appends the contents of the string <var>other</var> to self. Returns self.</p>
+  </dd>
+  <dt><a name="L001383">downcase</a></dt>
+  <dt>downcase!</dt>
+  <dd> 
+    <p>Replaces all uppercase characters with lowercase characters.</p>
+    <p>downcase creates and returns the modified string. downcase! modifies and 
+      returns self, but if no characters were replaced, returns nil.</p>
+    <p>See also <a href="#L001450">upcase</a>.</p>
+  </dd>
+  <dt>each {|<var>line</var>| ... }</dt>
+  <dt>each_line {|<var>line</var>| ... }</dt>
+  <dd> 
+    <p>Iterates over each line in the string.</p>
+    <p>Returns self.</p>
+  </dd>
+  <dt>each_byte {|<var>byte</var>| ... }</dt>
+  <dd> 
+    <p>Iterates over each byte of the string. Returns self.</p>
+  <dt>empty?</dt>
+  <dd> 
+    <p>Returns true if the string is empty (i.e., a zero-length string).</p>
+  </dd>
+  <dt><a name="L001390">gsub(<var>pattern</var>) {|<var>matched</var>| .... }</a></dt>
+  <dt>gsub!(<var>pattern</var>) {|<var>matched</var>| .... }</dt>
+  <dd> 
+    <p>Replaces <strong>all</strong> substrings matching <var>pattern</var> with 
+      the results of the block evaluation. The matching substring is passed to 
+      the block as an argument. The built-in variable <a href="s_variables.html">$&lt;digits&gt;</a> 
+      can be referenced within the block.</p>
+    <pre>
+p 'abcabc'.gsub(/b/) {|s| s.upcase }    # =&gt; &quot;aBcaBc&quot;
+p 'abcabc'.gsub(/b/) { $&amp;.upcase }      # =&gt; &quot;aBcaBc&quot;
+p 'abbbcd'.gsub(/a(b+)/) { $1 }         # =&gt; &quot;bbbcd&quot;
+</pre>
+    <p>gsub creates and returns the post-replacement string. gsub! modifies and 
+      returns self, but if no characters were replaced, returns nil.</p>
+    <p>See also <a href="#L001433">sub</a>.</p>
+  </dd>
+  <dt>insert(<var>nth</var>, <var>other</var>)</dt>
+  <dd> 
+    <p>Inserts the string <var>other</var> immediately before the character in 
+      the <var>nth</var> position. Returns self.</p>
+    <pre>
+p &quot;foobaz&quot;.insert(3, &quot;bar&quot;)         # =&gt; &quot;foobarbaz&quot;
+</pre>
+  </dd>
+  <p></p>
+  <dt><a name="L001398">to_sym</a></dt>
+  <dd> 
+    <p>Returns the symbol value (<a href="sc_symbol.html">Symbol</a>) corresponding 
+      to the string.</p>
+    <p>Use <a href="sc_symbol.html#L001480">Symbol#id2name</a> to obtain the string 
+      corresponding to a symbol.</p>
+    <pre>
+p &quot;foo&quot;.to_sym                      # =&gt; :foo
+p &quot;foo&quot;.to_sym.to_s == &quot;foo&quot;        # =&gt; true
+</pre>
+  </dd>
+  <p></p>
+  <dt>length</dt>
+  <dt>size</dt>
+  <dd> 
+    <p>Returns the length of the string in bytes.</p>
+  </dd>
+  <dt><a name="L001412">scan(<var>re</var>)</a> 
+  <dt>scan(<var>re</var>) {|<var>s</var>| ... }</dt>
+  <dd> 
+    <p>Repeatedly matches against self with the regular expression <var>re</var> 
+      and returns an array of matching substrings. </p>
+    <pre>
+p &quot;foobarbazfoobarbaz&quot;.scan(/ba./)
+# =&gt; [&quot;bar&quot;, &quot;baz&quot;, &quot;bar&quot;, &quot;baz&quot;]
+
+p &quot;abcde&quot;.scan(/./)
+# =&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+</pre>
+    <p>When called with a block specified, the matching substrings become the 
+      block's parameters. (If parentheses are included, an array of strings that 
+      match the patterns in parentheses becomes the block's parameter.) If a block 
+      is specified, returns self.</p>
+    <pre>
+&quot;foobarbazfoobarbaz&quot;.scan(/ba./) {|s| p s}
+# =&gt; &quot;bar&quot;
+     &quot;baz&quot;
+     &quot;bar&quot;
+     &quot;baz&quot;
+</pre>
+  </dd>
+  <p></p>
+  <dt>slice(<var>nth</var>, <var>len</var>)</dt>
+  <dt>slice(<var>regexp</var>)</dt>
+  <dd> 
+    <p>Identical to <a href="#L001349">self[]</a>.</p>
+  </dd>
+  <dt>slice!(<var>nth</var>, <var>len</var>)</dt>
+  <dt>slice!(<var>regexp</var>)</dt>
+  <dd> 
+    <p>Removes a specified range (see <a href="#L001349">self[]</a>) from a string 
+      and returns the removed substring.</p>
+    <p>If the argument is out of range, returns nil.</p>
+  </dd>
+  <dt><a name="L001433">sub(<var>pattern</var>) {|<var>matched</var>| ... }</a></dt>
+  <dt>sub!(<var>pattern</var>) {|<var>matched</var>| ... }</dt>
+  <dd> 
+    <p>Replaces the <strong>first</strong> substring matching <var>pattern</var> 
+      with the results of the block evaluation.</p>
+    <p>sub creates and returns the post-replacement string. sub! modifies and 
+      returns self, but if no characters were replaced, returns nil.</p>
+    <p>Identical to <a href="#L001390">gsub</a>, except that sub only matches 
+      once. </p>
+  </dd>
+  <dt>to_f</dt>
+  <dd> 
+    <p>Interprets the string as a base-10 expression and converts it into a floating 
+      point integer (<a href="sc_float.html">Float</a>).</p>
+  </dd>
+  <dt>to_i([<var>base</var>])</dt>
+  <dd> 
+    <p>Interprets the string as a numeric expression and converts it into an integer.</p>
+    <p>The default is base-10. By specifing <var>base</var>, you can perform base 
+      2-36 conversions as well.</p>
+  </dd>
+  <dt><a name="L001450">upcase</a></dt>
+  <dt>upcase!</dt>
+  <dd> 
+    <p>Replaces all lowercase characters with uppercase characters.</p>
+    <p>downcase creates and returns the modified string. downcase! modifies and 
+      returns self, but if no characters were replaced, returns nil.</p>
+    <p>See also <a href="#L001383">downcase</a>.</p>
+  </dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

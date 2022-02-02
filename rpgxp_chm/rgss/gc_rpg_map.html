@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Map</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Map</h1>
+<p>Data class for maps.</p>
+
+<h2>Superclass</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>Attributes</h2>
+<dl>
+  <dt>tileset_id</dt>
+  <dd> 
+    <p>Tileset ID to be used in the map.</p>
+  </dd>
+  <dt>width</dt>
+  <dd> 
+    <p>The map width.</p>
+  </dd>
+  <dt>height</dt>
+  <dd> 
+    <p>The map height.</p>
+  </dd>
+  <dt>autoplay_bgm</dt>
+  <dd> 
+    <p>Truth-value of whether BGM autoswitching is enabled.</p>
+  </dd>
+  <dt>bgm</dt>
+  <dd> 
+    <p>If BGM autoswitching is enabled, the name of that BGM (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>autoplay_bgs</dt>
+  <dd> 
+    <p>Truth-value of whether BGS autoswitching is enabled.</p>
+  </dd>
+  <dt>bgs</dt>
+  <dd> 
+    <p>If BGS autoswitching is enabled, the name of that BGS (<a href="gc_rpg_audiofile.html">RPG::AudioFile</a>).</p>
+  </dd>
+  <dt>encounter_list</dt>
+  <dd> 
+    <p>Encounter list. A troop ID array.</p>
+  </dd>
+  <dt>encounter_step</dt>
+  <dd> 
+    <p>Number of steps between encounters.</p>
+  </dd>
+  <dt>data</dt>
+  <dd> 
+    <p>The map data. A 3-dimensional tile ID array (<a href="gc_table.html">Table</a>).</p>
+  </dd>
+  <dt>events</dt>
+  <dd> 
+    <p>Map events. A hash that represents <a href="gc_rpg_event.html">RPG::Event</a> 
+      instances as values, using event IDs as the keys.</p>
+  </dd>
+</dl>
+
+<h2>Definition</h2>
+<pre>
+module RPG
+  class Map
+    def initialize(width, height)
+      @tileset_id = 1
+      @width = width
+      @height = height
+      @autoplay_bgm = false
+      @bgm = RPG::AudioFile.new
+      @autoplay_bgs = false
+      @bgs = RPG::AudioFile.new("", 80)
+      @encounter_list = []
+      @encounter_step = 30
+      @data = Table.new(width, height, 3)
+      @events = {}
+    end
+    attr_accessor :tileset_id
+    attr_accessor :width
+    attr_accessor :height
+    attr_accessor :autoplay_bgm
+    attr_accessor :bgm
+    attr_accessor :autoplay_bgs
+    attr_accessor :bgs
+    attr_accessor :encounter_list
+    attr_accessor :encounter_step
+    attr_accessor :data
+    attr_accessor :events
+  end
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>
