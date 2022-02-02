@@ -8,12 +8,6 @@ class RgssReferenceController < ApplicationController
     get_html
   end
 
-  def rpgxp
-    @page = params[:page]
-
-    get_html
-  end
-
   def get_html
     begin
       @html = File.read("#{Rails.root}/rpgxp_chm/rpgxp/#{@page}.html")
