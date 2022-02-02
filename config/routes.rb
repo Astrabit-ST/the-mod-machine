@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "rgss_reference/index"
+  get "rgss_reference/index", as: "rgss"
   get "rgss_reference/rgss/:page", to: "rgss_reference#rgss"
   get "rgss_reference/rpgxp/:page", to: "rgss_reference#rpgxp"
   get "/guide", to: "home#guide"
